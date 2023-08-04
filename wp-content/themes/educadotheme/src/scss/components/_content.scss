@@ -1,0 +1,36 @@
+
+.ed-page-content {
+    position: relative;
+    width: 100%;
+    padding: 200px 0 120px;
+
+    @include screen-xhl {
+        padding: 120px 0 80px;
+    }
+
+    .wp-block-heading {
+        &:not(:first-child) {
+            margin-top: 36px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    p {
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+
+    a {
+        display: inline-block;
+        color: $color-green1;
+        transition: color .3s;
+
+        &:hover {
+            color: $color-green2;
+        }
+    }
+}

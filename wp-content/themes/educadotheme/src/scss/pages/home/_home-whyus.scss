@@ -1,0 +1,251 @@
+
+
+.ed-home-whyus {
+    position: relative;
+    width: 100%;
+    padding: 70px 0 230px;
+
+    @include screen-xxl {
+        padding: 50px 0 110px;
+    }
+
+    @include screen-xhl {
+        padding: 50px 0;
+    }
+
+    .whyus-content {
+        position: relative;
+    }
+
+    .whyus-head {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 70px;
+
+        @include screen-xxl {
+            margin-bottom: 50px;
+        }
+
+        @include screen-xhl {
+            flex-direction: column;
+            max-width: 430px;
+            margin-bottom: 85px;
+        }
+
+        @include screen-sm {
+            display: block;
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+
+        &__title {
+            width: calc(50% - 15px);
+
+            @include screen-xxl {
+                width: calc(58.333% - 15px);
+            }
+
+            @include screen-xhl {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            @include screen-sm {
+                margin-bottom: 10px;
+            }
+        }
+
+        &__subtitle {
+            width: calc(41.666% - 15px);
+
+            @include screen-xhl {
+                width: 100%;
+                @include font(24px, 1.67);
+            }
+
+            @include screen-sm {
+                @include font(18px, 2);
+            }
+        }
+    }
+
+    .whyus-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+        row-gap: 70px;
+
+        @include screen-xxl {
+            row-gap: 50px;
+        }
+
+        @include screen-xhl {
+            grid-template-columns: repeat(1, 1fr);
+            row-gap: 30px;
+        }
+
+        @include screen-sm {
+            row-gap: 20px;
+        }
+
+        .feature-title {
+            position: relative;
+            width: 100%;
+            padding-left: 38px;
+            margin-bottom: 10px;
+
+            @include screen-xhl {
+                @include font(24px, 40px);
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: calc(50% - 5px);
+                left: 9px;
+                width: 10px;
+                height: 10px;
+                background: $color-base;
+                border-radius: 50%;
+                pointer-events: none;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: calc(50% - 14px);
+                left: 0px;
+                width: 28px;
+                height: 28px;
+                background-image: url('../img/home/look/ellipse.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                pointer-events: none;
+            }
+        }
+    }
+
+    .whyus-try {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 123px;
+        transform: translate3d(0, 50px, 0);
+
+        @include screen-xxl {
+            padding-right: 96px;
+            transform: translate3d(0, 20px, 0);
+        }
+
+        @include screen-xhl {
+            position: absolute;
+            top: 170px;
+            right: 60px;
+
+            padding-right: 0px;
+            transform: translate3d(0, 0px, 0);
+        }
+
+        @include screen-sm {
+            position: relative;
+            top: auto;
+            right: auto;
+            width: 100%;
+            height: 310px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 22px;
+            padding-left: 37px;
+        }
+
+        &__button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 185px;
+            height: 195px;
+            color: $color-white;
+            @include font(24px, 28px);
+            text-align: center;
+            cursor: pointer;
+
+            @include screen-xxl {
+                width: 144px;
+                height: 152px;
+            }
+            
+            @include screen-xhl {
+                width: 88px;
+                height: 93px;
+                @include font(16px, 1.2);
+            }
+
+            @include screen-sm {
+                width: 114px;
+                height: 120px;
+            }
+            
+            span {
+                position: relative;
+                z-index: 3;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: translate3d(0, 0, 0);
+                fill: $color-base;
+                stroke: $color-base;
+                transition: .3s;
+            }
+
+            &:hover svg {
+                fill: $color-green1;
+                stroke: $color-green1;
+            }
+
+            &-line {
+                position: absolute;
+                display: flex;
+                width: 1093px;
+                height: 573px;
+                top: -188px;
+                right: -122px;
+                pointer-events: none;
+
+                @include screen-xxl {
+                    width: 853px;
+                    height: 446px;
+                    top: -147px;
+                    right: -96px;
+                }
+
+                @include screen-xhl {
+                    width: 520px;
+                    height: 273px;
+                    top: -90px;
+                    right: -60px;
+                }
+
+                @include screen-sm {
+                    top: -90px;
+                    right: -52px;
+                    width: 590px;
+                    height: 310px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

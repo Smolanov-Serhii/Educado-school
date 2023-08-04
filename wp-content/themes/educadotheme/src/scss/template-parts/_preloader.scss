@@ -1,0 +1,56 @@
+
+.ed-preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    transition: .4s;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .ed-preloader-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $color-green1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ed-preloader-logo {
+        width: 300px;
+        height: 250px;
+        position: relative;
+        fill: $color-base;
+
+        @include screen-sm {
+            width: 240px;
+            height: 200px;
+        }
+
+        .path1,
+        .path2,
+        .path3,
+        .path4,
+        .path5,
+        .path6,
+        .path7 {
+            position: relative;
+            opacity: 0;
+            transform: translate3d(0, -20px, 0);
+        }
+
+        .path8 {
+            position: relative;
+            opacity: 0;
+        }
+    }
+}

@@ -1,0 +1,209 @@
+
+
+.ed-home-questions {
+    position: relative;
+    width: 100%;
+    padding: 70px 0 100px;
+    overflow: hidden;
+
+    @include screen-xxl {
+        padding: 60px 0;
+    }
+
+    @include screen-xhl {
+        padding: 50px 0;
+    }
+
+    .questions-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 100px 50px;
+        border: 1px solid $color-base;
+        border-radius: 60px;
+
+        @include screen-xxl {
+            align-items: flex-start;
+            padding: 50px 50px;
+        }
+
+        @include screen-xhl {
+            flex-direction: column;
+            padding: 50px 50px;
+        }
+
+        @include screen-sm {
+            padding: 30px 30px 20px;
+        }
+    }
+
+    .questions-form {
+        position: relative;
+        z-index: 3;
+        width: calc(58.333% - 3px);
+
+        @include screen-xxl {
+            width: 670px;
+        }
+
+        @include screen-xhl {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        @include screen-sm {
+            margin-bottom: 46px;
+        }
+    }
+
+    .questions-title {
+        width: 100%;
+        margin-bottom: 20px;
+
+        @include screen-xhl {
+            text-align: center;
+        }
+    }
+
+    .questions-subtitle {
+        width: 100%;
+        margin-bottom: 50px;
+
+        @include screen-xhl {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    }
+
+    .form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        @include screen-xhl {
+            flex-direction: column;
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            width: calc(50% - 15px);
+            margin-top: 30px;
+            margin-bottom: 0;
+
+            @include screen-xhl-up {
+                &:nth-of-type(1), 
+                &:nth-of-type(2) {
+                    margin-top: 0px;
+                }
+            }
+
+            @include screen-xhl {
+                width: 100%;
+                margin-top: 20px;
+
+                &:nth-of-type(1) {
+                    margin-top: 0;
+                }
+            }
+
+            @include screen-sm {
+                &:nth-of-type(3) {
+                    order: 3;
+                }
+            }
+        }
+    }
+
+    .questions-trial {
+        margin-top: 50px;
+        margin-right: 120px;
+
+        @include screen-xxl {
+            margin-top: 140px;
+            margin-right: 55px;
+            transform: scale(.9);
+        }
+
+        @include screen-xhl {
+            width: 100%;
+            height: 382px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+            padding-left: 120px;
+            transform: none;
+        }
+
+        @include screen-sm {
+            padding: 0 10px 0 0;
+        }
+
+        &__button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 185px;
+            height: 195px;
+            color: $color-white;
+            @include font(24px, 28px);
+            text-align: center;
+            cursor: pointer;
+
+            @include screen-xhl {
+                width: 142px;
+                height: 150px;
+            }
+            
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: 0;
+                width: 915px;
+                height: 500px;
+                top: -188px;
+                right: -290px;
+                pointer-events: none;
+
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 915 501' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M732.242 405.695C710.134 460.373 636.512 495.129 593.401 498.892C564.438 501.327 534.371 497.121 505.851 487.159C475.341 476.312 446.379 458.824 421.838 435.801C382.927 399.053 361.261 352.123 361.703 306.52C361.924 296.78 362.808 291.024 362.808 291.024C364.577 277.078 368.335 263.131 374.084 249.628C390.444 211.552 420.512 181.888 449.474 153.11C470.477 132.301 492.143 111.049 508.504 86.4771C511.599 81.8283 514.473 77.1795 517.568 72.5307C534.592 45.5234 552.279 17.852 583.231 5.67656C617.057 -7.38436 660.832 7.89027 678.961 39.325C693.995 65.2255 690.236 103.744 687.141 134.515C686.699 140.049 686.036 145.362 685.593 150.232C683.604 176.575 687.362 203.804 691.121 229.926C696.427 267.338 701.733 305.856 690.899 344.153C676.529 395.069 634.965 447.312 574.608 448.862C547.415 449.526 519.116 440.229 494.796 422.962C472.246 406.801 458.981 386.657 446.379 361.42C421.617 350.573 386.243 329.764 361.703 306.299' stroke='%23161616' stroke-width='2' stroke-miterlimit='10' stroke-linecap='square'/%3E%3Cpath d='M3.72869 408.778C12.645 410.625 22.2445 412.629 31.6641 411.005C41.0837 409.381 49.5986 402.461 54.2489 394.42C59.4717 385.421 60.6988 374.885 60.5873 365.041C60.3225 343.844 53.9435 323.945 49.4348 303.799C49.2068 302.777 49.0618 301.862 48.834 300.839C44.0143 276.654 41.154 251.126 49.0665 226.696C56.7237 203.148 74.8573 185.891 100.377 187.414C113.537 188.208 124.925 195.679 132.979 205.381C154.493 231.057 170.818 265.533 171.54 300.416C171.727 308.66 169.12 318.379 159.907 321.726C154.808 323.61 149.204 323.143 144.477 321.144C133.773 316.741 127.312 305.465 127.193 293.914C127.075 282.364 132.898 270.505 141.474 261.484C159.801 242.537 187.694 237.433 211.813 238.839C271.01 242.261 315.836 276.3 361.903 306.126' stroke='%23161616' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M731.679 407.45C740.964 384.629 754.201 327.529 809.458 313.194C845.399 303.871 919.339 303.081 854.08 190.141' stroke='%23161616' stroke-width='2'/%3E%3C/svg%3E%0A");
+                
+                @include screen-xhl {
+                    width: 700px;
+                    height: 382px;
+                    top: -143px;
+                    right: -220px;
+                }
+            }
+
+            span {
+                position: relative;
+                z-index: 3;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: translate3d(0, 0, 0);
+                fill: $color-base;
+                stroke: $color-base;
+                transition: .3s;
+            }
+
+            &:hover svg {
+                fill: $color-green1;
+                stroke: $color-green1;
+            }
+        }
+    }
+}

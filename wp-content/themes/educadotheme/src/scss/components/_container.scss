@@ -1,0 +1,22 @@
+
+
+.container {
+    width: 100%;
+    max-width: 1770px;
+    padding: 0 120px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include screen-xxl {
+        max-width: 1280px;
+        padding: 0 55px;
+    }
+
+    @include screen-xhl {
+        padding: 0 32px;
+    }
+
+    @include screen-sm {
+        padding: 0 10px;
+    }
+}

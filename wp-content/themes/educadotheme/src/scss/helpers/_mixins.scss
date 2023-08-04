@@ -1,0 +1,124 @@
+$screen-xxs: 374px;
+$screen-xs: 413px;
+$screen-sm: 640px;
+$screen-md: 766px;
+$screen-xhl: 1080px;
+$screen-xxl: 1780px;
+
+// max-width: 374px
+@mixin screen-xxs {
+	@media (max-width: #{$screen-xs}) {
+		@content;
+	}
+}
+
+// max-width: 413px
+@mixin screen-xs {
+	@media (max-width: #{$screen-xs}) {
+		@content;
+	}
+}
+
+
+// max-width: 640px
+@mixin screen-sm {
+	@media (max-width: #{$screen-sm}) {
+		@content;
+	}
+}
+
+
+// max-width: 767px
+@mixin screen-md {
+	@media (max-width: #{$screen-md}) {
+		@content;
+	}
+}
+
+
+// max-width: 1080px
+@mixin screen-xhl {
+	@media (max-width: #{$screen-xhl}) {
+		@content;
+	}
+}
+
+
+// max-width: 1910px
+@mixin screen-xxl {
+	@media (max-width: #{$screen-xxl}) {
+		@content;
+	}
+}
+
+
+// min-width: 374px
+@mixin screen-xxs-up {
+	@media (min-width: #{$screen-xs}) {
+		@content;
+	}
+}
+
+// min-width: 414px
+@mixin screen-xs-up {
+	@media (min-width: #{$screen-xs}) {
+		@content;
+	}
+}
+
+
+// min-width: 641px
+@mixin screen-sm-up {
+	@media (min-width: #{$screen-sm + 1}) {
+		@content;
+	}
+}
+
+
+// min-width: 768px
+@mixin screen-md-up {
+	@media (min-width: #{$screen-md + 1}) {
+		@content;
+	}
+}
+
+
+// min-width: 1081px
+@mixin screen-xhl-up {
+	@media (min-width: #{$screen-xhl + 1}) {
+		@content;
+	}
+}
+
+
+// min-width: 1911px
+@mixin screen-xxl-up {
+	@media (min-width: #{$screen-xxl + 1}) {
+		@content;
+	}
+}
+
+
+@mixin font($font-size, $line-height: normal, $font-weight: normal, $letter-spacing: normal) {
+	font-size: $font-size;
+	
+	@if $line-height!=normal {
+		line-height: $line-height;
+	}
+	
+	@if $font-weight!=normal {
+		font-weight: $font-weight;
+	}
+	
+	@if $letter-spacing!=normal {
+		letter-spacing: $letter-spacing;
+	}
+}
+
+@mixin font-family($font-family) {
+	font-family: $font-family;
+	
+	* {
+		font-family: $font-family;
+	}
+}

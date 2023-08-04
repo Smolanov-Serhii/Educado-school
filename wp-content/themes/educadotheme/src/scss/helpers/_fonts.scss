@@ -1,0 +1,92 @@
+
+
+@mixin h1 {
+    @include font(70px, 1.14);
+    @include font-family($font-title);
+
+    @include screen-xxl {
+        @include font(50px);
+    }
+
+    @include screen-xhl {
+        @include font(50px, 58px);
+    }
+
+    @include screen-sm {
+        @include font(32px, 37px);
+    }
+}
+
+
+@mixin h2 {
+    @include font(36px, 1.39);
+
+    @include screen-xxl {
+        @include font(30px);
+    }
+    
+    @include screen-sm {
+        @include font(18px, 2);
+    }
+}
+
+
+@mixin h3 {
+    @include font(32px, 1.5);
+
+    @include screen-xxl {
+        @include font(24px);
+    }
+
+    @include screen-sm {
+        @include font(18px, 2);
+    }
+}
+
+
+@mixin h4 {
+    @include font(24px, 1.67);
+
+    @include screen-xxl {
+        @include font(18px);
+    }
+
+    @include screen-sm {
+        @include font(18px, 2);
+    }
+}
+
+
+@mixin h5 {
+    @include font(22px, 1.36, 300);
+
+    @include screen-xxl {
+        @include font(18px);
+    }
+
+    @include screen-sm {
+        @include font(18px, 2);
+    }
+}
+
+
+
+.h1 {
+    @include h1;
+}
+
+.h2 {
+    @include h2;
+}
+
+.h3 {
+    @include h3;
+}
+
+.h4 {
+    @include h4;
+}
+
+.h5 {
+    @include h5;
+}

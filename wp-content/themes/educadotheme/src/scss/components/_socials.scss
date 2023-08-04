@@ -1,0 +1,53 @@
+.socials{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    display: none;
+    z-index: 99;
+    @include screen-sm {
+        display: flex;
+        flex-direction: column;
+    }
+    .ed-socials__link{
+        width: 46px;
+        height: 46px;
+        margin-top: 5px;
+        margin-right: 0!important;
+        padding: 5px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(169, 190, 202, 0.3);
+    }
+}
+
+.ed-socials {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        color: $color-base;
+        transition: color .3s;
+
+        &:not(:last-child) {
+            margin-right: 14px;
+        }
+
+        &:hover {
+            color: $color-green1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            transform: translate3d(0, 0, 0);
+            fill: currentColor;
+            stroke: currentColor;
+        }
+    }
+}

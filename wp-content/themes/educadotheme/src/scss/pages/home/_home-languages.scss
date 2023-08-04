@@ -1,0 +1,153 @@
+
+
+.ed-home-languages {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 100px 0;
+
+    @include screen-xxl {
+        padding: 50px 0;
+    }
+}
+
+.languages-ticker {
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+
+    &:not(:last-child) {
+        margin-bottom: 100px;
+
+        @include screen-xxl {
+            margin-bottom: 50px;
+        }
+
+        @include screen-xhl {
+            margin-bottom: 50px;
+        }
+
+        @include screen-sm {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__wrapper {
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        display: flex !important;
+        flex-direction: row !important;
+        white-space: nowrap;
+    }
+
+    &__line {
+        display: flex;
+        flex: 0 0 auto;
+        min-width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        animation: loop-animation var(--duration) linear 0s infinite;
+        animation-play-state: running;
+        animation-direction: normal; 
+    }
+
+    &.languages-ticker--reverse {
+        .languages-ticker__line {
+            animation: loop-animation-reverse var(--duration) linear 0s infinite;
+        }
+    }
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    @include font-family($font-title);
+    @include font(70px, 82px);
+    text-transform: uppercase;
+
+    @include screen-xxl {
+        @include font(50px, 1.2)
+    }
+
+    @include screen-xhl {
+        @include font(50px, 58px);
+    }
+
+    @include screen-sm {
+        @include font(32px, 37px);
+    }
+
+    &__image {
+        width: 95px;
+        height: 82px;       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 0 10px 0 50px;
+
+        @include screen-xxl {
+            width: 60px;
+            height: 52px;
+        }
+
+        @include screen-xhl {
+            margin: 0 10px 0 20px;
+        }
+
+        @include screen-sm {
+            width: 60px;
+            height: 52px;
+        }
+
+        img {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            opacity: 1;
+            transition: opacity .3s;
+        }
+
+        .language__image-active {
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        .language__image {
+            &-normal {
+                opacity: 0;
+            }
+
+            &-active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+@keyframes loop-animation {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes loop-animation-reverse {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

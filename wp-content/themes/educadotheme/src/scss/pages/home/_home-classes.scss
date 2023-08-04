@@ -1,0 +1,248 @@
+
+
+.ed-home-classes {
+    position: relative;
+    width: 100%;
+    padding: 70px 0 100px;
+
+    @include screen-xhl {
+        padding: 50px 0;
+    }
+
+    .classes-content__item {
+        @include screen-xhl {
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    .classes-content__item.classes-title {
+        @include screen-xxl {
+            width: 750px;
+        }
+
+        @include screen-xhl {
+            width: 100%;
+        }
+    }
+
+    .classes-content__item.classes-image {
+        @include screen-xxl {
+            margin-top: -108px;
+        }
+
+        @include screen-xhl {
+            margin-top: 0;
+            width: 100%;
+            max-width: 570px;
+            margin: 0 auto;
+        }
+    }  
+}
+
+.ed-home-classes,
+.ed-home-clubs {
+    
+    .classes-content {
+        width: calc(100% + 2 * 15px);
+        margin: 0 -15px;
+        overflow: hidden;
+
+        @include screen-xhl {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0;
+        }
+
+        &__item {
+            width: 50%;
+            padding: 0 15px;
+
+            @include screen-xhl-up {
+                &:nth-child(2n + 1) {
+                    float: left;
+                }
+
+                &:nth-child(2n) {
+                    float: right;
+                }
+            }
+
+            @include screen-xhl {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    }
+
+    .classes-title {
+        margin-bottom: 50px;
+
+        @include screen-xxl {
+
+        }
+    }
+
+
+    .classes-image {
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .classes-block {
+        width: 100%;
+        position: relative;
+        border-width: 1px 1px 6px 1px;
+        border-style: solid;
+        border-color: $color-base;
+        border-radius: 60px;
+        padding: 50px 50px;
+
+        @include screen-xxl {
+            padding: 30px 30px;
+            border-radius: 40px;
+        }
+
+        @include screen-sm {
+            padding: 30px 30px;
+        }
+
+        .h3,
+        &__title {
+            margin-bottom: 30px;
+
+            @include screen-sm {
+                margin-bottom: 20px;
+                @include font(24px, 1.67);
+            }
+        }
+
+        &__subtitle {
+            margin-bottom: 30px;
+
+            @include screen-sm {
+                margin-bottom: 20px;
+            }
+        }
+        
+        &__list {
+            width: 100%;
+            margin-bottom: 30px;
+
+            @include screen-sm {
+                @include font(16px, 1.88);
+            }
+
+            &-item {
+                position: relative;
+                width: 100%;
+                padding-left: 48px;
+
+                @include screen-xxl {
+                    padding-left: 40px;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+
+                svg {
+                    position: absolute;
+                    top: calc(50% - 16px);
+                    left: 0;
+                    width: 32px;
+                    height: 32px;
+                    stroke: $color-base;
+                    transform: translate3d(0, 0, 0);
+
+                    @include screen-xxl {
+                        width: 24px;
+                        height: 24px;
+                        top: calc(50% - 12px);
+                    }
+                }
+
+                span {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.ed-home-clubs {
+    padding-top: 70px;
+
+    @include screen-xhl {
+        padding: 50px 0;
+    }
+
+    .classes-content__item {
+        @include screen-xhl {
+            order: 4;
+            
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+    }
+    
+
+    .classes-title {
+        @include screen-xhl {
+            order: 1;
+            margin-bottom: 30px;
+        }
+
+        @include screen-sm {
+            margin-bottom: 20px;
+        }
+    }
+
+    .clubs-text {
+        padding: 32px 15px;
+        @include font(32px, 48px);
+        margin-bottom: 50px;
+
+        @include screen-xxl {
+            @include font(24px, 1.7);
+            padding: 0 15px;
+            margin-bottom: 85px;
+        }
+
+        @include screen-xhl {
+            order: 1;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        @include screen-sm {
+            @include font(18px, 2);
+            margin-bottom: 0;
+        }
+    }
+
+    .classes-image {
+        margin-top: 50px;
+
+        @include screen-xxl {
+            margin-top: 145px;
+        }
+
+        @include screen-xhl {
+            order: 2;
+            max-width: 570px;
+            margin: 30px auto 0;
+        }
+
+        @include screen-sm {
+            margin: 0 0 20px;
+        }
+    }
+}

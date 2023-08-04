@@ -1,0 +1,46 @@
+
+
+.link {
+	display: block;
+	width: max-content;
+	position: relative;
+	overflow: hidden;
+	@include font(16px, 1.3);
+	color: $color-orange-medium;
+	cursor: pointer;
+    transition: color .4s;
+
+	&::before,
+	&::after {
+		content: attr(data-hover);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: transform .4s;
+	}
+
+	&::after {
+		transform: translateY(100%);
+	}
+
+	span {
+		visibility: hidden;
+	}
+
+	&:hover {
+		color: $color-orange;
+
+		&::before {
+			transform: translateY(-100%);
+		}
+
+		&::after {
+			transform: translateY(0%);
+		}
+	}
+}
