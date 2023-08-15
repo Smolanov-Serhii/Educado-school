@@ -58,9 +58,7 @@ get_template_part('parts/content', 'popups');
 
 <?php
 /** Socials **/
-if ( current_user_can( 'administrator' ) ) {
-    get_template_part('parts/content', 'socials');
-}
+get_template_part('parts/content', 'socials');
 ?>
 
 

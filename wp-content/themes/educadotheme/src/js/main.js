@@ -23,5 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	initAccordions()
 
 	initHome()
+
+	const button = document.querySelector(".socials__triger");
+	let element = document.getElementById("socials");
+	button.addEventListener("click", (event) => {
+		element.classList.toggle("active");
+	});
+
+	const div = document.querySelector( '#socials');
+
+	document.addEventListener( 'click', (e) => {
+		const withinBoundaries = e.composedPath().includes(div);
+
+		if ( ! withinBoundaries ) {
+			element.classList.remove("active");
+		}
+	})
+
 	
 })

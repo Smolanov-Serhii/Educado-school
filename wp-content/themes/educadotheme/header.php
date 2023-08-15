@@ -119,7 +119,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <?php
                 $email = get_field('header_email', 'options');
                 ?>
-                <a class="ed-header-contacts__link" href="tel:<?= $email; ?>"><?= $email; ?></a>
+                <a class="ed-header-contacts__link" href="tel:+380674275343">+38(067)427-53-43</a>
 
                 <?php
                 /** Social links **/
