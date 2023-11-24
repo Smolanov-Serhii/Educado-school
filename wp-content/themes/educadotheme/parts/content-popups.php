@@ -22,6 +22,13 @@ $send_btn_txt = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'optio
         </div>
 
         <form class="form">
+            <div class="hidden" style="display: none;">
+                <input type="hidden" name="utm_source" value="<?php echo $_GET['utm_source'] ?? ''?>">
+                <input type="hidden" name="utm_medium" value="<?php echo $_GET['utm_medium'] ?? ''?>">
+                <input type="hidden" name="utm_campaign" value="<?php echo $_GET['utm_campaign'] ?? ''?>">
+                <input type="hidden" name="utm_content" value="<?php echo $_GET['utm_content'] ?? ''?>">
+                <input type="hidden" name="utm_term" value="<?php echo $_GET['utm_term'] ?? ''?>">
+            </div>
             <input type="hidden" name="action" value="ed_callback">
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
             <?php wp_nonce_field('ed_callback'); ?>
