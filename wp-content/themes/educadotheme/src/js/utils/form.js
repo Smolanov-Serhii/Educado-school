@@ -11,7 +11,11 @@ const formAjaxSend = (form) => {
         let data = {}
 
         fields && fields.length && fields.forEach(field => {
-            data[field.name] =  field.value.replace(/\n/g, '<br/>')
+            if(field.type === 'checkbox' && field.checked == true){
+                data[field.name] = 'Обрано: <br>';
+            } else if(field.type === 'text'){
+                data[field.name] =  field.value.replace(/\n/g, '<br/>');
+            }
         })
         
 

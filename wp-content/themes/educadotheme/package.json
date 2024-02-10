@@ -11,6 +11,7 @@
     "author": "CodeVision agency",
     "license": "ISC",
     "dependencies": {
+        "@babel/core": "^7.23.9",
         "babel-loader": "^9.1.2",
         "browser-sync": "^2.28.1",
         "del": "^7.0.0",

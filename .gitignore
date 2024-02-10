@@ -1,3 +1,5 @@
 /.vscode/
-/wp-content/themes/educadotheme/node_modules/
+
 /wp-config.php
+
+/wp-content/themes/educadotheme/node_modules/
