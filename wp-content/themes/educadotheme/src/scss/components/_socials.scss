@@ -67,6 +67,7 @@
     cursor: pointer;
     &__triger{
         &-wrapper{
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
             position: relative;
             background-image: url("../img/socials-triger-def.svg");
             background-repeat: no-repeat;

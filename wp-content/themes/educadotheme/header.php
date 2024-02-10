@@ -24,7 +24,8 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script', 
     'https://connect.facebook.net/en_US/fbevents.js'); 
     fbq('init', '794161271856671'); 
-    fbq('track', 'PageView'); 
+    fbq('track', 'PageView');
+    fbq('track', 'Contact');
     </script> 
     <noscript><img height="1" width="1" style="display:none" 
     src="https://www.facebook.com/tr?id=794161271856671&ev=PageView&noscript=1" 
@@ -114,12 +115,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 'class' => 'ed-header-menu',
             ));
             ?>
-
+            <a class="ed-header-contacts__link ed-header-contacts__link-mobile" href="tel:+380674275343">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#8F8F2D"/>
+                    <path d="M31.8866 26.8807C31.8298 26.5298 31.6098 26.2299 31.2803 26.0518L26.4064 23.1801L26.3663 23.1577C26.1619 23.0554 25.9363 23.003 25.7077 23.0047C25.2994 23.0047 24.9094 23.1594 24.6388 23.4307L23.2002 24.8699C23.1387 24.9284 22.9381 25.0131 22.8772 25.0161C22.8606 25.0148 21.2034 24.8954 18.1526 21.8443C15.1072 18.7996 14.978 17.1373 14.977 17.1373C14.9787 17.0523 15.0623 16.8524 15.1218 16.7905L16.3486 15.5641C16.7807 15.131 16.9102 14.4129 16.6539 13.8567L13.9448 8.75904C13.7479 8.35376 13.3654 8.10352 12.9411 8.10352C12.6409 8.10352 12.3512 8.22796 12.1247 8.45406L8.78083 11.7905C8.46021 12.1094 8.18413 12.667 8.12395 13.1158C8.09471 13.3303 7.50141 18.4514 14.5224 25.4734C20.483 31.4333 25.1308 31.8964 26.4143 31.8964C26.5706 31.8984 26.7268 31.8903 26.8821 31.8722C27.3295 31.8124 27.8865 31.537 28.205 31.2177L31.5462 27.8769C31.8189 27.6029 31.9433 27.2408 31.8866 26.8807V26.8807Z" fill="white"/>
+                </svg>
+            </a>
             <div class="ed-header-contacts">
                 <?php
                 $email = get_field('header_email', 'options');
                 ?>
-                <a class="ed-header-contacts__link" href="tel:+380674275343">+38(067)427-53-43</a>
+                <a class="ed-header-contacts__link" href="tel:+380674275343">
+                    +38(067)427-53-43
+                </a>
 
                 <?php
                 /** Social links **/
