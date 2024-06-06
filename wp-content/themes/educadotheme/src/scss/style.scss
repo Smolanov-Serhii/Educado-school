@@ -1,3 +1,9 @@
+body{
+  bwchat#bwc-wrap #bwc-widget-action button, bwchat#bwc-wrap #bwc-widget-action .bwc-button{
+    background-color: #8F8F2D!important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
 @import "fonts/index";
 @import "helpers/index";
 @import "components/index";

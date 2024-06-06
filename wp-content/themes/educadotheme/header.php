@@ -39,6 +39,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P3BNBJ4');</script>
 <!-- End Google Tag Manager -->
+    <style>
+        :root {
+            --bwc-widget-main-color: #8f8f2d!important;
+            --bwc-widget-submit-buttons-color: #8f8f2d!important;
+            --bwc-widget-secondary-color: #d3d360!important;
+        }
+    </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

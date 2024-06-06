@@ -49,6 +49,26 @@
             </a>
         </div>
     </div>
+    <div class="footer__chat">
+        <div class="footer__chat-call">
+            <script type="text/javascript">
+                (function(d, w, s) {
+                    var widgetHash = 'flwhv49cvqcvl465505i', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+                    gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
+                    var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+                })(document, window, 'script');
+            </script>
+        </div>
+        <div class="footer__chat-text">
+            <script type="text/javascript">
+                (function(d, w, s) {
+                    var widgetHash = 'A7LXciKvZVYwSXv1JX5d', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+                    bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+                    var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+                })(document, window, 'script');
+            </script>
+        </div>
+    </div>
 </footer>
 
 <?php
@@ -58,7 +78,7 @@ get_template_part('parts/content', 'popups');
 
 <?php
 /** Socials **/
-get_template_part('parts/content', 'socials');
+//get_template_part('parts/content', 'socials');
 ?>
 
 
