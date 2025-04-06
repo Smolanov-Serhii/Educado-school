@@ -39,13 +39,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P3BNBJ4');</script>
 <!-- End Google Tag Manager -->
-    <style>
-        :root {
-            --bwc-widget-main-color: #8f8f2d!important;
-            --bwc-widget-submit-buttons-color: #8f8f2d!important;
-            --bwc-widget-secondary-color: #d3d360!important;
-        }
-    </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -53,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-
+<!--Клиент имеет привычку не оплачивать работу под предлогами что его не так поняли, не то сдеалли и т.п.. Работа не была оплачена дизайнеру и програмисту. Клиент отказался платить и подал в суд чтобы ещё и вернули его аванс хотя работа была полностью выполнена и плюс множество дополнительный. В результате клиент присвоил идею и с ней пошол к следующим исполнителям.-->
 <?php $educado_cookie = $_COOKIE['educado'] ?? ''; ?>
 <?php if (!$educado_cookie || $educado_cookie != 1) { ?>
     <div class="ed-preloader" id="ed-preloader">

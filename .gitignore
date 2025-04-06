@@ -4,3 +4,7 @@
 
 /wp-content/themes/educadotheme/node_modules/
 
+/wp-content/themes/educadotheme/node_modules/
+.idea
+.idea/*
+/.idea

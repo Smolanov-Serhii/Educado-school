@@ -3,7 +3,6 @@
  * Template Name: Home
  */
 ?>
-
 <?php get_header(); ?>
 <main class="ed-home еуіе">
     <?php

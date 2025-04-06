@@ -109,7 +109,7 @@ if ($item_id) {
 
                         </div>
 
-                        <div class="accordion-parts__title" style="color: #000000">Доступна оплата частинами від monobank</div>
+                        <div class="accordion-parts__title" style="color: #000000">Доступна покупка частинами від monobank</div>
                     </div>
                 </div>
             <?php endif; ?>
