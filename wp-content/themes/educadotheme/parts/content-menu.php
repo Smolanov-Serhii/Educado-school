@@ -35,7 +35,7 @@ $data = get_fields();
                         $title = get_field('tekst_v_punkt_menyu', $postpers_id);
                         $lnk = get_field('yakr_na_punkt_menyu', $postpers_id);
                         ?>
-                            <li class=""><a data-lnk="#<?= $lnk ?>" href="#<?= $lnk ?>"><?= $title ?></a></li>
+                            <li class="subitem-list__item"><a data-lnk="#<?= $lnk ?>" href="#<?= $lnk ?>"><?= $title ?></a></li>
                         <?php }
                 }
                 wp_reset_query(); ?>

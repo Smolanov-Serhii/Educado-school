@@ -271,7 +271,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding: 160px 0;
+        padding: 160px 0 100px 0;
         @include font(36px, 1.2);
 
         li {
@@ -279,7 +279,7 @@
             justify-content: center;
 
             &:not(:last-child) {
-                margin-bottom: 48px;
+                margin-bottom: 20px;
             }
         }
     }
@@ -288,7 +288,7 @@
             text-align: center;
         }
         &:not(:last-child){
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         @include screen-xhl {
             display: flex;
