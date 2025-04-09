@@ -15,12 +15,25 @@
                 </a>
             <?php } ?>
 
-            <?php
-            /** Menu **/
-            get_template_part('parts/content', 'menu', array(
-                'class' => 'ed-footer-menu',
-            ));
-            ?>
+            <ul class="ed-footer-menu">
+                <li>
+                    <a href="#ed-courses">Курси</a>
+                    <ul class="subitem-list">
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#ed-testimonials">Відгуки</a>
+                </li>
+
+                <li>
+                    <a href="#ed-teachers">Вчителі</a>
+                </li>
+                <li>
+                    <a href="<?php echo get_permalink(338)?>">Оферта</a>
+                </li>
+            </ul>
 
             <div class="ed-footer-contacts">
                 <?php

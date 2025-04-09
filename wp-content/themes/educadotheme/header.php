@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php wp_head(); ?>
     <title><?php wp_title()?></title>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Meta Pixel Code --> 
     <script> 
     !function(f,b,e,v,n,t,s) 
@@ -92,6 +92,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <header class="ed-header">
+    <?php
+    $data = get_fields();
+//    var_dump($data);
+    ?>
+    <?php if ($data['pokaz_aktivovano'] === true){
+        if (($data['data_pochatku_pokazu'] <= date('d-m-Y')) && ($data['data_zaknchennya_pokazu'] >= date('d-m-Y'))){
+            ?>
+            <div class="ed-header__banner" style="background-color: <?php echo $data['kolr_baneru_hedera'];?>">
+                <div class="ed-header__banner-container">
+                    <div class="ed-header__banner-btn button callpopup" data-popup="callback">
+                        <?php if ($data['kartinka_v_reklamnij_baner']){
+                            ?>
+                                <div class="ed-header__banner-img">
+                                    <img src="<?= $data['kartinka_v_reklamnij_baner']; ?>" alt="<?= $data['napis_na_knopc_baneru']; ?>">
+                                </div>
+                            <?php
+                        }?>
+                        <?= $data['napis_na_knopc_baneru']; ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    }?>
     <div class="container">
         <div class="ed-header-bar">
             <?php

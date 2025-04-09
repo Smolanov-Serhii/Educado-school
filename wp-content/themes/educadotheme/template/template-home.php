@@ -41,6 +41,7 @@
                     }
                     ?>
                 </div>
+                <div class="button callpopup" data-popup="trial"><?= $data['owner_tekst_knopki']; ?></div>
             </div>
 
             <?php
@@ -197,38 +198,47 @@
                                   stroke="#161616" stroke-width="2"/>
                         </svg>
                     </div>
+                    <div class="founder-footer">
+<!--                        --><?php //if ($data['owner_tekst_3']) : ?>
+<!--                            <div class="h3">--><?php //= $data['owner_tekst_3']; ?><!--</div>-->
+<!--                        --><?php //endif; ?>
+
+                        <div class="founder-info__button">
+                            <div class="button callpopup" data-popup="trial"><?= $data['owner_tekst_knopki']; ?></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="founder-info">
                     <div class="founder-info__title h1"><?= $data['owner_mya']; ?></div>
 
-                    <div class="founder-info__socials ed-socials">
-                        <?php $owner_soc_links = $data['owner_soc_merezh']; ?>
-
-                        <?php if ($owner_soc_links['instagram']) : ?>
-                            <a href="<?= $owner_soc_links['instagram']; ?>" class="ed-socials__link" target="_blank">
-                                <svg>
-                                    <use xlink:href="#ed-svg-instagram"></use>
-                                </svg>
-                            </a>
-                        <?php endif; ?>
-
-                        <?php if ($owner_soc_links['facebook']) : ?>
-                            <a href="<?= $owner_soc_links['facebook']; ?>" class="ed-socials__link" target="_blank">
-                                <svg>
-                                    <use xlink:href="#ed-svg-facebook"></use>
-                                </svg>
-                            </a>
-                        <?php endif; ?>
-
-                        <?php if ($owner_soc_links['linkedin']) : ?>
-                            <a href="<?= $owner_soc_links['linkedin']; ?>" class="ed-socials__link" target="_blank">
-                                <svg>
-                                    <use xlink:href="#ed-svg-linked"></use>
-                                </svg>
-                            </a>
-                        <?php endif; ?>
-                    </div>
+<!--                    <div class="founder-info__socials ed-socials">-->
+<!--                        --><?php //$owner_soc_links = $data['owner_soc_merezh']; ?>
+<!---->
+<!--                        --><?php //if ($owner_soc_links['instagram']) : ?>
+<!--                            <a href="--><?php //= $owner_soc_links['instagram']; ?><!--" class="ed-socials__link" target="_blank">-->
+<!--                                <svg>-->
+<!--                                    <use xlink:href="#ed-svg-instagram"></use>-->
+<!--                                </svg>-->
+<!--                            </a>-->
+<!--                        --><?php //endif; ?>
+<!---->
+<!--                        --><?php //if ($owner_soc_links['facebook']) : ?>
+<!--                            <a href="--><?php //= $owner_soc_links['facebook']; ?><!--" class="ed-socials__link" target="_blank">-->
+<!--                                <svg>-->
+<!--                                    <use xlink:href="#ed-svg-facebook"></use>-->
+<!--                                </svg>-->
+<!--                            </a>-->
+<!--                        --><?php //endif; ?>
+<!---->
+<!--                        --><?php //if ($owner_soc_links['linkedin']) : ?>
+<!--                            <a href="--><?php //= $owner_soc_links['linkedin']; ?><!--" class="ed-socials__link" target="_blank">-->
+<!--                                <svg>-->
+<!--                                    <use xlink:href="#ed-svg-linked"></use>-->
+<!--                                </svg>-->
+<!--                            </a>-->
+<!--                        --><?php //endif; ?>
+<!--                    </div>-->
 
                     <?php if ($data['owner_tekst_1']) : ?>
                         <div class="founder-info__description h3"><?= $data['owner_tekst_1']; ?></div>
@@ -238,16 +248,15 @@
                         <div class="founder-info__text">
                             <?= $data['owner_tekst_2']; ?>
                         </div>
-                    <?php endif; ?>                    
-                </div>
-
-                <div class="founder-footer">
-                    <?php if ($data['owner_tekst_3']) : ?>
-                        <div class="h3"><?= $data['owner_tekst_3']; ?></div>
                     <?php endif; ?>
+                    <div class="founder-footer">
+                        <!--                        --><?php //if ($data['owner_tekst_3']) : ?>
+                        <!--                            <div class="h3">--><?php //= $data['owner_tekst_3']; ?><!--</div>-->
+                        <!--                        --><?php //endif; ?>
 
-                    <div class="founder-info__button">
-                        <div class="button callpopup" data-popup="trial"><?= $data['owner_tekst_knopki']; ?></div>
+                        <div class="founder-info__button">
+                            <div class="button callpopup" data-popup="trial"><?= $data['owner_tekst_knopki']; ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -611,7 +620,7 @@
                     ?>
                 </div>
 
-                <div class="guarantees-footer h3"><?= $data['guarantees_tekst_unizu']; ?></div>
+                <div class="guarantees-footer h3" id="ed-home-clubs"><?= $data['guarantees_tekst_unizu']; ?></div>
 
                 <div class="guarantees-bg">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -627,48 +636,12 @@
         <div class="container">
             <div class="classes-content">
                 <div class="classes-title h1 classes-content__item"><?= $data['speak_club_zagolovok']; ?></div>
-                <div class="clubs-text classes-content__item"><?= $data['speak_club_tekst']; ?></div>
-
-                <div class="classes-content__item">
-                    <?php
-                    $speak_club_card_1 = $data['speak_club_kartka_1'];
-                    ?>
-                    <div class="classes-block">
-                        <div class="classes-block__title h3"><?= $speak_club_card_1['zagolovok']; ?></div>
-                        <?php if ($speak_club_card_1['tekst']) : ?>
-                            <div class="classes-block__subtitle h4"><?= $speak_club_card_1['tekst']; ?></div>
-                        <?php endif; ?>
-
-                        <div class="classes-block__list h5">
-                            <?php
-                            if ($speak_club_card_1['spisok']) {
-                                foreach ($speak_club_card_1['spisok'] as $item) { ?>
-                                    <div class="classes-block__list-item">
-                                        <svg>
-                                            <use xlink:href="#ed-svg-check"></use>
-                                        </svg>
-                                        <span><?= $item['tekst']; ?></span>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </div>
-
-                        <div class="button callpopup"
-                             data-popup="callback"><?= $speak_club_card_1['tekst_knopki']; ?></div>
-                    </div>
-                </div>
-
                 <div class="classes-content__item">
                     <?php
                     $speak_club_card_2 = $data['speak_club_kartka_2'];
                     ?>
                     <div class="classes-block">
                         <div class="classes-block__title h3"><?= $speak_club_card_2['zagolovok']; ?></div>
-                        <?php if ($speak_club_card_2['tekst']) : ?>
-                            <div class="classes-block__subtitle h4"><?= $speak_club_card_2['tekst']; ?></div>
-                        <?php endif; ?>
 
                         <div class="classes-block__list h5">
                             <?php
@@ -685,17 +658,19 @@
                             }
                             ?>
                         </div>
-
+                        <?php if ($speak_club_card_2['tekst']) : ?>
+                            <div class="classes-block__subtitle h4"><?= $speak_club_card_2['tekst']; ?></div>
+                        <?php endif; ?>
                         <div class="button callpopup"
                              data-popup="callback"><?= $speak_club_card_2['tekst_knopki'];; ?></div>
                     </div>
                 </div>
-
                 <div class="classes-image classes-content__item">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                          data-src="<?php echo get_template_directory_uri(); ?>/assets/img/clubs.svg"
                          decoding="async" alt="icon">
                 </div>
+                <div class="clubs-text classes-content__item"><?= $data['speak_club_tekst']; ?></div>
             </div>
         </div>
     </section>

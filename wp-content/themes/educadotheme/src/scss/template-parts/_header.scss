@@ -19,7 +19,55 @@
     &.scroll {
         background: $color-white;
     }
-
+    &:has(.ed-header__banner) {
+        padding-top: 0;
+        & + .ed-home{
+            .ed-home-banner{
+                padding-top: 180px;
+            }
+        }
+    }
+    &__banner{
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px 0;
+        position: relative;
+        z-index: 100;
+        &-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &-img{
+            pointer-events: none;
+            position: absolute;
+            right: 100%;
+            top: 0;
+            height: 100%;
+            width: auto;
+            padding: 0 20px;
+            img{
+                height: 100%;
+                max-width: none;
+                width: auto;
+            }
+        }
+        &-btn{
+            position: relative;
+            display: inline-flex;
+            padding-left: 50px;
+            padding-right: 50px;
+            @media all and (max-width: 768px){
+                padding-left: 30px;
+                padding-right: 30px;
+                font-size: 16px;
+            }
+            @media all and (max-width: 500px){
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    }
     .ed-header-bar {
         width: 100%;
         display: flex;
@@ -63,7 +111,31 @@
         margin-left: auto;
         margin-right: auto;
         padding-right: 76px;
+        position: relative;
+        .has-submenu{
+            &:hover{
+                .subitem-list{
+                  opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+        }
+        .subitem-list{
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            top: 100%;
+            left: 0;
+            background-color: #FFFFFF;
+            padding: 10px;
+            transition: all ease 0.1s;
+            a{
+                font-size: 16px;
+                @include screen-xxl {
 
+                }
+            }
+        }
         @include screen-xxl {
             padding-right: 0;
             @include font(18px);
@@ -187,9 +259,12 @@
     overflow: hidden;
     transition: height .8s;
     transform: translate3d(0, 0, 0);
-
+    @include screen-xhl {
+        display: flex;
+        align-items: center;
+    }
     .ed-header.--menu-open & {
-        height: 100vh
+        height: 100vh;
     }
 
     ul {
@@ -208,4 +283,31 @@
             }
         }
     }
+    .has-submenu{
+        a{
+            text-align: center;
+        }
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+        @include screen-xhl {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .subitem-list{
+        @include screen-xhl {
+            padding: 20px;
+        }
+        &__item{
+            margin-bottom: 10px;
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+            a{
+                font-size: 18px;
+            }
+        }
+    }
+
 }

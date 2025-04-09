@@ -18,7 +18,7 @@ if ($item_id) {
     $title = get_the_title($item_id);
     $add_title = get_field('dodatkovij_zagolovok', $item_id);
     ?>
-    <div class="accordion<?= $add_class; ?>">
+    <div class="accordion<?= $add_class; ?>" id="accordion-<?= $counter; ?>">
         <div class="accordion-body">
             <div class="accordion-title h2">
                 <?php if ($add_title) : ?>

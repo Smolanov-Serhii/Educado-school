@@ -35,6 +35,11 @@ const initHeaderMenu = () => {
 	const items = document.querySelectorAll('.ed-header-menu a, .ed-menu a')
 
 	items && items.length && items.forEach(item => {
+
+		$(".subitem-list__item" ).on( "click", function() {
+			let NeedElem = $(this).find('a').data('lnk');
+			$('' + NeedElem + '').trigger( "click" );
+		} );
 		const block = item.getAttribute('href')
 		const el = document.querySelector(block)
 		
@@ -43,7 +48,6 @@ const initHeaderMenu = () => {
 			e.preventDefault();
 			header.classList.remove('--menu-open')
 			EnableScroll()
-
 			if (el) {
 				const offset = el.offsetTop + el.closest('section').offsetTop
 
@@ -52,6 +56,7 @@ const initHeaderMenu = () => {
 		})
 	})
 }
+
 
 
 export const initHeader = () => {
