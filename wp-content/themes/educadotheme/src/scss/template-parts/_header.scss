@@ -299,7 +299,7 @@
         @include screen-xhl {
             padding: 20px;
         }
-        &__item{
+        &__item, &__item-stat{
             margin-bottom: 10px;
             &:not(:last-child){
                 margin-bottom: 10px;

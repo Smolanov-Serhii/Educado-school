@@ -39,7 +39,7 @@ $data = get_fields();
                         <?php }
                 }
                 wp_reset_query(); ?>
-                <li class="subitem-list__item"><a href="https://educado.school/#ed-home-clubs">Корпоративне навчання</a></li>
+                <li class="subitem-list__item-stat"><a href="#ed-home-clubs" data-lnk="#ed-home-clubs">Корпоративне навчання</a></li>
             </ul>
         </li>
     <?php endif; ?>
