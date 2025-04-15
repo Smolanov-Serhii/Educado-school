@@ -9,6 +9,10 @@ $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
 $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
 $send_btn_txt = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'options');
 ?>
+<?php
+$data = get_fields();
+//    var_dump($data);
+?>
 <div class="popup" id="callback">
     <div class="popup-body">
         <div class="popup-close">
@@ -25,6 +29,13 @@ $send_btn_txt = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'optio
             <input type="hidden" name="action" value="ed_callback">
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
             <?php wp_nonce_field('ed_callback'); ?>
+            <?php
+                if ($data['tema_knopki']){
+                    ?>
+                        <input type="text" name="theme" value="Форма з кнопки" id="utm-input" style="display: none">
+                    <?php
+                }
+            ?>
             <input type="hidden" name="title" value="Записатися на пробний урок">
 
             <div class="form-row">

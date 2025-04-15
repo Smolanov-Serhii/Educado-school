@@ -4,7 +4,7 @@ const formAjaxSend = (form) => {
     const actionInput = form.querySelector('input[name="action"]')
     const urlInput = form.querySelector('input[name="url"]')
     const fields =  form.querySelectorAll('input, textarea')
-
+    console.log(fields);
     if (actionInput) {
         let action = actionInput.value
         let url = urlInput.value + '?action=' + action 

@@ -101,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             ?>
             <div class="ed-header__banner" style="background-color: <?php echo $data['kolr_baneru_hedera'];?>">
                 <div class="ed-header__banner-container">
-                    <div class="ed-header__banner-btn button callpopup" data-popup="callback">
+                    <div class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= $data['tema_knopki']; ?>">
                         <?php if ($data['kartinka_v_reklamnij_baner']){
                             ?>
                                 <div class="ed-header__banner-img">

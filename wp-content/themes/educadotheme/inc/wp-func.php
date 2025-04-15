@@ -39,6 +39,30 @@ function ed_callback()
             $mes .= '<p>' . htmlspecialchars($key) . ': ' . html_entity_decode(htmlspecialchars($value)) . '</p>';
         }
     }
+
+
+    if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+        $real_ip_adress = $_SERVER['HTTP_CLIENT_IP'];
+    }
+
+    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $real_ip_adress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $real_ip_adress = $_SERVER['REMOTE_ADDR'];
+    }
+
+    $cip = $real_ip_adress;
+    $ch = curl_init('http://ip-api.com/json/' . $_SERVER['REMOTE_ADDR'] . '?lang=ru');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    $res = curl_exec($ch);
+    curl_close($ch);
+
+    $res = json_decode($res, true);
+    $ipadress = '<div>IP:'.$cip.'</div><br>';
+    $location = '<div>Країна:'.$res['country'].'</div><br>';
+
     $utm_source = '';
     if (isset($_POST['utm_source'])) {
         $utm_source = '<div>utm_source:'.$_POST['utm_source'].'</div><br>';
@@ -65,6 +89,13 @@ function ed_callback()
                         <title>'.$subject.'</title>
                     </head>
                     <body>
+                        $ipadress
+                        $location
+                        $utm_source
+                        $utm_medium
+                        $utm_campaign
+                        $utm_content$utm_content
+                        $utm_term
                         $mes
                     </body>
                 </html>";

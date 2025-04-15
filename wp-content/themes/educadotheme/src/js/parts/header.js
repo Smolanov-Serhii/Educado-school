@@ -14,6 +14,15 @@ const initHeaderScroll = () => {
 	})
 }
 
+const initUtmButton = () => {
+	if($('.utm-init').length){
+		$(".utm-init").click(function() {
+			var $utmcontent = $(".utm-init").data('theme');
+			$('input#utm-input').val($utmcontent);
+			$('input#utm-input').attr('value',$utmcontent)
+		});
+	}
+}
 
 const initHeaderMenuToggle = () => {
 	const header = document.querySelector('.ed-header')
@@ -68,6 +77,8 @@ export const initHeader = () => {
 	initHeaderMenuToggle()
 
 	initHeaderMenu()
+
+	initUtmButton()
 
 }
 
