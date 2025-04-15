@@ -85,11 +85,6 @@ function ed_callback()
                     <body>
                         $ipadress
                         $location
-                        $utm_source
-                        $utm_medium
-                        $utm_campaign
-                        $utm_content$utm_content
-                        $utm_term
                         $mes
                     </body>
                 </html>";
