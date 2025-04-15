@@ -26,9 +26,10 @@ $data = get_fields();
         </div>
 
         <form class="form">
-            <input type="hidden" name="action" value="ed_callback">
-            <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
             <?php wp_nonce_field('ed_callback'); ?>
+            <input type="hidden" name="action" value="ed_callback">
+            <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>" style="display: none">
+            <input type="hidden" name="title" value="Записатися на пробний урок">
             <?php
                 if ($data['tema_knopki']){
                     ?>
@@ -36,8 +37,11 @@ $data = get_fields();
                     <?php
                 }
             ?>
-            <input type="hidden" name="title" value="Записатися на пробний урок">
-
+            <input type="text" name="utm_source" value="<?php echo $_GET['utm_source']; ?>" style="display: none">
+            <input type="text" name="utm_medium" value="<?php echo $_GET['utm_medium']; ?>" style="display: none">
+            <input type="text" name="utm_campaign" value="<?php echo $_GET['utm_campaign']; ?>" style="display: none">
+            <input type="text" name="utm_content" value="<?php echo $_GET['utm_content']; ?>" style="display: none">
+            <input type="text" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" style="display: none">
             <div class="form-row">
                 <input class="form-row__input required" type="text" name="name" placeholder="<?= $placeholder_name; ?>">
             </div>
@@ -146,6 +150,11 @@ $data = get_fields();
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
             <?php wp_nonce_field('ed_callback'); ?>
             <input type="hidden" name="title" value="Записатися на пробний урок">
+            <input type="text" name="utm_source" value="<?php echo $_GET['utm_source']; ?>" style="display: none">
+            <input type="text" name="utm_medium" value="<?php echo $_GET['utm_medium']; ?>" style="display: none">
+            <input type="text" name="utm_campaign" value="<?php echo $_GET['utm_campaign']; ?>" style="display: none">
+            <input type="text" name="utm_content" value="<?php echo $_GET['utm_content']; ?>" style="display: none">
+            <input type="text" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" style="display: none">
 
             <div class="form-row">
                 <input class="form-row__input required" type="text" name="name" placeholder="<?= $placeholder_name; ?>">
@@ -259,7 +268,7 @@ $data = get_fields();
         </div>
 
         <div class="popup-icon">
-            <svg><use xlink:href="#ed-svg-success"></use></svg>    
+            <svg><use xlink:href="#ed-svg-success"></use></svg>
         </div>
 
         <div class="popup-head">

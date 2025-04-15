@@ -40,11 +40,6 @@ function ed_callback()
         }
     }
 
-
-    if (isset($_SERVER['HTTP_CLIENT_IP'])) {
-        $real_ip_adress = $_SERVER['HTTP_CLIENT_IP'];
-    }
-
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         $real_ip_adress = $_SERVER['HTTP_X_FORWARDED_FOR'];
     } else {
@@ -62,7 +57,6 @@ function ed_callback()
     $res = json_decode($res, true);
     $ipadress = '<div>IP:'.$cip.'</div><br>';
     $location = '<div>Країна:'.$res['country'].'</div><br>';
-
     $utm_source = '';
     if (isset($_POST['utm_source'])) {
         $utm_source = '<div>utm_source:'.$_POST['utm_source'].'</div><br>';
@@ -99,7 +93,6 @@ function ed_callback()
                         $mes
                     </body>
                 </html>";
-
     $email = "no-reply@{$site_url_without_protocol}";
     $headers = "Content-type: text/html; charset=utf-8 \r\n";
     $headers .= "From: $email\r\n";
