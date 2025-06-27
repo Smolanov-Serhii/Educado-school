@@ -30,15 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		element.classList.toggle("active");
 	});
 
-	const div = document.querySelector( '#socials');
+	const div = document.querySelector('#socials');
 
-	document.addEventListener( 'click', (e) => {
-		const withinBoundaries = e.composedPath().includes(div);
+	if (div) {
+		document.addEventListener('click', (e) => {
+			const withinBoundaries = e.composedPath().includes(div);
 
-		if ( ! withinBoundaries ) {
-			element.classList.remove("active");
-		}
-	})
+			if (!withinBoundaries) {
+				div.classList.remove("active");
+			}
+		});
+	}
 
-	
+
+
 })
