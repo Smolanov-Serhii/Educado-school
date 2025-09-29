@@ -157,4 +157,41 @@
             }
         }
     }
+    &-language{
+        padding-top: 100px;
+        .accordion{
+            border: none;
+            max-height: none;
+            overflow: auto;
+            background-color: transparent;
+            border-radius: 0;
+        }
+        .accordion-body{
+            padding: 0;
+        }
+        .accordion-title{
+            @media all and (max-width: 1080px) {
+                flex-wrap: nowrap;
+            }
+            svg{
+                margin-left: 0;
+                @media all and (max-width: 1080px) {
+                    width: 40px;
+                    height: 40px;
+                    transform: translateY(8px);
+                }
+            }
+            span{
+                &:last-child{
+                    min-height: auto!important;
+                }
+            }
+        }
+        .button{
+            line-height: normal;
+        }
+        .accordion-parts{
+            margin: 34px 0;
+        }
+    }
 }

@@ -76,6 +76,9 @@
                 @include font(22px, 1.36);
                 margin-bottom: 20px;
             }
+            li{
+                margin-bottom: 5px;
+            }
         }
         .button{
             margin-top: 40px;
@@ -197,7 +200,12 @@
             }
         }
     }
-
+    .banner-language{
+        width: 665px;
+        @include screen-sm {
+            width: 300px;
+        }
+    }
     .banner-languages {
         display: block;
 
@@ -264,6 +272,68 @@
                 height: 100%;
                 stroke: $color-grey;
                 fill: $color-grey;
+            }
+        }
+    }
+    &-language{
+        .banner-title{
+            font-size: 70px;
+            line-height: normal;
+            @include screen-sm {
+                font-size: 50px;
+            }
+        }
+        .banner-subtitle{
+            font-size: 32px;
+            @include screen-sm {
+                font-size: 24px;
+            }
+            li{
+                display: inline-flex;
+                &:before{
+                    content: "";
+                    display: inline;
+                    width: 36px;
+                    height: 36px;
+                    background-image: url("../img/li.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    margin-right: 10px;
+                    transform: translateY(6px);
+                    flex-shrink: 0;
+                    @media all and (max-width: 1080px) {
+                        display: none;
+                    }
+                    @include screen-sm {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        .button{
+            width: 100%;
+            max-width: 600px;
+        }
+        .banner-world{
+            width: 40%;
+            @include screen-sm {
+                width: 70%;
+            }
+        }
+        .banner-world__image{
+            @include screen-sm {
+                height: auto;
+                img{
+                    position: relative;
+                }
+            }
+        }
+        .banner-content{
+            width: 60%;
+            @include screen-sm {
+                width: 100%;
             }
         }
     }

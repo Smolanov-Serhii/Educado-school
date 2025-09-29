@@ -163,7 +163,9 @@
         @include screen-sm {
             margin-top: 30px;
         }
-
+        &-language{
+            margin-top: 0;
+        }
         &__item {
             width: calc(33.3333% - 20px);
 
