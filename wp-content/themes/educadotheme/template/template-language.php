@@ -25,9 +25,44 @@
     </section>
 
 
-    <section class="ed-home-look">
+    <section class="ed-home-look ed-home-look-language">
         <div class="container">
-            <div class="look-benefits look-benefits-language">
+            <div class="look-title">
+                <?php
+                $sec_2_title = $data['how_stady_zagolovok'];
+                ?>
+                <div class="look-title__row">
+                    <span><?= $sec_2_title['chastina_1']; ?></span>
+                </div>
+
+                <div class="look-title__row">
+                    <span><?= $sec_2_title['chastina_2']; ?></span>
+
+                    <!-- <div class="look-title__media">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                             data-src="<?= $data['how_stady_zobrazhennya_na_zagolovku_1']; ?>"
+                             decoding="async" alt="icon">
+                    </div>
+
+                    <span><?= $sec_2_title['chastina_3']; ?></span>
+
+                    <div class="look-title__media">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                             data-src="<?= $data['how_stady_zobrazhennya_na_zagolovku_2']; ?>"
+                             decoding="async" alt="icon">
+                    </div> -->
+
+                    <span><?= $sec_2_title['chastina_4']; ?></span>
+                </div>
+            </div>
+
+            <div class="look-subtitle h2"><?= $data['how_stady_pdzagolovok']; ?></div>
+
+            <div class="look-button">
+                <div class="button callpopup" data-popup="callback"><?= $data['how_stady_tekst_knopki']; ?></div>
+            </div>
+
+            <div class="look-benefits">
                 <?php
                 if ($sec_2_benefits = $data['how_stady_perevagi']) {
                     foreach ($sec_2_benefits as $item) { ?>
@@ -153,7 +188,7 @@
             </div>
         </div>
     </section>
-    <section class="ed-home-start ed-home-start-language">
+    <section class="ed-home-start">
         <div class="start-lines">
             <svg viewBox="0 0 1920 627" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M-216.31 2.08907C-26.895 -8.2502 112.585 97.1772 270.874 181.262C494.364 299.991 751.319 346.774 1002.72 321.832C1147.71 307.451 1276.08 257.222 1411.38 206.508C1639.12 121.15 1875.45 -1.17742 2125.31 21.0514"
@@ -174,14 +209,29 @@
                         <?php
                         $how_start_card_1 = $data['how_start_kartka_1'];
                         ?>
+                        <div class="start-step__icon">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                 data-src="<?= $how_start_card_1['konka']; ?>"
+                                 decoding="async" alt="icon">
+                        </div>
+
                         <div class="start-step__pretitle h4"><?= $how_start_card_1['tekst_1']; ?></div>
                         <div class="start-step__title h3"><?= $how_start_card_1['tekst_2']; ?></div>
+
+                        <div class="button callpopup"
+                             data-popup="callback"><?= $how_start_card_1['tekst_knopki']; ?></div>
                     </div>
 
                     <div class="start-step">
                         <?php
                         $how_start_card_2 = $data['how_start_kartka_2'];
                         ?>
+                        <div class="start-step__icon">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                 data-src="<?= $how_start_card_2['konka']; ?>"
+                                 decoding="async" alt="icon">
+                        </div>
+
                         <div class="start-step__pretitle h4"><?= $how_start_card_2['tekst_1']; ?></div>
                         <div class="start-step__title h3"><?= $how_start_card_2['tekst_2']; ?></div>
                     </div>

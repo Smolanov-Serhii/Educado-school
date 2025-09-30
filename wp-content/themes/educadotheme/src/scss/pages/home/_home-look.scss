@@ -278,4 +278,12 @@
             object-fit: cover;
         }
     }
+    &-language{
+        .benefit-info__percent{
+            text-align: right;
+            @include screen-sm {
+                text-align: center;
+            }
+        }
+    }
 }
