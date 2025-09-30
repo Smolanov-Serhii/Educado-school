@@ -237,6 +237,29 @@ const reviewsCols = () => {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        const header = item.querySelector(".faq-item__header");
+
+        header.addEventListener("click", () => {
+            // если уже открыт — закрываем
+            if (item.classList.contains("active")) {
+                item.classList.remove("active");
+                return;
+            }
+
+            // закрыть все
+            faqItems.forEach(i => i.classList.remove("active"));
+
+            // открыть текущий
+            item.classList.add("active");
+        });
+    });
+});
+
+
 export const initHome = () => {
 
     initHomeBanner()
@@ -254,7 +277,5 @@ export const initHome = () => {
     initHomeTeachers()
 
     initHomeReviews()
-
-    
 
 }

@@ -368,6 +368,21 @@
             }
         }
     }
+    &__popup{
+        margin-top: 43px;
+        background-color: #8F8F2D;
+        @include screen-sm {
+            margin-top: 20px;
+        }
+    }
+    &__desc{
+        margin-top: 60px;
+        text-align: center;
+        @include screen-sm {
+            margin-top: 40px;
+        }
+    }
+
 }
 
 .review-card {

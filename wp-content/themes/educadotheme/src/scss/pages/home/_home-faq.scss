@@ -1,0 +1,58 @@
+.ed-home-faq{
+  background-color: #8F8F2D;
+  padding: 60px 0 100px 0;
+  @include screen-sm {
+    padding: 60px 0 60px 0;
+  }
+  .faq{
+    &-list{
+      margin-top: 80px;
+      @include screen-sm {
+        margin-top: 40px;
+      }
+    }
+    &-item{
+      margin-bottom: 20px;
+      background-color: #FFFFFF;
+      padding: 20px 50px;
+      border-radius: 34px;
+      border: 1px solid #000;
+      @include screen-sm {
+        margin-bottom: 10px;
+        padding: 20px 20px;
+        border-radius: 30px;
+      }
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &__header{
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: normal;
+        padding-right: 40px;
+        svg{
+          position: absolute;
+          top: 6px;
+          right: 0;
+        }
+      }
+      &__content{
+        display: none;
+        padding-top: 10px;
+        padding-right: 40px;
+      }
+      &.active{
+        .faq-item__content{
+          display: block;
+        }
+        svg{
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+
+}

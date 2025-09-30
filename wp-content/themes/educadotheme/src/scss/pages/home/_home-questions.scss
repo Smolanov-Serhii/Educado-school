@@ -206,4 +206,11 @@
             }
         }
     }
+    &-language{
+        .form-row{
+            .form-select{
+                justify-content: flex-start;
+            }
+        }
+    }
 }
