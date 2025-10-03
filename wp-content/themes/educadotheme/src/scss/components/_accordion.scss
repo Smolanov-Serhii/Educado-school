@@ -129,6 +129,10 @@
             display: flex;
             align-items: center;
             margin-right: 40px;
+            width: 100%;
+            @include screen-sm {
+                font-size: 16px;
+            }
         }
         input{
             display: none;
@@ -177,7 +181,6 @@
             @include screen-sm {
                 width: 100%;
                 justify-content: space-between;
-                margin-bottom: 0;
             }
 
             &:not(:last-child) {
@@ -195,7 +198,7 @@
                 margin-right: 10px;
             }
 
-            span {
+            span:not(.accordion-tags__checkbox) {
                 @include screen-sm {
                     width: calc(100% - 60px);
                 }
@@ -380,6 +383,9 @@
             padding-top: 40px;
             padding-bottom: 40px;
             position: relative;
+            @include screen-sm {
+                border-radius: 40px;
+            }
         }
         .accordion-image{
             top: auto;
