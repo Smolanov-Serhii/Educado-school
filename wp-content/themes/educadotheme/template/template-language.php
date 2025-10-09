@@ -186,7 +186,7 @@
                                         <div class="h4"><?= $item['zagolovok_bloku_z_spiskom']; ?></div>
                                         <?php if ($item['pdzagolovok_bloku_z_spiskom']){
                                             ?>
-                                                <strong><?= $item['pdzagolovok_bloku_z_spiskom']; ?></strong>
+                                                <?= $item['pdzagolovok_bloku_z_spiskom']; ?>
                                             <?php
                                         }
                                         ?>
@@ -199,7 +199,7 @@
                                                         </svg>
                                                     </div>
 
-                                                    <div class="option__title"><?= $subitem['zagolovok']; ?></div>
+                                                    <div class="option__title"><?= $subitem['zogolovok']; ?></div>
                                                     <div class="option__cost h4"><?= $subitem['cna']; ?></div>
                                                 </div>
                                             <?php endforeach; ?>
