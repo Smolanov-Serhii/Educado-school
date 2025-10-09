@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Шаблон мови
+ * Template Name: Шаблон платформи
  */
 ?>
 <?php get_header(); ?>

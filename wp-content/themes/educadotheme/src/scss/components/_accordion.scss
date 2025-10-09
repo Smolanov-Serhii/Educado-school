@@ -13,7 +13,8 @@
     border-color: $color-base;
     border-radius: 60px 60px 0px 0px;
     transition: .4s;
-
+    .tabs-content { display: none; }
+    .tabs-content.is-active { display: block; }
     @include screen-xhl {
         max-height: 246px;        
     }
@@ -209,7 +210,10 @@
     .accordion-block {
         width: calc(58.333%);
         margin-bottom: 20px;
-
+        > strong{
+            margin-bottom: 20px;
+            display: inline-block;
+        }
         @include screen-xxl {
             width: 44%;
         }

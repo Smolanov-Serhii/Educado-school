@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Шаблон мови
+ * Template Name: Шаблон корпоративу
  */
 ?>
 <?php get_header(); ?>
