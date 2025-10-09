@@ -186,7 +186,7 @@
                                         <div class="h4"><?= $item['zagolovok_bloku_z_spiskom']; ?></div>
                                         <?php if ($item['pdzagolovok_bloku_z_spiskom']){
                                             ?>
-                                                <?= $item['pdzagolovok_bloku_z_spiskom']; ?>
+                                                <div class="accordion-block__text"><?= $item['pdzagolovok_bloku_z_spiskom']; ?></div>
                                             <?php
                                         }
                                         ?>
