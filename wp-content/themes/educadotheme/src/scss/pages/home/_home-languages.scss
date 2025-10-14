@@ -9,6 +9,29 @@
     @include screen-xxl {
         padding: 50px 0;
     }
+    &-corporative{
+        .look-title{
+            width: 100%;
+            text-align: center;
+            @include font-family($font-title);
+            @include font(90px, 1.173);
+            margin-bottom: 50px;
+
+            @include screen-xxl {
+                @include font(64px, 1.2);
+            }
+
+            @include screen-xhl {
+                @include font(60px, 70px);
+                margin-bottom: 30px;
+            }
+
+            @include screen-sm {
+                @include font(32px, 37px);
+                margin-bottom: 20px;
+            }
+        }
+    }
 }
 
 .languages-ticker {

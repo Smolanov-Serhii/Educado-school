@@ -337,4 +337,24 @@
             }
         }
     }
+    &-corporative{
+        .container{
+            justify-content: space-between;
+        }
+        .banner-content{
+            width: 40%;
+            @include screen-xhl {
+                width: 100%;
+            }
+        }
+        .banner-world{
+            width: 50%;
+            @include screen-xhl {
+                width: 100%;
+            }
+            img{
+                object-position: center;
+            }
+        }
+    }
 }

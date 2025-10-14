@@ -213,4 +213,12 @@
             }
         }
     }
+    &-corporative{
+        .questions-title{
+            font-size: 58px;
+            @include screen-sm {
+                font-size: 32px;
+            }
+        }
+    }
 }
