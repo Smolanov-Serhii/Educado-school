@@ -31,12 +31,12 @@
                 $sec_2_title = $data['how_stady_zagolovok'];
                 ?>
                 <div class="look-title__row">
-                    <span><?= $sec_2_title['chastina_1']; ?></span>
+                    <span style="text-align: center"><?= $sec_2_title['chastina_1']; ?></span>
                 </div>
 
                 <div class="look-title__row">
                     <span><?= $sec_2_title['chastina_2']; ?></span>
-                    <span><?= $sec_2_title['chastina_4']; ?></span>
+                    <span ><?= $sec_2_title['chastina_4']; ?></span>
                 </div>
             </div>
 
@@ -58,7 +58,14 @@
                             </div>
 
                             <div class="benefit-info">
-                                <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
+                                <?php
+                                    if($item['chislo']){
+                                        ?>
+                                        <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
+                                        <?php
+                                    }
+                                ?>
+
                                 <div class="benefit-info__title h5"><?= $item['tekst']; ?></div>
                             </div>
                         </div>
