@@ -140,22 +140,38 @@ const initHomeStart = () => {
 }
 
 const initHomeTeachers = () => {
-    const sliders = document.querySelectorAll('.about-teachers-slider')
-    const teachers = document.querySelectorAll('.teacher-card')
+    const sliders = document.querySelectorAll('.about-teachers-slider, .ed-home-trust__list')
+    const teachers = document.querySelectorAll('.teacher-card, .ed-home-trust__item')
     const popup = document.querySelector('.popup#youtube')
     const popupClose = document.querySelector('.popup#youtube .popup-close')
     const popupBg = document.querySelector('.popup#youtube .popup-bg')
     const iframe = document.querySelector('.popup#youtube .popup-iframe')
 
-    sliders && sliders.length && (window.innerWidth > 640) && sliders.forEach(slider => {
-        const teamSwiper = new Swiper(slider, {
+    sliders.forEach(slider => {
+        const isTrustList = slider.classList.contains('ed-home-trust__list');
+        const isTeachers = slider.classList.contains('about-teachers-slider');
+
+        // Для .about-teachers-slider — только если ширина > 640
+        if (isTeachers && window.innerWidth <= 640) return;
+
+        const swiperOptions = {
             loop: false,
             slidesPerView: 'auto',
             slidesPerGroup: 1,
             spaceBetween: 30,
-            speed: 800
-        })
-    })
+            speed: 800,
+        };
+
+        // Добавляем навигацию только если это .ed-home-trust__list
+        if (isTrustList) {
+            swiperOptions.navigation = {
+                nextEl: '.ed-home-trust__next',
+                prevEl: '.ed-home-trust__prev',
+            };
+        }
+
+        new Swiper(slider, swiperOptions);
+    });
 
     teachers && teachers.length && popup && teachers.forEach(teacher => {
         const play = teacher.querySelector('.teacher-card__play')

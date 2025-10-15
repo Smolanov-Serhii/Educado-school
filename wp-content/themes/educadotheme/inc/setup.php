@@ -35,6 +35,11 @@ function ed_theme_setup()
             'script',
         )
     );
+    register_nav_menus(
+        array(
+            'main-menu' => esc_html__( 'Головне меню', 'courses' ),
+        )
+    );
 
 }
 
