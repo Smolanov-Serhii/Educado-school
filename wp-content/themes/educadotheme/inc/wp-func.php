@@ -98,5 +98,20 @@ function ed_callback()
     wp_die();
 }
 
+add_filter('nav_menu_item_title', function($title, $item, $args, $depth){
+    // meta-ключи у Menu Image обычно такие:
+    $img_id = get_post_meta($item->ID, 'menu-image-id', true);
+    if (!$img_id) {
+        // на старых версиях может быть другой ключ
+        $img_id = get_post_meta($item->ID, 'menu-image', true);
+    }
+    if ($img_id) {
+        $src = wp_get_attachment_image_url($img_id, 'thumbnail');
+        if ($src) {
+            $title = '<img class="menu-image" src="'.esc_url($src).'" alt=""> ' . $title;
+        }
+    }
+    return $title;
+}, 10, 4);
 add_action('wp_ajax_ed_callback', 'ed_callback');
 add_action('wp_ajax_nopriv_ed_callback', 'ed_callback');

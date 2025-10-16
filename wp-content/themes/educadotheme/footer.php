@@ -17,18 +17,18 @@
 
             <ul class="ed-footer-menu">
                 <li>
-                    <a href="#ed-courses">Курси</a>
+                    <a class="scroll-lnk" href="#ed-courses">Курси</a>
                     <ul class="subitem-list">
 
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#ed-testimonials">Відгуки</a>
+                    <a class="scroll-lnk" href="#ed-testimonials">Відгуки</a>
                 </li>
 
                 <li>
-                    <a href="#ed-teachers">Вчителі</a>
+                    <a class="scroll-lnk" href="#ed-teachers">Вчителі</a>
                 </li>
                 <li>
                     <a href="<?php echo get_permalink(338)?>">Оферта</a>

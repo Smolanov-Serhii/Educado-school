@@ -41,7 +41,7 @@ const initHeaderMenuToggle = () => {
 
 const initHeaderMenu = () => {
 	const header = document.querySelector('.ed-header')
-	const items = document.querySelectorAll('.ed-header-menu a, .ed-menu a')
+	const items = document.querySelectorAll('.ed-header-menu a.scroll-lnk, .ed-menu a.scroll-lnk')
 
 	items && items.length && items.forEach(item => {
 

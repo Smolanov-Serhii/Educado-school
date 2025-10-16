@@ -265,15 +265,19 @@
     }
     .ed-header.--menu-open & {
         height: 100vh;
+        padding-top: 100px;
+        padding-bottom: 20px;
+        > ul{
+            height: 100%;
+            overflow-y: auto;
+        }
     }
 
     ul {
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding: 160px 0 100px 0;
-        @include font(36px, 1.2);
-
+        @include font(24px, 1.2);
         li {
             display: flex;
             justify-content: center;
@@ -282,6 +286,9 @@
                 margin-bottom: 20px;
             }
         }
+    }
+    ul:not(#main-menu){
+        //padding: 160px 0 100px 0;
     }
     .has-submenu{
         a{
