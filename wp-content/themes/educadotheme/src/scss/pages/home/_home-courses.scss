@@ -252,4 +252,58 @@
             margin-top: 0;
         }
     }
+    &-platform{
+        padding-top: 0;
+        padding-bottom: 60px;
+        .ed-home-courses__bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            @media all and (min-width: 1780px) {
+                max-width: 1780px;
+                left: calc((100vw - 1780px) / 2);
+            }
+            @media all and (max-width: 1024px) {
+                display: none;
+            }
+            svg{
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__title{
+            margin-bottom: 60px;
+            @media all and (max-width: 1024px) {
+                text-align: center;
+            }
+            @include screen-sm {
+                margin-bottom: 40px;
+            }
+        }
+        .ed-home-whyus{
+            padding-bottom: 40px;
+            padding-top: 200px;
+            @media all and (max-width: 1024px) {
+                padding-top: 60px;
+            }
+            @include screen-sm {
+                padding-top: 40px;
+            }
+            .feature-title{
+                font-size: 18px;
+                line-height: normal;
+                @include screen-sm {
+                    font-size: 16px;
+                }
+                &:before{
+                    top: 9px;
+                }
+                &:after{
+                    top: 0;
+                }
+            }
+        }
+    }
 }
