@@ -255,6 +255,9 @@
     &-platform{
         padding-top: 0;
         padding-bottom: 60px;
+        .accordion-block{
+            width: 100%;
+        }
         .ed-home-courses__bg{
             position: absolute;
             top: 0;
