@@ -151,7 +151,6 @@ const initHomeTeachers = () => {
         const isTrustList = slider.classList.contains('ed-home-trust__list');
         const isTeachers = slider.classList.contains('about-teachers-slider');
 
-        // Для .about-teachers-slider — только если ширина > 640
         if (isTeachers && window.innerWidth <= 640) return;
 
         const swiperOptions = {
@@ -162,7 +161,6 @@ const initHomeTeachers = () => {
             speed: 800,
         };
 
-        // Добавляем навигацию только если это .ed-home-trust__list
         if (isTrustList) {
             swiperOptions.navigation = {
                 nextEl: '.ed-home-trust__next',
@@ -173,18 +171,19 @@ const initHomeTeachers = () => {
         new Swiper(slider, swiperOptions);
     });
 
-    teachers && teachers.length && popup && teachers.forEach(teacher => {
-        const play = teacher.querySelector('.teacher-card__play')
-        const id = play ? play.dataset.youtube : ''
+    // 🎯 Обрабатываем клики по кнопкам воспроизведения
+    const playButtons = document.querySelectorAll('.teacher-card__play')
 
-        play && play.addEventListener('click', () => {
+    playButtons.forEach(play => {
+        const id = play.dataset.youtube
+        if (!id) return
 
+        play.addEventListener('click', () => {
             if (iframe) {
                 iframe.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
             }
 
             popup.classList.add('open')
-            
             DisableScroll()
         })
     })

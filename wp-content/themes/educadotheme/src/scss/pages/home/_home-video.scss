@@ -1,0 +1,44 @@
+.ed-home-video{
+  background-color: #161616;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  .ed-home-videoblock__btn{
+    margin-top: 40px;
+    text-align: center;
+    .button{
+      width: auto;
+      display: inline-flex;
+      background-color: #A3A33C;
+      &:hover{
+        background-color: #D3D360;
+      }
+    }
+  }
+  .ed-home-videoblock{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 700px;
+    max-height: 70vh;
+    .teacher-card__play{
+      left: calc(50% - 60px);
+      bottom: calc(50% - 60px);
+    }
+    &__bg{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .ed-home-week__title{
+    margin-bottom: 40px;
+    color: #FFF;
+  }
+}
