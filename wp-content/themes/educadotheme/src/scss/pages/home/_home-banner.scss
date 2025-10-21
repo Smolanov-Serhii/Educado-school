@@ -357,4 +357,37 @@
             }
         }
     }
+    &-market{
+        background-color: transparent;
+        min-height: auto;
+        position: relative;
+        padding-top: 361px;
+        @media all and (max-width: 768px){
+            padding-top: 220px;
+        }
+        &-bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            text-align: center;
+            svg{
+                width: 100%;
+                height: auto;
+                @media all and (min-width: 1920px){
+                    width: auto;
+                    margin: 0 auto;
+                }
+            }
+        }
+        .banner-title{
+            color: #FFF;
+            font-weight: 400;
+        }
+        .banner-subtitle{
+            color: #FFF;
+            font-weight: 100;
+        }
+    }
 }

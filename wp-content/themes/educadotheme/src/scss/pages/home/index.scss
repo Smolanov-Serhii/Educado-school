@@ -17,3 +17,16 @@
 @import './menu';
 @import './home-week';
 @import './home-video';
+@import './home-market';
+body:has(.market-page){
+  .ed-header{
+    background-color: #FFF;
+  }
+}
+.market-page{
+
+  background-color: #161616;
+  background-image: url("../img/bgmarkst.svg");
+  background-repeat: repeat;
+  background-size: contain;
+}
