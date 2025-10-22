@@ -22,12 +22,17 @@ if ($item_id) {
             <div class="teacher-card__wrapper">
                 <div class="teacher-card__course h5"><?= $teacher_lang; ?></div>
                 <div class="teacher-card__name h2"><?= $teacher_name; ?></div>
-
-                <div class="teacher-card__play" data-youtube="<?= $video_id; ?>">
-                    <svg>
-                        <use xlink:href="#ed-svg-play"></use>
-                    </svg>
-                </div>
+                <?php
+                if ($video_id){
+                    ?>
+                    <div class="teacher-card__play" data-youtube="<?= $video_id; ?>">
+                        <svg>
+                            <use xlink:href="#ed-svg-play"></use>
+                        </svg>
+                    </div>
+                    <?php
+                }
+                ?>
 
                 <div class="teacher-card__logo">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

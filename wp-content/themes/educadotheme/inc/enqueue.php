@@ -2,7 +2,7 @@
 add_action('wp_enqueue_scripts', 'ed_scripts');
 function ed_scripts()
 {
-    $ver = '1.1.50';
+    $ver = '1.1.51';
     /* Style */
     wp_enqueue_style('ed-main', get_template_directory_uri() . '/assets/css/style.min.css', array(), $ver);
 
