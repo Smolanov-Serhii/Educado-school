@@ -292,7 +292,7 @@
                             <?php
                             if ($how_start_card_2['vidi']) {
                                 echo "<div class='start-step__list'>";
-                                foreach ($how_start_card_1['vidi'] as $item) { ?>
+                                foreach ($how_start_card_2['vidi'] as $item) { ?>
                                     <div class="start-step__list-item">
                                         <span><?= $item['chislo']; ?></span>
                                         <span><?= $item['opis']; ?></span>

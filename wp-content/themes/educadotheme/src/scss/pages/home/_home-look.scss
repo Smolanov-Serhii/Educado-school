@@ -289,6 +289,7 @@
     &-corporative{
         .look-title{
             width: 100%;
+            text-align: center;
             @include font-family($font-title);
             @include font(90px, 1.173);
             margin-bottom: 50px;
