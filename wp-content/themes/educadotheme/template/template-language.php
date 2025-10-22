@@ -13,7 +13,15 @@
             <div class="banner-content">
                 <h1 class="banner-title h1"><?= $data['section_1_zagolovok']; ?></h1>
                 <div class="banner-subtitle h3"><?= $data['section_1_pdzagolovok']; ?></div>
-                <div class="button callpopup" data-popup="trial"><?= get_field('tekst_zapisatisya', 'option'); ?></div>
+                <div class="button callpopup" data-popup="trial">
+                    <?php
+                        if ($data['tekst_knopki_banera']){
+                            echo $data['tekst_knopki_banera'];
+                        } else {
+                            echo get_field('tekst_zapisatisya', 'option');
+                        }
+                    ?>
+                </div>
             </div>
             <div class="banner-world">
                 <div class="banner-world__image">

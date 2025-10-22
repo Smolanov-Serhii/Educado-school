@@ -71,7 +71,12 @@
                                                          decoding="async" alt="<?= $item['tematika']; ?>">
                                                 </div>
                                                 <div class="ed-home-market__item-desc">
-                                                    <span><?= $item['trivalst_v_hv']; ?></span>
+                                                    <span>
+                                                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10.9139 25.0853C5.961 20.1324 5.961 12.1528 10.9139 7.19995L28.9827 25.0853C24.0298 30.0382 15.8667 30.0382 10.9139 25.0853Z" fill="#D3D360"/>
+                                                        </svg>
+                                                        <?= $item['trivalst_v_hv']; ?>
+                                                    </span>
                                                     <span>
                                                         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M10.9139 25.0853C5.961 20.1324 5.961 12.1528 10.9139 7.19995L28.9827 25.0853C24.0298 30.0382 15.8667 30.0382 10.9139 25.0853Z" fill="#D3D360"/>

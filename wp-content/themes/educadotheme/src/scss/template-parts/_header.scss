@@ -247,7 +247,14 @@
     }
 }
 
-
+#main-menu{
+    .disabled-item > a{
+        pointer-events: none;
+    }
+    .col-break {
+        break-before: column;
+    }
+}
 .ed-menu {
     position: absolute;
     z-index: 5;
@@ -259,6 +266,7 @@
     overflow: hidden;
     transition: height .8s;
     transform: translate3d(0, 0, 0);
+
     @include screen-xhl {
         display: flex;
         align-items: center;
