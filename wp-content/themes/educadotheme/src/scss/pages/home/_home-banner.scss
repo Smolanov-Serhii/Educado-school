@@ -282,6 +282,10 @@
             @include screen-sm {
                 font-size: 50px;
             }
+            @media all and (max-width: 500px){
+                font-size: 32px;
+                line-height: 37px;
+            }
         }
         .banner-subtitle{
             font-size: 32px;
@@ -290,6 +294,13 @@
             }
             li{
                 display: inline-flex;
+                @media all and (max-width: 1080px) {
+                    display: inline-block;
+                }
+                @media all and (max-width: 500px){
+                    font-size: 20px;
+                    line-height: 2;
+                }
                 &:before{
                     content: "";
                     display: inline;
@@ -303,7 +314,7 @@
                     transform: translateY(6px);
                     flex-shrink: 0;
                     @media all and (max-width: 1080px) {
-                        display: none;
+                        display: inline-block;
                     }
                     @include screen-sm {
                         width: 24px;

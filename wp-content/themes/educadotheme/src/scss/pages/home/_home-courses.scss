@@ -258,6 +258,27 @@
         .accordion-block{
             width: 100%;
         }
+        .accordion{
+            @media all and (max-width: 500px){
+                max-height: 156px;
+            }
+            &.active{
+                @media all and (max-width: 500px){
+                    max-height: 3000px;
+                }
+            }
+        }
+        .accordion-title{
+            @media all and (max-width: 500px){
+                flex-wrap: nowrap;
+                align-items: flex-start;
+                margin-bottom: 40px;
+                span{
+                    display: flex;
+                    margin-top: 0!important;
+                }
+            }
+        }
         .ed-home-courses__bg{
             position: absolute;
             top: 0;
