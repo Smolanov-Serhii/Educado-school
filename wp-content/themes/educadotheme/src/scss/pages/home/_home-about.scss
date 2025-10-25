@@ -378,9 +378,12 @@
     &__desc{
         margin-top: 60px;
         text-align: center;
+        padding: 0 32px;
         @include screen-sm {
             margin-top: 40px;
+            padding: 0 40px;
         }
+
     }
 
 }
