@@ -137,16 +137,16 @@
                 <div class="ed-accordions" id="ed-courses">
                     <?php
                     $item_id = $args['id'] ?? '';
-                    $count = $data['papki_s_perelkom'] ?? 0;
+                    $count = count($accardiontab);
                     $counter = $data['papki_s_perelkom'] ?? 0;
                     $add_class = '';
                     $i = 1;
                     foreach ($accardiontab as $item) {
-//                        if ($i === 1) {
-//                            $add_class = ' active';
-//                        } else {
-//                            $add_class = '';
-//                        }
+                        if ($i === $count) {
+                            $add_class = ' active';
+                        } else {
+                            $add_class = '';
+                        }
                         ?>
                         <div class="accordion<?= $add_class; ?>" id="accordion-<?= $i; ?>">
                             <div class="accordion-body">
