@@ -308,10 +308,27 @@
                 margin-bottom: 20px;
             }
         }
+        .benefit-info__percent{
+            text-align: right;
+            font-size: 60px;
+            padding-right: 40px;
+            @media all and (max-width: 1780px){
+                font-size: 50px;
+                padding-right: 20px;
+            }
+            @media all and (max-width: 1024px){
+                width: auto!important;
+            }
+            @media all and (max-width: 641px){
+                text-align: center;
+                font-size: 40px;
+                padding-right: 0;
+            }
+        }
         .look-benefits .benefit-info{
             justify-content: center;
             .benefit-info__title{
-                text-align: center;
+                //text-align: center;
                 justify-content: center;
             }
         }

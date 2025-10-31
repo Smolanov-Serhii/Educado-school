@@ -67,8 +67,15 @@
                             </div>
 
                             <div class="benefit-info">
-                                <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
-                                <div class="benefit-info__title h5"><?= $item['tekst']; ?></div>
+                                <?php
+                                if($item['chislo']){
+                                    ?>
+                                    <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
+                                    <?php
+                                }
+                                ?>
+
+                                <div class="benefit-info__title h5" <?php if (!$item['chislo']){echo 'style="text-align: center;"';};?>><?= $item['tekst']; ?></div>
                             </div>
                         </div>
                         <?php

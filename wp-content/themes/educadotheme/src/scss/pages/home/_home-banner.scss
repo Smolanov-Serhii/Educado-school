@@ -277,10 +277,10 @@
     }
     &-language{
         .banner-title{
-            font-size: 70px;
             line-height: normal;
+            font-size: min(5vh, 70px);
             @include screen-sm {
-                font-size: 50px;
+                font-size: min(5vh, 50px);
             }
             @media all and (max-width: 500px){
                 font-size: 32px;
@@ -288,7 +288,7 @@
             }
         }
         .banner-subtitle{
-            font-size: 32px;
+            font-size: min(3vh, 32px);
             @include screen-sm {
                 font-size: 24px;
             }

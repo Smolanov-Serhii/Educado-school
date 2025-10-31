@@ -21,8 +21,35 @@ $data = get_fields();
         </div>
 
         <div class="popup-head">
-            <div class="popup-head__title h2"><?php the_field('popup_test_zagolovok', 'options'); ?></div>
-            <div class="popup-head__subtitle"><?php the_field('popup_test_pdzagolovok', 'options'); ?></div>
+            <?php
+            if ($data['vikoristovuvati_angljsku'] === true){
+                $poup_title = get_field('zagolovok_en', 'options');
+                $poup_subtitle = get_field('pdzagolovok_en', 'options');
+                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu_en', 'option');
+                $name_text = get_field('plejsholder_v_pol_mya_en', 'option');
+                $button_text = get_field('tekst_knopki_vdpravki_formi_en', 'option');
+                $agreement_txt = get_field('tekst_poltiki_en', 'options');
+                $agreement_link = get_field('posilannya_na_stornku_poltiki_en', 'options');
+                $agreement_link_txt = get_field('tekst_poltiki_2_en', 'options');
+                $select_messenger = get_field('tekst_obert_mesendzher_en', 'options');
+                $enter_success_number = get_field('tekst_vkazht_nomer_v_mzhnarodnomu_format_en', 'options');
+                $convenient_way = get_field('tekst_zruchnij_sposb_komunkac_odin_abo_deklka_en', 'options');
+            } else {
+                $poup_title = get_field('popup_test_zagolovok', 'options');
+                $poup_subtitle = get_field('popup_test_pdzagolovok', 'options');
+                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu', 'option');
+                $name_text = get_field('common_form_data_plejsholder_v_pol_mya', 'option');
+                $button_text = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'option');
+                $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
+                $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
+                $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
+                $select_messenger = get_field('tekst_obert_mesendzher', 'options');
+                $enter_success_number = get_field('tekst_vkazht_nomer_v_mzhnarodnomu_format', 'options');
+                $convenient_way = get_field('tekst_zruchnij_sposb_komunkac_odin_abo_deklka', 'options');
+            }
+            ?>
+            <div class="popup-head__title h2"><?php echo $poup_title; ?></div>
+            <div class="popup-head__subtitle"><?php echo $poup_subtitle; ?></div>
         </div>
 
         <form class="form">
@@ -43,14 +70,14 @@ $data = get_fields();
             <input type="text" name="utm_content" value="<?php echo $_GET['utm_content']; ?>" style="display: none">
             <input type="text" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" style="display: none">
             <div class="form-row">
-                <input class="form-row__input required" type="text" name="name" placeholder="<?= $placeholder_name; ?>">
+                <input class="form-row__input required" type="text" name="name" placeholder="<?= $name_text; ?>">
             </div>
             <div class="form-row">
                 <input class="form-row__input required-phone" type="text" name="phone"
-                       placeholder="Телефон:">
-                <span>Вкажіть номер в міжнародному форматі</span>
+                       placeholder="<?= $phone_number_text; ?>:">
+                <span><?= $enter_success_number; ?></span>
             </div>
-            <div class="form-row form-row--title">Зручний спосіб комунікації (один або декілька):</div>
+            <div class="form-row form-row--title"><?= $convenient_way; ?></div>
 
             <div class="form-row">
                 <div class="form-select">
@@ -114,7 +141,7 @@ $data = get_fields();
                                         </svg>
                                     </span>
                     </Label>
-                    <div>Оберіть месенджер</div>
+                    <div><?php echo $select_messenger?></div>
                 </div>
             </div>
 
@@ -139,10 +166,9 @@ $data = get_fields();
             <span></span>
             <span></span>
         </div>
-
         <div class="popup-head">
-            <div class="popup-head__title h2"><?php the_field('popup_test_zagolovok', 'options'); ?></div>
-            <div class="popup-head__subtitle"><?php the_field('popup_test_pdzagolovok', 'options'); ?></div>
+            <div class="popup-head__title h2"><?php echo $poup_title; ?></div>
+            <div class="popup-head__subtitle"><?php echo $poup_subtitle; ?></div>
         </div>
 
         <form class="form">
@@ -157,14 +183,14 @@ $data = get_fields();
             <input type="text" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" style="display: none">
 
             <div class="form-row">
-                <input class="form-row__input required" type="text" name="name" placeholder="<?= $placeholder_name; ?>">
+                <input class="form-row__input required" type="text" name="name" placeholder="<?= $name_text; ?>">
             </div>
             <div class="form-row">
                 <input class="form-row__input required-phone" type="text" name="phone"
-                       placeholder="Телефон:">
-                <span>Вкажіть номер в міжнародному форматі</span>
+                       placeholder="<?php echo $phone_number_text?>:">
+                <span><?= $enter_success_number; ?></span>
             </div>
-            <div class="form-row form-row--title">Зручний спосіб комунікації (один або декілька):</div>
+            <div class="form-row form-row--title"><?= $convenient_way; ?></div>
 
             <div class="form-row">
                 <div class="form-select">
@@ -228,7 +254,7 @@ $data = get_fields();
                                         </svg>
                                     </span>
                     </Label>
-                    <div>Оберіть месенджер</div>
+                    <div><?php echo $select_messenger?></div>
                 </div>
             </div>
 
@@ -239,7 +265,7 @@ $data = get_fields();
             </div>
 
             <div class="form-row form-row--button">
-                <button class="button" type="submit"><?= $send_btn_txt; ?></button>
+                <button class="button" type="submit"><?= $button_text; ?></button>
             </div>
         </form>
     </div>
@@ -272,9 +298,34 @@ $data = get_fields();
         </div>
 
         <div class="popup-head">
-            <div class="popup-head__title h2"><?php the_field('popup_thanks_zagolovok', 'options'); ?></div>
-            <div class="popup-head__subtitle"><?php the_field('popup_thanks_pdzagolovok', 'options'); ?></div>
-            <div class="button popup-head__close">Повернутися на сайт</div>
+            <div class="popup-head__title h2">
+                <?php
+                if ($data['vikoristovuvati_angljsku'] === true){
+                    the_field('popup_thanks_zagolovok_en', 'options');
+                } else {
+                    the_field('popup_thanks_zagolovok', 'options');
+                }
+                ?>
+            </div>
+            <div class="popup-head__subtitle">
+                <?php
+                if ($data['vikoristovuvati_angljsku'] === true){
+                    the_field('popup_thanks_pdzagolovok_en', 'options');
+                } else {
+                    the_field('popup_thanks_pdzagolovok', 'options');
+                }
+                ?>
+            </div>
+            <div class="button popup-head__close">
+                <?php
+                if ($data['vikoristovuvati_angljsku'] === true){
+                    the_field('tekst_povernutisya_na_sajt_en', 'options');
+                } else {
+                    the_field('tekst_povernutisya_na_sajt', 'options');
+                }
+                ?>
+
+            </div>
         </div>
     </div>
     <div class="popup-bg"></div>

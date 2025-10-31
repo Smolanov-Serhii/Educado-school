@@ -66,7 +66,7 @@
                                     }
                                 ?>
 
-                                <div class="benefit-info__title h5"><?= $item['tekst']; ?></div>
+                                <div class="benefit-info__title h5" <?php if (!$item['chislo']){echo 'style="text-align: center;"';};?>><?= $item['tekst']; ?></div>
                             </div>
                         </div>
                         <?php

@@ -6,7 +6,7 @@
 
 <?php
 $item_id = $args['id'] ?? '';
-
+$en_set = $args['en_set'] ?? '';
 if ($item_id) {
     $teacher_name = get_the_title($item_id);
     $teacher_lang = get_field('mova', $item_id);
@@ -51,7 +51,13 @@ if ($item_id) {
             </div>
         </div>
         <div class="teacher-card__popup button callpopup" data-popup="trial">
-            <?= get_field('tekst_zapisatisya', 'option'); ?>
+            <?php
+                if ($en_set === true){
+                    echo get_field('tekst_zapisatisya_en', 'option');
+                } else {
+                    echo get_field('tekst_zapisatisya', 'option');
+                }
+            ?>
         </div>
         <div class="teacher-card__desc">
             <?= $teacher_desc; ?>

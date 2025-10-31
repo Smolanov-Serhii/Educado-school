@@ -45,21 +45,6 @@
 
                 <div class="look-title__row">
                     <span><?= $sec_2_title['chastina_2']; ?></span>
-
-                    <!-- <div class="look-title__media">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                             data-src="<?= $data['how_stady_zobrazhennya_na_zagolovku_1']; ?>"
-                             decoding="async" alt="icon">
-                    </div>
-
-                    <span><?= $sec_2_title['chastina_3']; ?></span>
-
-                    <div class="look-title__media">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                             data-src="<?= $data['how_stady_zobrazhennya_na_zagolovku_2']; ?>"
-                             decoding="async" alt="icon">
-                    </div> -->
-
                     <span><?= $sec_2_title['chastina_4']; ?></span>
                 </div>
             </div>
@@ -81,8 +66,14 @@
                                      decoding="async" alt="icon">
                             </div>
 
-                            <div class="benefit-info">
-                                <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
+                            <div class="benefit-info" <?php if (!$item['chislo']){echo 'style="justify-content:center; text-align: center;"';}?>>
+                                <?php
+                                    if ($item['chislo']){
+                                        ?>
+                                        <div class="benefit-info__percent h1"><?= $item['chislo']; ?></div>
+                                        <?php
+                                    }
+                                ?>
                                 <div class="benefit-info__title h5"><?= $item['tekst']; ?></div>
                             </div>
                         </div>
@@ -481,8 +472,14 @@
                     <div class="about-teachers-slider swiper">
                         <div class="swiper-wrapper">
                             <?php
+                            if ($data['vikoristovuvati_angljsku']){
+                                $language_en = $data['vikoristovuvati_angljsku'];
+                            } else {
+                                $language_en = '';
+                            }
                             foreach ($teachers_list as $item) {
                                 get_template_part('parts/pt-cards/content', 'teacher-card-language', array(
+                                    'en_set' => $language_en,
                                     'id' => $item,
                                 ));
                             }
@@ -562,13 +559,31 @@
                         <input type="hidden" name="title" value="Залишилися питання">
 
                         <div class="form-row">
+                            <?php
+
+                            if ($data['vikoristovuvati_angljsku'] === true){
+                                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu_en', 'option');
+                                $name_text = get_field('plejsholder_v_pol_mya_en', 'option');
+                                $button_text = get_field('tekst_knopki_vdpravki_formi_en', 'option');
+                                $agreement_txt = get_field('tekst_poltiki_en', 'options');
+                                $agreement_link = get_field('posilannya_na_stornku_poltiki_en', 'options');
+                                $agreement_link_txt = get_field('tekst_poltiki_2_en', 'options');
+                            } else {
+                                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu', 'option');
+                                $name_text = get_field('common_form_data_plejsholder_v_pol_mya', 'option');
+                                $button_text = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'option');
+                                $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
+                                $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
+                                $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
+                            }
+                            ?>
                             <input class="form-row__input required" type="text" name="name"
-                                   placeholder="<?php the_field('common_form_data_plejsholder_v_pol_mya', 'options'); ?>">
+                                   placeholder="<?php echo $phone_number_text; ?>">
                         </div>
 
                         <div class="form-row">
                             <input class="form-row__input required-phone" type="text" name="phone"
-                                   placeholder="Введіть номер телефону">
+                                   placeholder="<?php echo $name_text; ?>">
                         </div>
                         <div class="form-row">
                             <div class="form-select">
@@ -665,15 +680,9 @@
                         </div>
                         <div class="form-row form-row--button">
                             <button class="button"
-                                    type="submit"><?php the_field('common_form_data_tekst_knopki_vdpravki_formi', 'options'); ?></button>
+                                    type="submit"><?php echo $button_text; ?></button>
                         </div>
                         <div class="" style="margin-top: 20px">
-                            <?php
-                            $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
-                            $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
-                            $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
-                            ?>
-
                             <div class="form-row__agreement"><?= $agreement_txt; ?> <a href="<?= $agreement_link; ?>"
                                                                                        target="_blank"><?= $agreement_link_txt; ?></a>
                             </div>
