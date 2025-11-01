@@ -22,7 +22,14 @@ $data = get_fields();
             <ul class="subitem-list">
                 <?php
                 /** Menu **/
-                if ( $startmode === true ) {
+                if ( is_user_logged_in() || $startmode === false) {
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'main-menu',
+                            'menu_id'        => 'main-menu',
+                        )
+                    );
+                } else {
                     $args = array(
                         'post_type' => 'courses',
                         'relation' => 'OR',
@@ -45,13 +52,6 @@ $data = get_fields();
                     ?>
                     <li class="subitem-list__item-stat"><a class="scroll-lnk" href="#ed-home-clubs" data-lnk="#ed-home-clubs">Корпоративне навчання</a></li>
                     <?php
-                } else {
-                    wp_nav_menu(
-                        array(
-                            'theme_location' => 'main-menu',
-                            'menu_id'        => 'main-menu',
-                        )
-                    );
                 }
                 ?>
             </ul>
