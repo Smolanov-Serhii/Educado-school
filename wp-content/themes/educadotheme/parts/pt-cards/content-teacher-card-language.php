@@ -59,9 +59,9 @@ if ($item_id) {
                 }
             ?>
         </div>
-        <div class="teacher-card__desc">
-            <?= $teacher_desc; ?>
-        </div>
+<!--        <div class="teacher-card__desc">-->
+<!--            --><?php //= $teacher_desc; ?>
+<!--        </div>-->
     </div>
 <?php } ?>
 

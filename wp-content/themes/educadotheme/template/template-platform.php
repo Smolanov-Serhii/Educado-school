@@ -538,6 +538,13 @@
                     </div>
                 <?php endif; ?>
             </div>
+            <div class="about-reviews" id="ed-testimonials">
+                <div class="about-reviews-title h1"><?= get_field('what_say_zagolovok', 5); ?></div>
+                <?php
+                /** Reviews block **/
+                get_template_part('parts/content', 'reviews');
+                ?>
+            </div>
         </div>
 
         <div class="about-bg-left">

@@ -7,6 +7,21 @@
 <main class="ed-home еуіе">
     <?php
     $data = get_fields();
+    if ($data['vikoristovuvati_angljsku'] === true) {
+        $phone_number_text = get_field('tekst_vvedt_nomer_telefonu_en', 'option');
+        $name_text = get_field('plejsholder_v_pol_mya_en', 'option');
+        $button_text = get_field('tekst_knopki_vdpravki_formi_en', 'option');
+        $agreement_txt = get_field('tekst_poltiki_en', 'options');
+        $agreement_link = get_field('posilannya_na_stornku_poltiki_en', 'options');
+        $agreement_link_txt = get_field('tekst_poltiki_2_en', 'options');
+    } else {
+        $phone_number_text = get_field('tekst_vvedt_nomer_telefonu', 'option');
+        $name_text = get_field('common_form_data_plejsholder_v_pol_mya', 'option');
+        $button_text = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'option');
+        $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
+        $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
+        $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
+    }
     ?>
     <section class="ed-home-banner ed-home-banner-language">
         <div class="container">
@@ -317,7 +332,7 @@
 
                         <div class="form-row">
                             <input class="form-row__input required-phone" type="text" name="phone"
-                                   placeholder="Введіть номер телефону">
+                                   placeholder="<?php echo $phone_number_text;?>">
                         </div>
 
                         <div class="form-row form-row--button">
@@ -488,8 +503,30 @@
                     </div>
                 <?php endif; ?>
             </div>
-        </div>
+            <?php
+            if ($data['vikoristovuvati_angljsku']){
 
+            } else {
+                ?>
+                    <div class="about-reviews" id="ed-testimonials">
+                        <div class="about-reviews-title h1">
+                            <?php
+                            if ($data['vikoristovuvati_angljsku']){
+                                echo get_field('what_say_zagolovok_en', 5);
+                            } else {
+                                echo get_field('what_say_zagolovok', 5);
+                            }
+                            ?>
+                        </div>
+                        <?php
+                        /** Reviews block **/
+                        get_template_part('parts/content', 'reviews');
+                        ?>
+                    </div>
+                <?php
+            }
+            ?>
+        </div>
         <div class="about-bg-left">
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                  data-src="<?php echo get_template_directory_uri(); ?>/assets/img/about-left.svg"
@@ -559,24 +596,6 @@
                         <input type="hidden" name="title" value="Залишилися питання">
 
                         <div class="form-row">
-                            <?php
-
-                            if ($data['vikoristovuvati_angljsku'] === true){
-                                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu_en', 'option');
-                                $name_text = get_field('plejsholder_v_pol_mya_en', 'option');
-                                $button_text = get_field('tekst_knopki_vdpravki_formi_en', 'option');
-                                $agreement_txt = get_field('tekst_poltiki_en', 'options');
-                                $agreement_link = get_field('posilannya_na_stornku_poltiki_en', 'options');
-                                $agreement_link_txt = get_field('tekst_poltiki_2_en', 'options');
-                            } else {
-                                $phone_number_text = get_field('tekst_vvedt_nomer_telefonu', 'option');
-                                $name_text = get_field('common_form_data_plejsholder_v_pol_mya', 'option');
-                                $button_text = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'option');
-                                $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
-                                $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
-                                $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
-                            }
-                            ?>
                             <input class="form-row__input required" type="text" name="name"
                                    placeholder="<?php echo $phone_number_text; ?>">
                         </div>
