@@ -10,6 +10,7 @@ if (isset($args['class']) && !empty($args['class'])) {
     $class_html = '';
 }
 $menu = get_field('header_menyu', 'options');
+$startmode = get_field('vklyuchiti_rezhim_prostogo_menyu', 'options');
 ?>
 <?php
 $data = get_fields();
@@ -21,7 +22,7 @@ $data = get_fields();
             <ul class="subitem-list">
                 <?php
                 /** Menu **/
-                if ( !is_user_logged_in() ) {
+                if ( $startmode === true ) {
                     $args = array(
                         'post_type' => 'courses',
                         'relation' => 'OR',
