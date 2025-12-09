@@ -13,25 +13,25 @@
     <?php wp_head(); ?>
     <title><?php wp_title()?></title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- Meta Pixel Code --> 
-    <script> 
-    !function(f,b,e,v,n,t,s) 
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
-    n.queue=[];t=b.createElement(e);t.async=!0; 
-    t.src=v;s=b.getElementsByTagName(e)[0]; 
-    s.parentNode.insertBefore(t,s)}(window, document,'script', 
-    'https://connect.facebook.net/en_US/fbevents.js'); 
-    fbq('init', '794161271856671'); 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '794161271856671');
     fbq('track', 'PageView');
     fbq('track', 'Contact');
     </script> 
-    <noscript><img height="1" width="1" style="display:none" 
-    src="https://www.facebook.com/tr?id=794161271856671&ev=PageView&noscript=1" 
-    /></noscript> 
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=794161271856671&ev=PageView&noscript=1"
+    /></noscript>
     <!-- End Meta Pixel Code -->
-    
+
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -97,16 +97,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 //    var_dump($data);
     ?>
     <?php if ($data['pokaz_aktivovano'] === true){
-        if (($data['data_pochatku_pokazu'] <= date('d-m-Y')) && ($data['data_zaknchennya_pokazu'] >= date('d-m-Y'))){
+        $start = DateTime::createFromFormat('d/m/Y', $data['data_pochatku_pokazu']);
+        $end   = DateTime::createFromFormat('d/m/Y', $data['data_zaknchennya_pokazu']);
+        $today = new DateTime();
+        if ($start && $end && $start <= $today && $end >= $today) {
             ?>
             <div class="ed-header__banner" style="background-color: <?php echo $data['kolr_baneru_hedera'];?>">
                 <div class="ed-header__banner-container">
                     <div class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= $data['tema_knopki']; ?>">
                         <?php if ($data['kartinka_v_reklamnij_baner']){
                             ?>
-                                <div class="ed-header__banner-img">
-                                    <img src="<?= $data['kartinka_v_reklamnij_baner']; ?>" alt="<?= $data['napis_na_knopc_baneru']; ?>">
-                                </div>
+                            <div class="ed-header__banner-img">
+                                <img src="<?= $data['kartinka_v_reklamnij_baner']; ?>" alt="<?= $data['napis_na_knopc_baneru']; ?>">
+                            </div>
                             <?php
                         }?>
                         <?= $data['napis_na_knopc_baneru']; ?>

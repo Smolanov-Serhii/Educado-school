@@ -7,45 +7,47 @@ const formAjaxSend = (form) => {
     console.log(fields);
     if (actionInput) {
         let action = actionInput.value
-        let url = urlInput.value + '?action=' + action 
+        let url = urlInput.value + '?action=' + action
         let data = {}
 
         fields && fields.length && fields.forEach(field => {
-            if(field.type === 'checkbox' && field.checked == true){
-                data[field.name] = 'Обрано: <br>';
-            } else if(field.type === 'text'){
-                data[field.name] =  field.value.replace(/\n/g, '<br/>');
+            if (field.type === 'checkbox' && field.checked == true) {
+                data[field.name] = 'Обрано: <br>'
+            } else if (field.type === 'text' || field.type === 'hidden') {
+                // 👉 теперь сюда попадает и button_item (type="hidden")
+                data[field.name] = field.value.replace(/\n/g, '<br/>')
             }
         })
-        
 
-        data = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&')
+        data = Object.keys(data)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&')
 
         fetch(url, {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: data
         })
-        .then(response => response.json())
-        .then(response => {
-            formSuccessSubmit(form)
-        }).catch(() => formSuccessSubmit(form))
+            .then(response => response.json())
+            .then(response => {
+                formSuccessSubmit(form)
+            }).catch(() => formSuccessSubmit(form))
     } else {
-		formSuccessSubmit(form)
-	}
+        formSuccessSubmit(form)
+    }
 }
 
 const formSuccessSubmit = (form) => {
     const popup = form.closest('.popup')
     const success = document.querySelector('.popup#success-popup')
-	const fields = form.querySelectorAll('.form-row__input, .form-row__textarea')
+    const fields = form.querySelectorAll('.form-row__input, .form-row__textarea')
 
     popup && popup.classList.remove('open')
     success && success.classList.add('open')
-    
+
     EnableScroll()
 
-	fields.forEach((field) => field.value = '')   
+    fields.forEach((field) => field.value = '')
 
     setTimeout(() => success && success.classList.remove('open'), 5000)
 }
@@ -56,7 +58,7 @@ export const initForms = () => {
     forms && forms.length && forms.forEach(form => {
         const fields = form.querySelectorAll('.required')
         const phones = form.querySelectorAll('.required-phone')
-    
+
         fields.forEach((field) => {
             field.addEventListener('focus', (e) => field.parentNode.classList.remove('error'), { passive: true })
         })
@@ -68,8 +70,6 @@ export const initForms = () => {
                 this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
             })
         })
-
-    
 
         form.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -101,7 +101,6 @@ export const initForms = () => {
             if (!phones_count) {
                 phones.forEach((phone) => phone.parentNode.classList.add('error'))
             }
-            
 
             if (errors > 0 || !phones_count) return false
 

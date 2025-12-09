@@ -9,6 +9,7 @@ $item_id = $args['id'] ?? '';
 $en_set = $args['en_set'] ?? '';
 if ($item_id) {
     $teacher_name = get_the_title($item_id);
+    $teacher_pib = get_field('pb', $item_id);
     $teacher_lang = get_field('mova', $item_id);
     $teacher_photo = wp_get_attachment_image_src(get_post_thumbnail_id($item_id), 'medium_large') ?? '';
     $teacher_video_url = get_field('posilannya_na_yutub', $item_id);
@@ -50,7 +51,7 @@ if ($item_id) {
                 </div>
             </div>
         </div>
-        <div class="teacher-card__popup button callpopup" data-popup="trial">
+        <div class="teacher-card__popup button callpopup" data-popup="trial" data-item="<?= $teacher_pib . ' - ' . $teacher_lang; ?>">
             <?php
                 if ($en_set === true){
                     echo get_field('tekst_zapisatisya_en', 'option');

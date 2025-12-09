@@ -57,6 +57,7 @@ $data = get_fields();
             <input type="hidden" name="action" value="ed_callback">
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>" style="display: none">
             <input type="hidden" name="title" value="Записатися на пробний урок">
+            <input type="hidden" name="button_item" value="">
             <?php
                 if ($data['tema_knopki']){
                     ?>
@@ -176,6 +177,7 @@ $data = get_fields();
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
             <?php wp_nonce_field('ed_callback'); ?>
             <input type="hidden" name="title" value="Записатися на пробний урок">
+            <input type="hidden" name="button_item" value="">
             <input type="text" name="utm_source" value="<?php echo $_GET['utm_source']; ?>" style="display: none">
             <input type="text" name="utm_medium" value="<?php echo $_GET['utm_medium']; ?>" style="display: none">
             <input type="text" name="utm_campaign" value="<?php echo $_GET['utm_campaign']; ?>" style="display: none">
