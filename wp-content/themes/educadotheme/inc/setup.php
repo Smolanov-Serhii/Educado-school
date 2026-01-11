@@ -71,13 +71,13 @@ function ed_remove_wp_default_css()
 }
 
 
-/**
- * Remove unnecessary link from admin menu
- */
-add_action('admin_init', 'ed_remove_menu_pages');
-function ed_remove_menu_pages()
-{
-    remove_menu_page('edit.php');
-    remove_menu_page('edit-comments.php');
-    remove_menu_page('separator2');
-}
+///**
+// * Remove unnecessary link from admin menu
+// */
+//add_action('admin_init', 'ed_remove_menu_pages');
+//function ed_remove_menu_pages()
+//{
+//    remove_menu_page('edit.php');
+//    remove_menu_page('edit-comments.php');
+//    remove_menu_page('separator2');
+//}

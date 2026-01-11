@@ -1,0 +1,72 @@
+.ed-blogtext{
+  margin-bottom: 40px;
+  @media all and (max-width: 500px) {
+    margin-bottom: 30px;
+  }
+  &__content{
+    h1{
+      font-size: 36px;
+      color: #000;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      line-height: normal;
+      @media all and (max-width: 768px) {
+        font-size: 28px;
+      }
+      @media all and (max-width: 500px) {
+        font-size: 26px;
+      }
+    }
+    h2{
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 1em;
+      line-height: normal;
+      @media all and (max-width: 768px) {
+        font-size: 24px;
+      }
+      @media all and (max-width: 500px) {
+        font-size: 22px;
+      }
+      b, strong{
+        font-weight: 600;
+      }
+    }
+    h3{
+      font-size: 24px;
+      margin-bottom: 1em;
+      line-height: normal;
+      @media all and (max-width: 768px) {
+        font-size: 20px;
+      }
+      @media all and (max-width: 500px) {
+        font-size: 18px;
+      }
+      strong, b{
+        font-weight: bolder;
+      }
+    }
+    a{
+      color: #818000;
+      text-decoration: underline;
+      font-size: 26px;
+      line-height: 100%;
+    }
+    p{
+      font-size: 20px;
+      margin-bottom: 1em;
+      line-height: normal;
+      @media all and (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media all and (max-width: 500px) {
+        font-size: 16px;
+      }
+      a{
+        text-decoration: none;
+        font-size: inherit;
+        font-weight: bolder;
+      }
+    }
+  }
+}

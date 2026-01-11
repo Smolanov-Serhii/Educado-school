@@ -1,0 +1,108 @@
+.taxonomy-language{
+  padding-top: 160px;
+  &__title {
+    position: relative;
+    padding-left: 38px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: normal;
+    display: inline-flex;
+    margin-bottom: 36px;
+    @include screen-xhl {
+      @include font(24px, 40px);
+      margin-bottom: 20px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 5px);
+      left: 9px;
+      width: 10px;
+      height: 10px;
+      background: $color-base;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 14px);
+      left: 0px;
+      width: 28px;
+      height: 28px;
+      background-image: url('../img/home/look/ellipse.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      pointer-events: none;
+    }
+  }
+}
+.taxonomy-switcher{
+  .languages-ticker{
+    margin-bottom: 20px;
+  }
+  &__list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__item{
+    width: auto;
+    margin-right: 20px;
+    margin-bottom: 22px;
+  }
+  .language__image{
+    margin-left: 0;
+  }
+  .container{
+    @media all and (max-width: 768px) {
+      text-align: center;
+    }
+  }
+}
+.taxonomy-posts{
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -20px;
+    width: calc(100% + 20px);
+    @media all and (max-width: 768px) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  &__item{
+    width: calc(33.3333% - 20px);
+    margin-right: 20px;
+    margin-bottom: 30px;
+    @media all and (max-width: 1024px) {
+      width: calc(50% - 20px);
+    }
+    @media all and (max-width: 768px) {
+      width: 100%;
+      margin-right: 0;
+    }
+    .thumbnail{
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      display: block;
+    }
+    &-date{
+      padding-left: 20px;
+      line-height: normal;
+      margin-bottom: 6px;
+    }
+    &-title{
+      line-height: normal;
+      margin-bottom: 14px;
+      padding-left: 20px;
+    }
+    &-excerpt{
+      line-height: normal;
+      padding-left: 20px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.ed-rekimg{
+  margin-bottom: 40px;
+  @media all and (max-width: 500px) {
+    margin-bottom: 30px;
+  }
+  img{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+}

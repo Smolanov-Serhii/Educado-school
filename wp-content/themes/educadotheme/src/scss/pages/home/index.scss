@@ -1,5 +1,6 @@
 @import './home-banner';
 @import './home-look';
+@import './ed-blog';
 @import './home-whyus';
 @import './home-founder';
 @import './home-appointment';
@@ -7,6 +8,7 @@
 @import './home-courses';
 @import './home-trial';
 @import './home-start';
+@import './taxonomy-language';
 @import './home-classes';
 @import './home-guarantees';
 @import './home-about';
@@ -18,6 +20,8 @@
 @import './home-week';
 @import './home-video';
 @import './home-market';
+@import './ed-rekimg';
+@import './ed-blogtext';
 body:has(.market-page){
   .ed-header{
     background-color: #FFF;

@@ -384,22 +384,22 @@
             </div>
 
             <?php if ($courses_list = $data['courses_kursi']) : ?>
-                <div class="ed-accordions" id="ed-courses">
-                    <?php
-                    $course_card = $data['courses_kartka_kursa'];
-                    $courses_count = count($courses_list);
-                    $i = 1;
-                    foreach ($courses_list as $item_id) {
-                        get_template_part('parts/pt-cards/content', 'course-card', array(
-                            'id' => $item_id,
-                            'data' => $course_card,
-                            'count' => $courses_count,
-                            'counter' => $i,
-                        ));
-                        $i++;
-                    }
-                    ?>
-                </div>
+<!--                <div class="ed-accordions" id="ed-courses">-->
+<!--                    --><?php
+//                    $course_card = $data['courses_kartka_kursa'];
+//                    $courses_count = count($courses_list);
+//                    $i = 1;
+//                    foreach ($courses_list as $item_id) {
+//                        get_template_part('parts/pt-cards/content', 'course-card', array(
+//                            'id' => $item_id,
+//                            'data' => $course_card,
+//                            'count' => $courses_count,
+//                            'counter' => $i,
+//                        ));
+//                        $i++;
+//                    }
+//                    ?>
+<!--                </div>-->
             <?php endif; ?>
         </div>
     </section>
