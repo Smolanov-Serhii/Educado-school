@@ -1,4 +1,9 @@
 <?php
+/**
+ * Template Name: Шаблон Блогу
+ */
+?>
+<?php
 get_header();
 
 $taxonomy = 'language';
@@ -68,7 +73,7 @@ $all_posts_args = [
     'suppress_filters'    => true,
 
     // чтобы не дублировать "Популярно" в общем списке
-    'post__not_in'        => !empty($shown_post_ids) ? $shown_post_ids : [],
+//    'post__not_in'        => !empty($shown_post_ids) ? $shown_post_ids : [],
 ];
 
 if ($is_term_page) {
@@ -294,8 +299,8 @@ $all_posts_q = new WP_Query($all_posts_args);
                         <?php endwhile; ?>
                     </div>
 
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+<!--                    <div class="swiper-button-prev"></div>-->
+<!--                    <div class="swiper-button-next"></div>-->
                 </div>
             </div>
         </section>
