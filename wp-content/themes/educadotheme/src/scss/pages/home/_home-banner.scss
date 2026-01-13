@@ -416,7 +416,7 @@
         }
     }
     &-static{
-        min-height: 70vh;
+        //min-height: 70vh;
         @include screen-xhl {
             min-height: auto;
             .banner-world__image-static{
