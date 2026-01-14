@@ -470,4 +470,76 @@
             }
         }
     }
+    &-programs{
+        @media all and (max-width: 1080px){
+            min-height: auto;
+        }
+        .programs-wrapper{
+            position: relative;
+        }
+        .container{
+            .banner-content{
+                width: 100%;
+                .banner-languages__buttons{
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                    width: 100%;
+                    @media all and (max-width: 1080px){
+                        width: calc(100% + 55px);
+                        margin-right: -50px;
+                    }
+                    @media all and (max-width: 768px){
+                        width: 100%;
+                        margin-right: 0;
+                    }
+                    a{
+                        max-width: calc(40% - 52px);
+                        width: 100%;
+                        border-radius: 100px;
+                        background-color: #efefc6;
+                        border: 2px solid #000;
+                        margin-right: 50px;
+                        margin-bottom: 30px;
+                        color: #000;
+                        text-transform: uppercase;
+                        font-size: 36px;
+                        margin-top: 0;
+                        @media all and (max-width: 1340px){
+                            max-width: calc(40% - 52px);
+                            font-size: 28px;
+                            margin-right: 30px;
+                        }
+                        @media all and (max-width: 1080px){
+                            width: calc(50% - 50px);
+                            margin-right: 50px;
+                            max-width: none;
+                        }
+                        @media all and (max-width: 768px){
+                            width: 100%;
+                            margin-right: 0;
+                        }
+                        img{
+                            height: 40px;
+                            width: auto;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+
+            }
+            .banner-world__image-static{
+                position: absolute;
+                right: 0;
+                top: 0;
+                @media all and (max-width: 1080px){
+                    position: static;
+                    margin-bottom: 40px;
+                    img{
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -108,6 +108,26 @@ add_filter('nav_menu_item_title', function($title, $item, $args, $depth){
     if ($img_id) {
         $src = wp_get_attachment_image_url($img_id, 'thumbnail');
         if ($src) {
+            add_action('pre_get_posts', function($q){
+                if (is_admin() || !$q->is_main_query()) return;
+
+                if (!is_post_type_archive('programs')) return;
+
+                $language = isset($_GET['language']) ? sanitize_title($_GET['language']) : '';
+                if (!$language) return;
+
+                $tax_query = (array) $q->get('tax_query');
+                if (empty($tax_query)) $tax_query = ['relation' => 'AND'];
+
+                $tax_query[] = [
+                    'taxonomy' => 'language',
+                    'field'    => 'slug',
+                    'terms'    => $language,
+                ];
+
+                $q->set('tax_query', $tax_query);
+            });
+
             $title = '<img class="menu-image" src="'.esc_url($src).'" alt=""> ' . $title;
         }
     }
@@ -115,3 +135,5 @@ add_filter('nav_menu_item_title', function($title, $item, $args, $depth){
 }, 10, 4);
 add_action('wp_ajax_ed_callback', 'ed_callback');
 add_action('wp_ajax_nopriv_ed_callback', 'ed_callback');
+
+
