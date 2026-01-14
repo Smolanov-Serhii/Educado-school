@@ -77,8 +77,8 @@ $programs_q = new WP_Query($args);
                     <?php
                     if (!empty($zagolovok_stornki)) {
                         echo $zagolovok_stornki;
-                    } elseif ($language_term) {
-                        echo $language_term->name;
+                    } else {
+                        echo "Виберіть мову";
                     }
                     ?>
                 </div>
@@ -86,10 +86,12 @@ $programs_q = new WP_Query($args);
                     <?php
                     if (!empty($pdzagolovok_na_stornku)) {
                         echo wp_kses_post($pdzagolovok_na_stornku);
+                    } else {
+                        echo "Оберіть курс за рівнем та напрямом";
                     }
                     ?>
                 </div>
-                <aside class="programs__sidebar">
+                <aside class="programs__sidebar <?php if ($language){ echo 'has-language'; }?>">
                     <div class="programs__sidebar-close">
                         <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 1L1 20M21 20L1 1" stroke="black" stroke-width="2"/>

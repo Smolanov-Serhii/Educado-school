@@ -35,6 +35,11 @@
       height: 100%;
       overflow-y: scroll
     }
+    &.has-language{
+      .sf-field-taxonomy-language{
+        display: none;
+      }
+    }
     &-close{
       display: none;
       position: absolute;

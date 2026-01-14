@@ -29,14 +29,14 @@
                         if ($buttons = $data['perelk_mov']) {
                             foreach ($buttons as $button) { ?>
                                 <?php
-                                $base_page = get_page_by_path('programy-odniyeyi-movy'); // <-- поменяй 'programs' на slug страницы "все программы"
-                                $base_url  = $base_page ? get_permalink($base_page) : home_url('/programy-odniyeyi-movy/');
+                                $base_page = get_page_by_path('program-by-language'); // <-- поменяй 'programs' на slug страницы "все программы"
+                                $base_url  = $base_page ? get_permalink($base_page) : home_url('/program-by-language/');
                                 $lang_terms = $button['mova_dlya_fyltruvannya'] ?? [];
                                 $lang_slug = '';
                                 if (is_array($lang_terms) && !empty($lang_terms) && $lang_terms[0] instanceof WP_Term) {
                                     $lang_slug = $lang_terms[0]->slug; // anglijska
                                 }
-                                $url = $lang_slug ? add_query_arg(['language' => $lang_slug], $base_url) : $base_url;
+                                $url = $lang_slug ? add_query_arg(['?_sft_language' => $lang_slug], $base_url) : $base_url;
                                 echo '<!-- base_url: ' . esc_url($base_url) . ' | language: ' . esc_html($lang_slug) . ' | url: ' . esc_url($url) . ' -->';
                                 ?>
                                 <a href="<?= esc_url($url); ?>" class="button button-green h1">
