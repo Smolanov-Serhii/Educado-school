@@ -333,4 +333,62 @@
             }
         }
     }
+    &-corporativenew{
+        .ed-home-week__title{
+            color: #FFF;
+            margin-bottom: 40px;
+        }
+        .corporativenew{
+            &__list{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            &__item{
+                width: calc(25% - 20px);
+                text-align: center;
+                @media all and (max-width: 1024px){
+                    width: calc(50% - 20px);
+                    margin-bottom: 40px;
+                }
+                @media all and (max-width: 768px){
+                   width: 100%;
+                    border: 2px solid #000;
+                    border-radius: 30px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                }
+                svg{
+                    width: 80px;
+                    height: auto;
+                    margin-bottom: 30px;
+                }
+
+                &-title{
+                    margin-bottom: 20px;
+                    color: #d7df41;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    line-height: normal;
+                }
+                &-img{
+                    text-align: center;
+                    img{
+                        height: 100%;
+                        width: auto;
+                        max-height: 20vh;
+                        margin: auto;
+                    }
+                }
+                &-desc{
+                    text-align: center;
+                    font-size: 16px;
+                    line-height: normal;
+                    max-width: 320px;
+                    margin: auto;
+                }
+            }
+        }
+    }
 }

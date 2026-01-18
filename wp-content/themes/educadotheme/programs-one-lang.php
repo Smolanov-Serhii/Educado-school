@@ -92,44 +92,13 @@ $programs_q = new WP_Query($args);
                     ?>
                 </div>
                 <aside class="programs__sidebar <?php if ($language){ echo 'has-language'; }?>">
-                    <div class="programs__sidebar-close">
-                        <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 1L1 20M21 20L1 1" stroke="black" stroke-width="2"/>
-                        </svg>
-                    </div>
-
                     <?php echo do_shortcode('[searchandfilter id="1229"]'); ?>
                 </aside>
 
                 <div class="programs__main">
-                    <div class="programs__main-header">
-                        <div class="filter">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_1106_14204)">
-                                    <path d="M14.1 14.1L20.5 7.7V4.5H4.5V7.7L10.9 14.1V20.5L14.1 17.3V14.1Z" fill="white"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1106_14204">
-                                        <rect width="16" height="16" fill="white" transform="translate(4.5 4.5)"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            Фільтр
-                        </div>
-                    </div>
-
                     <div class="programs__result" id="result">
 
-                        <?php
-                        // Page content (keep if you want editor/ACF blocks above list)
-                        if (have_posts()) {
-                            while (have_posts()) {
-                                the_post();
-                                the_content();
-                            }
-                            wp_reset_postdata();
-                        }
-                        ?>
+
 
                         <?php if ($programs_q->have_posts()): ?>
                             <?php while ($programs_q->have_posts()): $programs_q->the_post(); ?>

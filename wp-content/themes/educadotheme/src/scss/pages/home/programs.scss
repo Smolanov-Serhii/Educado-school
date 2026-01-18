@@ -7,11 +7,11 @@
   }
 
   @include screen-xhl {
-    padding: 190px 0 50px;
+    padding: 70px 0 50px;
   }
 
   @include screen-sm {
-    padding: 125px 0 24px;
+    padding: 30px 0 24px;
   }
   &__title{
     width: 100%;
@@ -30,39 +30,16 @@
   &__sidebar{
     width: 384px;
     transition: 0.3s ease-in-out;
-    @media all and (max-width: 1200px){
-      padding: 50px 20px 0 20px;
-      height: 100%;
-      overflow-y: scroll
-    }
     &.has-language{
       .sf-field-taxonomy-language{
         display: none;
-      }
-    }
-    &-close{
-      display: none;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      @media all and (max-width: 1200px){
-        display: inline-block;
       }
     }
     @media all and (max-width: 1440px){
       width: 320px;
     }
     @media all and (max-width: 1200px){
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      transform: translateX(-120%);
-      z-index: 100;
-      &.active{
-        transform: translateX(0);
-      }
+      width: 100% !important;
     }
     form{
       .sf-field-submit{
@@ -73,6 +50,10 @@
           padding-top: 0;
           padding-bottom: 0;
           margin-bottom: 30px;
+          @media all and (max-width: 1200px) {
+            margin-bottom: 14px;
+          }
+          flex-grow: 1;
           &:last-child{
             padding-bottom: 0;
           }
@@ -81,15 +62,42 @@
             //max-height: 166px;
             overflow-y: auto;
             padding: 18px 0 6px 0;
+            @media all and (max-width: 1200px) {
+              display: flex;
+              flex-wrap: wrap;
+              padding-top: 0;
+              padding-bottom: 0;
+            }
             li{
               display: flex;
               padding-top: 0;
               padding-bottom: 0;
               position: relative;
               margin-bottom: 20px;
+              @media all and (max-width: 1200px) {
+                margin-bottom: 10px;
+              }
+              @media all and (max-width: 768px) {
+                flex-grow: 1;
+              }
+              label{
+                @media all and (max-width: 768px) {
+                  text-align: center;
+                  font-size: 14px;
+                }
+              }
+
               input:checked + .sf-label-checkbox, input:checked + .sf-label-radio{
+                @media all and (max-width: 1200px) {
+                  background-color: #5D5C00;
+                  color: #FFF;
+                }
+
                 &:before{
                   border: 2px solid #8f8f2d;
+                  @media all and (max-width: 1200px) {
+                    display: none;
+                  }
                 }
                 &:after{
                   position: absolute;
@@ -100,6 +108,9 @@
                   height: 15px;
                   border-radius: 50%;
                   background-color: #8f8f2d;
+                  @media all and (max-width: 1200px) {
+                    display: none;
+                  }
                 }
               }
               input{
@@ -112,6 +123,13 @@
                 position-anchor: revert;
                 &.sf-label-checkbox, &.sf-label-radio{
                   padding-left: 40px;
+                  @media all and (max-width: 1200px) {
+                    padding: 6px 14px;
+                    border: 2px solid #5D5C00;
+                    border-radius: 40px;
+                    margin-right: 10px;
+                    cursor: pointer;
+                  }
                 }
                 &:before{
                   position: absolute;
@@ -122,6 +140,9 @@
                   height: 27px;
                   border-radius: 50%;
                   border: 2px solid #dbdbdb;
+                  @media all and (max-width: 1200px) {
+                    display: none;
+                  }
                 }
               }
             }
@@ -133,6 +154,10 @@
           font-weight: 500;
           padding-bottom: 10px;
           line-height: normal;
+          @media all and (max-width: 768px){
+            text-align: center;
+            font-size: 22px;
+          }
         }
       }
     }
@@ -188,6 +213,10 @@
     padding: 40px;
     border-radius: 40px;
     margin-bottom: 50px;
+    @media all and (max-width: 768px) {
+      padding: 20px;
+      border-radius: 20px;
+    }
     &-title{
       margin-bottom: 20px;
     }
@@ -195,6 +224,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
+      @media all and (max-width: 1200px) {
+        gap: 20px;
+      }
     }
     &-wrapper{
       position: relative;
@@ -204,23 +236,45 @@
       border-radius: 40px;
       background-color: #efefc6;
       padding: 40px;
+      @media all and (max-width: 768px) {
+        padding: 20px;
+        border-radius: 20px;
+      }
       &:nth-child(1){
         width: calc(60% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       &:nth-child(2){
         width: calc(40% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       &:nth-child(3){
         width: calc(70% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       &:nth-child(4){
         width: calc(30% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       &:nth-child(5){
         width: calc(30% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       &:nth-child(6){
         width: calc(70% - 20px);
+        @media all and (max-width: 768px) {
+          width: 100%;
+        }
       }
       p{
         line-height: normal;
@@ -239,6 +293,9 @@
       justify-content: flex-end;
       .button{
         min-width: 300px;
+        @media all and (max-width: 1200px) {
+          width: 100%;
+        }
         &:hover{
           background-color: #818000;
         }

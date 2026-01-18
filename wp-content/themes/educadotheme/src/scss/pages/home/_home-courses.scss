@@ -361,4 +361,46 @@
             }
         }
     }
+    &-language__col{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+        @media all and (max-width: 768px){
+            flex-direction: column;
+            align-items: center;
+        }
+        > div{
+            margin-right: 60px;
+            display: flex;
+            align-items: center;
+            @media all and (max-width: 768px){
+                flex-direction: column;
+                align-items: center;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+            div{
+                font-size: 44px;
+                color: #818000;
+                margin-right: 20px;
+                font-family: 'Poiret One';
+                @media all and (max-width: 768px){
+                    margin-right: 0;
+                    line-height: normal;
+                }
+
+            }
+            span{
+                color: #818000;
+                font-size: 16px;
+                line-height: normal;
+                @media all and (max-width: 768px){
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

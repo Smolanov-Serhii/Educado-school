@@ -12,14 +12,31 @@
     height: 200px;
     overflow: hidden;
     text-align: center;
-    width: 490px;
-
-    @include screen-xxl {
-      width: 380px;
+    width: 490px!important;
+    @media all and (max-width: 1024px) {
+      width: 490px!important;
+    }
+    @media all and (max-width: 768px) {
+      width: 490px!important;
+    }
+    @media all and (max-width: 500px) {
+      width: 100%!important;
+    }
+    .swiper-slide{
+      width: 490px!important;
+      @media all and (max-width: 1024px) {
+        width: 490px!important;
+      }
+      @media all and (max-width: 768px) {
+        width: 490px!important;
+      }
+      @media all and (max-width: 500px) {
+        width: 100%!important;
+      }
     }
 
     @include screen-sm {
-      width: 100%;
+
 
       &:not(:last-child) {
         margin-bottom: 20px;
