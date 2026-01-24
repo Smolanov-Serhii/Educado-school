@@ -1,4 +1,17 @@
 <?php
+// Preselect Search & Filter radios on first load
+if (
+        !isset($_GET['_sft_language']) &&
+        !isset($_GET['_sft_vchitel_'])
+) {
+    $url = add_query_arg([
+            '_sft_language' => 'anglijska',
+            '_sft_vchitel_' => 'lokal',
+    ]);
+
+    wp_safe_redirect($url);
+    exit;
+}
 /**
  * Template Name: Шаблон корпоративу + прайси
  */
@@ -393,19 +406,19 @@ $programs_q = new WP_Query($args);
                                 </div>
                             <?php endwhile; ?>
 
-                            <div class="pagination">
-                                <?php
-                                echo paginate_links([
-                                        'total'   => (int) $programs_q->max_num_pages,
-                                        'current' => $paged,
-                                        'format'  => '?paged=%#%',
-                                    // preserve GET params (language + S&F fields already in querystring)
-                                        'add_args' => array_filter([
-                                                'language' => $language ?: null,
-                                        ]),
-                                ]);
-                                ?>
-                            </div>
+<!--                            <div class="pagination">-->
+<!--                                --><?php
+//                                echo paginate_links([
+//                                        'total'   => (int) $programs_q->max_num_pages,
+//                                        'current' => $paged,
+//                                        'format'  => '?paged=%#%',
+//                                    // preserve GET params (language + S&F fields already in querystring)
+//                                        'add_args' => array_filter([
+//                                                'language' => $language ?: null,
+//                                        ]),
+//                                ]);
+//                                ?>
+<!--                            </div>-->
 
                             <?php wp_reset_postdata(); ?>
                         <?php else: ?>

@@ -2,6 +2,13 @@
   background-color: #FFF;
   padding-top: 60px;
   padding-bottom: 60px;
+  .sf-field-taxonomy-language, .sf-field-taxonomy-vchitel_{
+    li{
+      &:first-child{
+        display: none;
+      }
+    }
+  }
   &__title{
     text-align: center;
     margin-bottom: 40px;
@@ -73,6 +80,8 @@
 
         opacity: 1;
         transition: opacity .15s linear .25s;
+        display: flex;
+        flex-direction: column;
       }
 
       /* BACK поверх, высоту не ломает */
@@ -80,7 +89,8 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-
+        display: flex;
+        flex-direction: column;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
         transform: rotateY(180deg);
@@ -164,7 +174,9 @@
         &-price{
           font-size: 34px;
           color: #818000;
-          margin-bottom: 14px;
+          margin-top: 14px;
+          margin-bottom: 0;
+          line-height:normal;
           text-align: center;
           line-height: normal;
         }
@@ -186,33 +198,38 @@
         }
         &-content{
           gap: 0;
-          div{
+          flex: 1;
+          strong, b{
+            font-weight: 800;
+            font-family: sans-serif;
+          }
+          ul{
+            padding-left: 0;
             width: 100%;
-            ul{
-              padding-left: 0;
+            li{
+              position: relative;
+              padding-left: 40px;
               width: 100%;
-              li{
-                position: relative;
-                padding-left: 40px;
-                width: 100%;
-                display: flex;
-                align-items: flex-start;
-                margin-bottom: 10px;
-                &:before{
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  content: "";
-                  display: block;
-                  width: 30px;
-                  height: 30px;
-                  background-image: url("../img/li.svg");
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  background-size: contain;
-                }
+              display: flex;
+              align-items: flex-start;
+              margin-bottom: 10px;
+              &:before{
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                display: block;
+                width: 30px;
+                height: 30px;
+                background-image: url("../img/li.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
               }
             }
+          }
+          div{
+            width: 100%;
           }
         }
       }
