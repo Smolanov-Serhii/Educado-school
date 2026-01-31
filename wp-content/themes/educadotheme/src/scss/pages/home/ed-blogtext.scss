@@ -68,5 +68,18 @@
         font-weight: bolder;
       }
     }
+    ol{
+      padding-left: 24px;
+      li{
+        list-style: decimal;
+        font-size: 20px;
+        @media all and (max-width: 768px) {
+          font-size: 18px;
+        }
+        @media all and (max-width: 500px) {
+          font-size: 16px;
+        }
+      }
+    }
   }
 }

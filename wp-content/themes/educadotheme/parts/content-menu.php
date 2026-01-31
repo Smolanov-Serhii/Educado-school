@@ -69,4 +69,9 @@ $data = get_fields();
             <a href="#ed-teachers"><?= $menu['tekst_teaches']; ?></a>
         </li>
     <?php endif; ?>
+    <?php if ($menu['tekst_teaches']) : ?>
+        <li>
+            <a href="https://educado.school/blog/">Блог</a>
+        </li>
+    <?php endif; ?>
 </ul>
