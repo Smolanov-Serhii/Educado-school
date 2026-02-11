@@ -31,9 +31,15 @@ body:has(.market-page){
   }
 }
 .market-page{
-
+  padding-top: 63px;
   background-color: #161616;
   background-image: url("../img/bgmarkst.svg");
   background-repeat: repeat;
   background-size: contain;
+  @media all and (max-width: 768px) {
+    padding-top: 56px;
+  }
+  @media all and (max-width: 500px) {
+    padding-top: 46px;
+  }
 }

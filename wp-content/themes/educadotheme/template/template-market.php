@@ -4,7 +4,19 @@
  */
 ?>
 <?php get_header(); ?>
-<main class="ed-home market-page">
+<?php
+$banneronclass = "";
+?>
+<?php if (get_field('pokaz_aktivovano', 5 ) === true) {
+    $start = DateTime::createFromFormat('d/m/Y', get_field('data_pochatku_pokazu', 5));
+    $end = DateTime::createFromFormat('d/m/Y', get_field('data_zaknchennya_pokazu', 5));
+    $today = new DateTime();
+    if ($start && $end && $start <= $today && $end >= $today) {
+        $banneronclass = "banner-active";
+    }
+}
+?>
+<main class="ed-home market-page <?php echo $banneronclass?>">
     <?php
     $data = get_fields();
     ?>

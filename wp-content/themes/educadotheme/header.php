@@ -45,6 +45,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+                var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+            ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+            ttq.load('COGOMNBC77U9B3UA6340');
+            ttq.page();
+        }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -102,23 +115,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     $data = get_fields();
 //    var_dump($data);
     ?>
-    <?php if ($data['pokaz_aktivovano'] === true){
-        $start = DateTime::createFromFormat('d/m/Y', $data['data_pochatku_pokazu']);
-        $end   = DateTime::createFromFormat('d/m/Y', $data['data_zaknchennya_pokazu']);
+    <?php if (get_field('pokaz_aktivovano', 5 ) === true){
+        $start = DateTime::createFromFormat('d/m/Y', get_field('data_pochatku_pokazu', 5));
+        $end   = DateTime::createFromFormat('d/m/Y', get_field('data_zaknchennya_pokazu', 5));
         $today = new DateTime();
         if ($start && $end && $start <= $today && $end >= $today) {
             ?>
-            <div class="ed-header__banner" style="background-color: <?php echo $data['kolr_baneru_hedera'];?>">
+            <div class="ed-header__banner" style="background-color: <?php echo get_field('kolr_baneru_hedera', 5);?>">
                 <div class="ed-header__banner-container">
-                    <div class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= $data['tema_knopki']; ?>">
-                        <?php if ($data['kartinka_v_reklamnij_baner']){
+                    <div class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= get_field('tema_knopki', 5); ?>">
+                        <?php if (get_field('kartinka_v_reklamnij_baner', 5)){
                             ?>
                             <div class="ed-header__banner-img">
-                                <img src="<?= $data['kartinka_v_reklamnij_baner']; ?>" alt="<?= $data['napis_na_knopc_baneru']; ?>">
+                                <img src="<?= get_field('kartinka_v_reklamnij_baner', 5); ?>" alt="<?= get_field('napis_na_knopc_baneru', 5); ?>">
                             </div>
                             <?php
                         }?>
-                        <?= $data['napis_na_knopc_baneru']; ?>
+                        <?= get_field('napis_na_knopc_baneru', 5); ?>
                     </div>
                 </div>
             </div>
