@@ -1,5 +1,5 @@
 import { initPreloader } from './parts/preloader.js'
-import { cookieutm } from './utils/cookie_utm.js'
+import { cookieutm, initUtmAutofill } from './utils/cookie_utm.js'
 import { initLazyLoad } from './utils/lazyLoad.js'
 import { initHeader } from './parts/header.js'
 import { initForms } from './utils/form.js'
@@ -8,6 +8,7 @@ import { initAccordions } from './utils/accordion.js'
 import { initHome } from './pages/home.js'
 
 cookieutm()
+initUtmAutofill()
 
 initPreloader()
 initLazyLoad()

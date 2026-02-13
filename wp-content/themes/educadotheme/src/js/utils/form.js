@@ -1,8 +1,8 @@
 import { EnableScroll } from '../utils/scroll.js'
-import { captureUtmToCookieFromUrl, applyUtmToForm } from 'utm.js'
+import { applyUtmToForm } from './cookie_utm.js'
 
 const formAjaxSend = (form) => {
-    // 1) гарантируем, что utm_* есть в форме как hidden поля
+    // гарантируем, что utm_* есть в форме как hidden поля
     applyUtmToForm(form)
 
     const actionInput = form.querySelector('input[name="action"]')
@@ -10,23 +10,25 @@ const formAjaxSend = (form) => {
     const fields = form.querySelectorAll('input, textarea')
 
     if (actionInput) {
-        let action = actionInput.value
-        let url = urlInput.value + '?action=' + action
-        let data = {}
+        const action = actionInput.value
+        const url = urlInput.value + '?action=' + action
+        const dataObj = {}
 
         fields && fields.length && fields.forEach(field => {
             if (!field.name) return
 
             if (field.type === 'checkbox') {
-                // если нужно отправлять и unchecked — скажи, сейчас отправляем только checked
-                if (field.checked === true) data[field.name] = 'Обрано: <br>'
-            } else if (field.type === 'text' || field.type === 'hidden' || field.tagName === 'TEXTAREA') {
-                data[field.name] = (field.value || '').replace(/\n/g, '<br/>')
+                if (field.checked === true) dataObj[field.name] = 'Обрано: <br>'
+                return
+            }
+
+            if (field.tagName === 'TEXTAREA' || field.type === 'text' || field.type === 'hidden') {
+                dataObj[field.name] = (field.value || '').replace(/\n/g, '<br/>')
             }
         })
 
-        data = Object.keys(data)
-            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        const data = Object.keys(dataObj)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(dataObj[key]))
             .join('&')
 
         fetch(url, {
@@ -58,14 +60,11 @@ const formSuccessSubmit = (form) => {
 }
 
 export const initForms = () => {
-    // 2) если на странице есть utm_* в URL — записываем в cookie (новые перетрут старые)
-    captureUtmToCookieFromUrl()
-
     const forms = document.querySelectorAll('form.form')
     if (!forms || !forms.length) return
 
     forms.forEach(form => {
-        // 3) проставим utm_* в форму заранее (и на всякий случай они уже будут в DOM)
+        // заранее проставим utm_* в форму
         applyUtmToForm(form)
 
         const fields = form.querySelectorAll('.required')
@@ -119,7 +118,7 @@ export const initForms = () => {
 
             if (errors > 0 || !phones_count) return false
 
-            // 4) финально перед отправкой (если форма динамически менялась) — снова utm_*
+            // финально перед отправкой — снова utm_*
             applyUtmToForm(form)
 
             formAjaxSend(form)
