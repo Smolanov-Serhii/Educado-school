@@ -240,6 +240,9 @@
         padding: 20px;
         border-radius: 20px;
       }
+      @media all and (max-width: 500px) {
+        width: 100%;
+      }
       &:nth-child(1){
         //width: calc(60% - 20px);
         //@media all and (max-width: 768px) {
