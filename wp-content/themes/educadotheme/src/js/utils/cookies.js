@@ -1,25 +1,27 @@
+// utils/cookies.js
 
 export const setCookie = (cname, cvalue, exdays) => {
     const date = new Date()
     date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000))
-    let expires = 'expires=' + date.toUTCString()
-    document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+    const expires = 'expires=' + date.toUTCString()
+
+    document.cookie =
+        cname + '=' + encodeURIComponent(String(cvalue)) +
+        ';' + expires +
+        ';path=/' +
+        ';SameSite=Lax'
 }
 
-
 export const getCookie = (cname) => {
-    let name = cname + '='
-    let ca = document.cookie.split(';')
+    const name = cname + '='
+    const ca = document.cookie.split(';')
 
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i]
+        while (c.charAt(0) === ' ') c = c.substring(1)
 
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1)
-        }
-
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length)
+        if (c.indexOf(name) === 0) {
+            return decodeURIComponent(c.substring(name.length, c.length))
         }
     }
 
