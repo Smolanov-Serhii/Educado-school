@@ -7,7 +7,7 @@ $soc_links = get_field('header_soc_merezh', 'options');
 ?>
 <div class="ed-socials">
     <?php if ($soc_links['instagram']) : ?>
-        <a href="<?= $soc_links['instagram']; ?>" class="ed-socials__link" target="_blank">
+        <a href="<?= $soc_links['instagram']; ?>" class="ed-socials__link" target="_blank" title="Наш Instagram">
             <svg>
                 <use xlink:href="#ed-svg-instagram"></use>
             </svg>
@@ -15,7 +15,7 @@ $soc_links = get_field('header_soc_merezh', 'options');
     <?php endif; ?>
 
     <?php if ($soc_links['facebook']) : ?>
-        <a href="<?= $soc_links['facebook']; ?>" class="ed-socials__link" target="_blank">
+        <a href="<?= $soc_links['facebook']; ?>" class="ed-socials__link" target="_blank" title="Наш Facebook">
             <svg>
                 <use xlink:href="#ed-svg-facebook"></use>
             </svg>
@@ -23,7 +23,7 @@ $soc_links = get_field('header_soc_merezh', 'options');
     <?php endif; ?>
 
     <?php if ($soc_links['telegram']) : ?>
-        <a href="<?= $soc_links['telegram']; ?>" class="ed-socials__link" target="_blank">
+        <a href="<?= $soc_links['telegram']; ?>" class="ed-socials__link" target="_blank" title="Наш телеграм">
             <svg>
                 <use xlink:href="#ed-svg-telegram"></use>
             </svg>
@@ -31,7 +31,7 @@ $soc_links = get_field('header_soc_merezh', 'options');
     <?php endif; ?>
 
     <?php if ($soc_links['linkedin']) : ?>
-        <a href="<?= $soc_links['linkedin']; ?>" class="ed-socials__link" target="_blank">
+        <a href="<?= $soc_links['linkedin']; ?>" class="ed-socials__link" target="_blank" title="Наш linkedin">
             <svg>
                 <use xlink:href="#ed-svg-linked"></use>
             </svg>

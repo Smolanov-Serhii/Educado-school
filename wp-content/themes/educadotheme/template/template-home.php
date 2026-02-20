@@ -57,8 +57,15 @@
                 </div>
 
                 <div class="banner-world__image">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                         data-src="<?php echo get_template_directory_uri(); ?>/assets/img/world.svg" alt="icon">
+                    <img
+                            src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/world.svg'); ?>"
+                            alt="icon"
+                            width="788"
+                            height="766"
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                    />
                 </div>
             </div>
         </div>

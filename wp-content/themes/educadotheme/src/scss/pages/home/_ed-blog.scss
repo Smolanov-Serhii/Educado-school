@@ -41,8 +41,17 @@
 }
 .popular-posts{
   margin-bottom: 80px;
+  overflow: hidden;
   @media all and (max-width: 768px) {
     margin-bottom: 40px;
+  }
+  .swiper-wrapper{
+    @media all and (max-width: 768px) {
+      flex-direction: column;
+      .popular-post{
+        margin-bottom: 40px;
+      }
+    }
   }
   .thumbnail{
     border-radius: 20px;

@@ -537,26 +537,25 @@ $all_posts_q = new WP_Query($all_posts_args);
     </section>
 </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const el = document.querySelector('.popular-posts__list');
-        if (!el) return;
-
-        new Swiper('.popular-posts__list', {
-            slidesPerView: 2,
-            spaceBetween: 20,
-            speed: 600,
-            loop: false,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                0: { slidesPerView: 1, spaceBetween: 16 },
-                768: { slidesPerView: 2, spaceBetween: 20 }
-            }
-        });
-    });
-</script>
-
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const el = document.querySelector('.popular-posts__list');-->
+<!--        if (!el) return;-->
+<!---->
+<!--        new Swiper('.popular-posts__list', {-->
+<!--            slidesPerView: 2,-->
+<!--            spaceBetween: 20,-->
+<!--            speed: 600,-->
+<!--            loop: false,-->
+<!--            navigation: {-->
+<!--                nextEl: '.swiper-button-next',-->
+<!--                prevEl: '.swiper-button-prev',-->
+<!--            },-->
+<!--            breakpoints: {-->
+<!--                0: { slidesPerView: 1, spaceBetween: 16 },-->
+<!--                768: { slidesPerView: 2, spaceBetween: 20 }-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <?php get_footer(); ?>

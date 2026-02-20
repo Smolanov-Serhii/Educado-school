@@ -10,61 +10,35 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"-->
+<!--    />-->
+<!---->
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>-->
+    <?php if (!current_theme_supports('title-tag')) : ?>
+        <title><?php wp_title(''); ?></title>
+    <?php endif; ?>
+
     <?php wp_head(); ?>
-    <title><?php wp_title()?></title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '794161271856671');
-    fbq('track', 'PageView');
-    fbq('track', 'Contact');
-    </script> 
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=794161271856671&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P3BNBJ4');</script>
-<!-- End Google Tag Manager -->
-    <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <!-- TikTok Pixel Code Start -->
-    <script>
-        !function (w, d, t) {
-            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-                var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-            ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-            ttq.load('COGOMNBC77U9B3UA6340');
-            ttq.page();
-        }(window, document, 'ttq');
-    </script>
-    <!-- TikTok Pixel Code End -->
 </head>
-<body>
+
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3BNBJ4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3BNBJ4"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- Meta Pixel (noscript) -->
+<noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=794161271856671&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel (noscript) -->
 
 <?php $educado_cookie = $_COOKIE['educado'] ?? ''; ?>
 <?php if (!$educado_cookie || $educado_cookie != 1) { ?>
@@ -149,7 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>">
                 </div>
             <?php } else { ?>
-                <a href="<?php echo home_url()?>" class="ed-header-logo">
+                <a href="<?php echo home_url()?>" class="ed-header-logo" title="Логотип школи Educado">
                     <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>">
                 </a>
             <?php } ?>
@@ -161,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 'class' => 'ed-header-menu',
             ));
             ?>
-            <a class="ed-header-contacts__link ed-header-contacts__link-mobile" href="tel:+380674750255">
+            <a class="ed-header-contacts__link ed-header-contacts__link-mobile" href="tel:+380674750255" title="Наш телефон">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="20" cy="20" r="20" fill="#8F8F2D"/>
                     <path d="M31.8866 26.8807C31.8298 26.5298 31.6098 26.2299 31.2803 26.0518L26.4064 23.1801L26.3663 23.1577C26.1619 23.0554 25.9363 23.003 25.7077 23.0047C25.2994 23.0047 24.9094 23.1594 24.6388 23.4307L23.2002 24.8699C23.1387 24.9284 22.9381 25.0131 22.8772 25.0161C22.8606 25.0148 21.2034 24.8954 18.1526 21.8443C15.1072 18.7996 14.978 17.1373 14.977 17.1373C14.9787 17.0523 15.0623 16.8524 15.1218 16.7905L16.3486 15.5641C16.7807 15.131 16.9102 14.4129 16.6539 13.8567L13.9448 8.75904C13.7479 8.35376 13.3654 8.10352 12.9411 8.10352C12.6409 8.10352 12.3512 8.22796 12.1247 8.45406L8.78083 11.7905C8.46021 12.1094 8.18413 12.667 8.12395 13.1158C8.09471 13.3303 7.50141 18.4514 14.5224 25.4734C20.483 31.4333 25.1308 31.8964 26.4143 31.8964C26.5706 31.8984 26.7268 31.8903 26.8821 31.8722C27.3295 31.8124 27.8865 31.537 28.205 31.2177L31.5462 27.8769C31.8189 27.6029 31.9433 27.2408 31.8866 26.8807V26.8807Z" fill="white"/>
@@ -171,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <?php
                 $email = get_field('header_email', 'options');
                 ?>
-                <a class="ed-header-contacts__link" href="tel:+380674750255">
+                <a class="ed-header-contacts__link" href="tel:+380674750255" title="Наш телефон">
                     +38(067)475-02-55
                 </a>
 

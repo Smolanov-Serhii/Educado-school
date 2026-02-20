@@ -272,6 +272,41 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.add("active");
         });
     });
+
+    const el = document.querySelector('.popular-posts__list');
+    if (!el) return;
+
+    let swiperInstance = null;
+
+    function initSwiper() {
+        if (window.innerWidth > 768 && !swiperInstance) {
+            swiperInstance = new Swiper(el, {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                speed: 600,
+                loop: false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    0: { slidesPerView: 1, spaceBetween: 16 },
+                    768: { slidesPerView: 2, spaceBetween: 20 }
+                }
+            });
+        }
+
+        if (window.innerWidth <= 768 && swiperInstance) {
+            swiperInstance.destroy(true, true);
+            swiperInstance = null;
+        }
+    }
+
+// запуск при загрузке
+    initSwiper();
+
+// реакция на ресайз
+    window.addEventListener('resize', initSwiper);
 });
 
 

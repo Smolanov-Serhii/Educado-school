@@ -1,5 +1,6 @@
 import { initPreloader } from './parts/preloader.js'
 import { cookieutm, initUtmAutofill } from './utils/cookie_utm.js'
+import Swiper from 'swiper/bundle'
 import { initLazyLoad } from './utils/lazyLoad.js'
 import { initHeader } from './parts/header.js'
 import { initForms } from './utils/form.js'

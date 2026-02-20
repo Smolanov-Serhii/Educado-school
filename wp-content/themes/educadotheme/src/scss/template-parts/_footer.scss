@@ -10,7 +10,14 @@
     @include screen-sm {
         padding: 20px 0 70px;
     }
-
+    &-top{
+        display: flex;
+        justify-content: space-between;
+        @include screen-sm {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
     .ed-footer-bar {
         width: 100%;
         display: flex;

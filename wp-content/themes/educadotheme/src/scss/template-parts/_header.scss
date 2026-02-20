@@ -266,7 +266,6 @@
     overflow: hidden;
     transition: height .8s;
     transform: translate3d(0, 0, 0);
-
     @include screen-xhl {
         display: flex;
         align-items: center;
@@ -278,6 +277,7 @@
         > ul{
             height: 100%;
             overflow-y: auto;
+            padding-bottom: 60px;
         }
     }
 

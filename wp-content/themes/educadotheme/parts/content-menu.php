@@ -27,6 +27,8 @@ $data = get_fields();
                         array(
                             'theme_location' => 'main-menu',
                             'menu_id'        => 'main-menu',
+                                'container'      => false,
+                            'class' => 'subitem-list'
                         )
                     );
                 } else {
