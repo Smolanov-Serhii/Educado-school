@@ -212,13 +212,19 @@
                                                             <use xlink:href="#ed-svg-half2"></use>
                                                         </svg>
                                                     </div>
-
                                                     <div class="option__title"><?= $subitem['zogolovok']; ?></div>
                                                     <div class="option__cost h4"><?= $subitem['cna']; ?></div>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
                                     </div>
+                                    <?php
+                                    if ($item['mlkij_tekst_opis']){
+                                        ?>
+                                        <span><?= $item['mlkij_tekst_opis']; ?></span>
+                                        <?php
+                                    }
+                                    ?>
                                 </div>
                                 <?php $counter++;?>
                             <?php endforeach; ?>

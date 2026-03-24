@@ -265,13 +265,19 @@
             }
         }
     }
-
+    span{
+        font-size: 14px;
+        margin-bottom: 1em;
+        display: block;
+        @include screen-sm {
+            font-size: 12px;
+        }
+    }
     .accordion-options {
         .option {
             position: relative;
             width: 100%;
             padding-left: 46px;
-
             &:not(:last-child) {
                 margin-bottom: 10px;
             }
