@@ -218,10 +218,11 @@
                                             <?php endforeach; ?>
                                         </div>
                                     </div>
+                                    <span class="accordion-small-desc">* Вартість одного уроку за умови придбання максимального пакета</span>
                                     <?php
                                     if ($item['mlkij_tekst_opis']){
                                         ?>
-                                        <span><?= $item['mlkij_tekst_opis']; ?></span>
+<!--                                        <span class="accordion-small-desc">--><?php //= $item['mlkij_tekst_opis']; ?><!--</span>-->
                                         <?php
                                     }
                                     ?>
