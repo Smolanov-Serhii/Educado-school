@@ -20,6 +20,7 @@ const getUtmFromForm = (form) => {
         utm_source_platform: get('utm_source_platform'),
         utm_creative_format: get('utm_creative_format'),
         utm_marketing_tactic: get('utm_marketing_tactic'),
+        gclid: get('gclid'),
     }
 }
 

@@ -321,12 +321,12 @@ $all_posts_q = new WP_Query([
 
                         <div class="form-row">
                             <input class="form-row__input required" type="text" name="name"
-                                   placeholder="<?php echo $phone_number_text; ?>">
+                                   placeholder="<?php echo $name_text; ?>">
                         </div>
 
                         <div class="form-row">
                             <input class="form-row__input required-phone" type="text" name="phone"
-                                   placeholder="<?php echo $name_text; ?>">
+                                   placeholder="<?php echo $phone_number_text; ?>">
                         </div>
                         <div class="form-row">
                             <div class="form-select">

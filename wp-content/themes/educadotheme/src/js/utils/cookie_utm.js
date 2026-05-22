@@ -13,6 +13,7 @@ const UTM_KEYS = [
     'utm_source_platform',
     'utm_creative_format',
     'utm_marketing_tactic',
+    'gclid',
 ]
 
 // ====== helpers: safe escape for selector ======
