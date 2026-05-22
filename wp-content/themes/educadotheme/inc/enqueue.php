@@ -94,8 +94,8 @@ add_action('wp_enqueue_scripts', function () {
     $css_path = get_template_directory() . $css_rel;
     $js_path  = get_template_directory() . $js_rel;
 
-    $css_ver = file_exists($css_path) ? filemtime($css_path) : null;
-    $js_ver  = file_exists($js_path) ? filemtime($js_path) : null;
+    $css_ver = educado_asset_version($css_path);
+    $js_ver  = educado_asset_version($js_path);
 
     wp_enqueue_style(
             'ed-main',
@@ -113,6 +113,30 @@ add_action('wp_enqueue_scripts', function () {
     );
 
 }, 20);
+
+function educado_asset_version($path)
+{
+    static $versions = [];
+
+    if (isset($versions[$path])) {
+        return $versions[$path];
+    }
+
+    if (!file_exists($path)) {
+        $versions[$path] = wp_get_theme()->get('Version');
+        return $versions[$path];
+    }
+
+    $hash = md5_file($path);
+
+    if ($hash) {
+        $versions[$path] = substr($hash, 0, 12);
+        return $versions[$path];
+    }
+
+    $versions[$path] = filemtime($path);
+    return $versions[$path];
+}
 
 
 /* ============================================================
