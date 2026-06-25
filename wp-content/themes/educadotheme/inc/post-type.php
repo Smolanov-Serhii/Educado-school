@@ -31,7 +31,6 @@ function teachers_init(){
         'menu_icon'          => 'dashicons-groups',
         'supports'           => array('title', 'thumbnail', 'page-attributes')
     ) );
-    flush_rewrite_rules();
 }
 
 
@@ -67,7 +66,6 @@ function courses_init(){
         'menu_icon'          => 'dashicons-book',
         'supports'           => array('title', 'page-attributes')
     ) );
-    flush_rewrite_rules();
 }
 
 
@@ -103,5 +101,11 @@ function reviews_init(){
         'menu_icon'          => 'dashicons-testimonial',
         'supports'           => array('title', 'page-attributes')
     ) );
-    flush_rewrite_rules();
 }
+
+add_action('after_switch_theme', function () {
+    teachers_init();
+    courses_init();
+    reviews_init();
+    flush_rewrite_rules(false);
+});

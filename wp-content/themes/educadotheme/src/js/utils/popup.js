@@ -30,19 +30,14 @@ export const initPopups = () => {
         const popup = document.querySelector('.popup#' + name)
 
         popup && button.addEventListener('click', (e) => {
-            // 1. Проверяем, что у кнопки вообще есть data-item
-            if (button.dataset.item) {
-                const ButtonItem = button.dataset.item
-
-                // 2. Ищем форму внутри попапа
+            // 👉 если на кнопке есть data-item и в попапе есть скрытое поле button_item — пробрасываем значение
+            const item = button.dataset.item
+            if (item) {
                 const form = popup.querySelector('form.form')
                 if (form) {
-                    // 3. Ищем скрытый инпут
                     const hiddenInput = form.querySelector('input[name="button_item"]')
-
-                    // 4. Если поле есть — записываем значение
                     if (hiddenInput) {
-                        hiddenInput.value = `Выбрано: - ${ButtonItem}`
+                        hiddenInput.value = `Кнопка на єлементі: - ${item}`
                     }
                 }
             }

@@ -1,16 +1,15 @@
 <?php
-// Preselect Search & Filter radios on first load
-if (
-        !isset($_GET['_sft_language']) &&
-        !isset($_GET['_sft_vchitel_'])
-) {
-    $url = add_query_arg([
-            '_sft_language' => 'anglijska',
-            '_sft_vchitel_' => 'lokal',
-    ]);
+// Preselect Search & Filter radios without creating a duplicate URL.
+$default_filters = [
+        '_sft_language' => 'anglijska',
+        '_sft_vchitel_' => 'lokal',
+];
 
-    wp_safe_redirect($url);
-    exit;
+foreach ($default_filters as $key => $value) {
+    if (!isset($_GET[$key]) || $_GET[$key] === '') {
+        $_GET[$key] = $value;
+        $_REQUEST[$key] = $value;
+    }
 }
 /**
  * Template Name: Шаблон корпоративу + прайси

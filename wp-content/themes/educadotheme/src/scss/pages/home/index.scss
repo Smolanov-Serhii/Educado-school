@@ -1,6 +1,5 @@
 @import './home-banner';
 @import './home-look';
-@import './ed-blog';
 @import './home-whyus';
 @import './home-founder';
 @import './home-appointment';
@@ -8,42 +7,26 @@
 @import './home-courses';
 @import './home-trial';
 @import './home-start';
-@import './ed-home-proposition';
-@import './taxonomy-language';
 @import './home-classes';
 @import './home-guarantees';
 @import './home-about';
 @import './home-questions';
 @import './home-faq';
 @import './home-trust';
-@import './ed-home-price';
 @import './home-chield';
 @import './menu';
 @import './home-week';
 @import './home-video';
 @import './home-market';
-@import './programs';
-@import './ed-rekimg';
-@import './ed-blogtext';
-@import './page-vacancies';
 body:has(.market-page){
   .ed-header{
     background-color: #FFF;
   }
 }
 .market-page{
-  padding-top: 63px;
+
   background-color: #161616;
   background-image: url("../img/bgmarkst.svg");
   background-repeat: repeat;
   background-size: contain;
-  @media all and (max-width: 768px) {
-    padding-top: 56px;
-  }
-  @media all and (max-width: 500px) {
-    padding-top: 46px;
-  }
-}
-body{
-  overflow-x: hidden;
 }

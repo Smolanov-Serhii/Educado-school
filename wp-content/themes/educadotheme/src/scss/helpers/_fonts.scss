@@ -1,9 +1,11 @@
 
-
 @mixin h1 {
-    @include font(70px, 1.14);
+    // Базовый размер: ограничиваем шрифт между 5vh и 70px
+    font-size: min(3vh, 70px);
+    line-height: 1.14;
     @include font-family($font-title);
 
+    // Адаптивные пересчёты для брейкпоинтов
     @include screen-xxl {
         @include font(50px);
     }
@@ -13,7 +15,9 @@
     }
 
     @include screen-sm {
-        @include font(32px, 37px);
+        // для мелких экранов дополнительно можно ограничить через min()
+        font-size: min(5vh, 32px);
+        line-height: 37px;
     }
 }
 

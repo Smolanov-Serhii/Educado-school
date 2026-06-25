@@ -3,32 +3,22 @@
  * Reviews block
  */
 
-$args = array(
-    'post_type' => 'reviews',
-    'posts_per_page' => -1,
-    'status' => 'publish',
-    'meta_key' => 'data',
-    'orderby' => 'meta_value',
-    'meta_type' => 'DATE'
-);
-
-$reviews = get_posts($args);
+$reviews = function_exists('educado_reviews_items') ? educado_reviews_items() : [];
 ?>
 
 <?php if ($reviews) : ?>
     <div class="about-reviews-list">
         <?php foreach ($reviews as $review) {
-            $id = $review->ID;
-            $rating = get_field('rejting', $id);
+            $rating = (int) ($review['rating'] ?? 0);
             ?>
             <div class="review-card">
                 <div class="review-card__content">
                     <div class="review-card__title">
-                        <div class="review-card__title-name"><?= $review->post_title; ?></div>
-                        <div class="review-card__title-date"><?php the_field('data', $id); ?></div>
+                        <div class="review-card__title-name"><?= esc_html($review['title'] ?? ''); ?></div>
+                        <div class="review-card__title-date"><?= esc_html($review['date'] ?? ''); ?></div>
                     </div>
 
-                    <div class="review-card__course"><?php the_field('pdzagolovok', $id); ?></div>
+                    <div class="review-card__course"><?= esc_html($review['subtitle'] ?? ''); ?></div>
 
                     <div class="review-card__rating">
                         <div class="review-card__rating-stars">
@@ -44,10 +34,10 @@ $reviews = get_posts($args);
                             ?>
                         </div>
 
-                        <div class="review-card__rating-num"><?= $rating; ?></div>
+                        <div class="review-card__rating-num"><?= esc_html($rating); ?></div>
                     </div>
 
-                    <div class="review-card__text"><?php the_field('tekst', $id); ?></div>
+                    <div class="review-card__text"><?= wp_kses_post($review['text'] ?? ''); ?></div>
                 </div>
             </div>
         <?php } ?>
