@@ -1,0 +1,1629 @@
+body:has(.page-vacancies) {
+  .ed-header {
+    background-color: $color-white;
+  }
+}
+
+.page-vacancies {
+  overflow: hidden;
+  background: $color-white;
+  color: $color-base;
+
+  .container {
+    position: relative;
+  }
+}
+
+.vacancies-title {
+  @include font-family($font-title);
+  @include font(70px, 1.18);
+  font-weight: 400;
+  letter-spacing: 0;
+
+  @include screen-xxl {
+    @include font(58px, 1.2);
+  }
+
+  @include screen-xhl {
+    @include font(48px, 1.25);
+  }
+
+  @include screen-sm {
+    @include font(38px, 1.25);
+  }
+}
+
+.vacancies-dark {
+  color: $color-white;
+  background:
+    radial-gradient(circle at 48% 45%, rgba(143, 143, 45, .58) 0, rgba(93, 92, 0, .44) 28%, rgba(0, 0, 0, 0) 56%),
+    $color-black;
+}
+
+.vacancies-hero {
+  position: relative;
+  min-height: 720px;
+  padding: 155px 0 0;
+  color: $color-white;
+  background:
+    radial-gradient(circle at 61% 52%, rgba(143, 143, 45, .72) 0, rgba(93, 92, 0, .42) 32%, rgba(0, 0, 0, 0) 61%),
+    linear-gradient(90deg, $color-black 0%, #111206 55%, $color-black 100%);
+  overflow: hidden;
+
+  @include screen-xxl {
+    min-height: 620px;
+    padding-top: 120px;
+  }
+
+  @include screen-xhl {
+    min-height: 0;
+    padding: 115px 0 70px;
+  }
+
+  @include screen-sm {
+    padding: 92px 0 48px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    align-items: end;
+    min-height: 565px;
+
+    @include screen-xxl {
+      min-height: 500px;
+    }
+
+    @include screen-xhl {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      min-height: 0;
+    }
+  }
+}
+
+.vacancies-hero__content {
+  position: relative;
+  z-index: 4;
+  align-self: center;
+  padding: 0 0 58px;
+
+  @include screen-xxl {
+    padding-bottom: 42px;
+  }
+
+  @include screen-xhl {
+    max-width: 720px;
+    padding-bottom: 0;
+    text-align: center;
+    justify-self: center;
+  }
+}
+
+.vacancies-hero__title {
+  max-width: 650px;
+  margin-bottom: 46px;
+  @include font-family($font-title);
+  @include font(78px, 1.36);
+  font-weight: 400;
+  letter-spacing: 0;
+
+  @include screen-xxl {
+    max-width: 520px;
+    margin-bottom: 34px;
+    @include font(60px, 1.34);
+  }
+
+  @include screen-xhl {
+    max-width: 100%;
+    margin-bottom: 24px;
+    @include font(52px, 1.26);
+  }
+
+  @include screen-sm {
+    @include font(38px, 1.3);
+  }
+}
+
+.vacancies-hero__text {
+  max-width: 520px;
+  @include font(23px, 1.45);
+
+  @include screen-xxl {
+    max-width: 440px;
+    @include font(18px, 1.5);
+  }
+
+  @include screen-xhl {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  @include screen-sm {
+    @include font(16px, 1.5);
+  }
+}
+
+.vacancies-hero__stats {
+  display: grid;
+  gap: 22px;
+  margin: 54px 0 34px;
+
+  @include screen-xxl {
+    gap: 16px;
+    margin: 36px 0 26px;
+  }
+
+  @include screen-xhl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 640px;
+    margin: 32px auto 28px;
+  }
+
+  @include screen-sm {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 260px;
+  }
+}
+
+.vacancies-hero__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  color: $color-green1;
+
+  @include screen-xhl {
+    display: block;
+    text-align: center;
+  }
+
+  span {
+    @include font-family($font-title);
+    @include font(64px, 1);
+
+    @include screen-xxl {
+      @include font(48px, 1);
+    }
+
+    @include screen-sm {
+      @include font(42px, 1);
+    }
+  }
+
+  p {
+    @include font-family($font-title);
+    @include font(42px, 1);
+
+    @include screen-xxl {
+      @include font(32px, 1);
+    }
+
+    @include screen-sm {
+      @include font(28px, 1);
+    }
+  }
+}
+
+.vacancies-hero__button {
+  width: 390px;
+  min-height: 72px;
+  color: $color-white;
+  background: $color-green2;
+
+  @include screen-xxl {
+    width: 320px;
+    min-height: 60px;
+  }
+
+  @include screen-xhl {
+    margin: 0 auto;
+  }
+
+  @include screen-sm {
+    width: 100%;
+  }
+
+  &:hover {
+    background: $color-green1;
+    color: $color-base;
+  }
+}
+
+.vacancies-hero__media {
+  position: relative;
+  z-index: 2;
+  min-height: 590px;
+  align-self: end;
+  overflow: visible;
+
+  @include screen-xxl {
+    min-height: 510px;
+  }
+
+  @include screen-xhl {
+    width: 100%;
+    max-width: 780px;
+    min-height: 520px;
+    justify-self: center;
+  }
+
+  @include screen-sm {
+    min-height: 360px;
+  }
+}
+
+.vacancies-hero__globe-wrap {
+  position: absolute;
+  right: -21%;
+  bottom: -35%;
+  z-index: 1;
+  width: 920px;
+  height: 920px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: .68;
+
+  @include screen-xxl {
+    right: -24%;
+    bottom: -30%;
+    width: 720px;
+    height: 720px;
+  }
+
+  @include screen-xhl {
+    left: 50%;
+    right: auto;
+    bottom: -31%;
+    width: 680px;
+    height: 680px;
+    transform: translateX(-50%);
+  }
+
+  @include screen-sm {
+    bottom: -16%;
+    width: 430px;
+    height: 430px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(1) sepia(.42) hue-rotate(24deg) saturate(1.8);
+  }
+}
+
+.vacancies-hero__team {
+  position: absolute;
+  right: -17%;
+  bottom: -22%;
+  z-index: 3;
+  width: 1080px;
+  max-width: none;
+  height: auto;
+
+  @include screen-xxl {
+    right: -18%;
+    bottom: -16%;
+    width: 820px;
+  }
+
+  @include screen-xhl {
+    left: 50%;
+    right: auto;
+    bottom: -18%;
+    width: 760px;
+    transform: translateX(-50%);
+  }
+
+  @include screen-sm {
+    bottom: -8%;
+    width: 470px;
+  }
+}
+
+.vacancies-teachers {
+  position: relative;
+  padding: 88px 0 0;
+  background: $color-white;
+  overflow: hidden;
+
+  @include screen-xhl {
+    padding-top: 64px;
+  }
+
+  @include screen-sm {
+    padding-top: 46px;
+  }
+}
+
+.vacancies-teachers__title {
+  margin-bottom: 34px;
+  text-align: center;
+
+  @include screen-sm {
+    margin-bottom: 24px;
+  }
+}
+
+.vacancies-teachers__layout {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  align-items: end;
+  min-height: 580px;
+
+  @include screen-xhl {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+}
+
+.vacancies-teachers__content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 0 0 86px;
+
+  @include screen-xhl {
+    max-width: 100%;
+    padding-bottom: 32px;
+  }
+}
+
+.vacancies-teachers__lead {
+  margin-bottom: 30px;
+  color: $color-green2;
+  @include font(22px, 1.45);
+
+  @include screen-sm {
+    margin-bottom: 20px;
+    @include font(17px, 1.5);
+  }
+}
+
+.vacancies-teachers__subtitle {
+  margin-bottom: 28px;
+  @include font(22px, 1.35, 700);
+
+  @include screen-sm {
+    margin-bottom: 20px;
+    @include font(17px, 1.45, 700);
+  }
+}
+
+.vacancies-dot-list {
+  li {
+    position: relative;
+    min-height: 30px;
+    padding-left: 52px;
+    @include font(20px, 1.35);
+
+    @include screen-sm {
+      padding-left: 38px;
+      @include font(16px, 1.45);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 28px;
+
+      @include screen-sm {
+        margin-bottom: 18px;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    &::before {
+      top: 1px;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      border: 2px dashed $color-green1;
+
+      @include screen-sm {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    &::after {
+      top: 10px;
+      left: 9px;
+      width: 10px;
+      height: 10px;
+      background: $color-base;
+
+      @include screen-sm {
+        top: 8px;
+        left: 7px;
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+}
+
+.vacancies-teachers__visual {
+  position: relative;
+  min-height: 445px;
+
+  @include screen-xhl {
+    min-height: 360px;
+  }
+
+  @include screen-sm {
+    min-height: 245px;
+    margin: 0 -10px;
+  }
+
+  img {
+    position: absolute;
+    height: auto;
+  }
+}
+
+.vacancies-teachers__blob {
+  right: -185px;
+  bottom: -250px;
+  z-index: 1;
+  width: 930px;
+  max-width: none;
+
+  @include screen-xhl {
+    right: -155px;
+    bottom: -280px;
+    width: 840px;
+  }
+
+  @include screen-sm {
+    right: -160px;
+    bottom: -205px;
+    width: 560px;
+  }
+}
+
+.vacancies-teachers__person {
+  right: -80px;
+  bottom: -82px;
+  z-index: 2;
+  width: 720px;
+  max-width: none;
+
+  @include screen-xhl {
+    right: -60px;
+    bottom: -98px;
+    width: 640px;
+  }
+
+  @include screen-sm {
+    right: -145px;
+    bottom: -86px;
+    width: 440px;
+  }
+}
+
+.vacancies-hot {
+  padding: 92px 0 102px;
+
+  @include screen-xhl {
+    padding: 68px 0 76px;
+  }
+
+  @include screen-sm {
+    padding: 54px 0 58px;
+  }
+}
+
+.vacancies-hot__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 70px;
+  text-align: center;
+
+  span {
+    font-family: inherit;
+  }
+
+  @include screen-xhl {
+    margin-bottom: 44px;
+  }
+
+  @include screen-sm {
+    gap: 14px;
+  }
+}
+
+.vacancies-hot__icon {
+  display: inline-flex;
+  width: 92px;
+  height: 92px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @include screen-xhl {
+    width: 72px;
+    height: 72px;
+  }
+
+  @include screen-sm {
+    width: 48px;
+    height: 48px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.vacancies-hot__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 78px 62px;
+  width: min(100%, 1290px);
+  margin: 0 auto;
+
+  @include screen-xhl {
+    gap: 30px;
+  }
+
+  @include screen-sm {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.vacancies-hot__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: 18px 32px;
+  border: 4px solid #818000;
+  border-radius: 30px;
+  background: $color-black;
+  color: $color-white;
+  text-align: center;
+  @include font(30px, 1.2);
+  cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s;
+
+  @include screen-xxl {
+    min-height: 82px;
+    @include font(24px, 1.25);
+  }
+
+  @include screen-sm {
+    min-height: 66px;
+    border-width: 2px;
+    border-radius: 22px;
+    @include font(18px, 1.25);
+  }
+
+  &:hover {
+    border-color: $color-green1;
+    background: $color-green1;
+    color: $color-base;
+  }
+}
+
+.vacancies-offer {
+  position: relative;
+  padding: 102px 0 92px;
+  background: $color-white;
+  color: $color-base;
+  overflow: hidden;
+
+  @include screen-xhl {
+    padding: 70px 0 66px;
+  }
+
+  @include screen-sm {
+    padding: 52px 0;
+  }
+}
+
+.vacancies-offer__title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 80px;
+  text-align: left;
+
+  @include screen-xhl {
+    margin-bottom: 46px;
+  }
+}
+
+.vacancies-offer__list {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 58px 86px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  @include screen-xhl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 42px;
+  }
+
+  @include screen-sm {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+.vacancies-offer__item {
+  position: relative;
+  display: block;
+  width: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0 0 0 52px;
+  border-radius: 0;
+  background: transparent;
+  aspect-ratio: auto;
+
+  @include screen-sm {
+    padding-left: 38px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    width: 27px;
+    height: 27px;
+    border: 2px dashed $color-green1;
+
+    @include screen-sm {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &::after {
+    top: 9px;
+    left: 9px;
+    width: 9px;
+    height: 9px;
+    background: $color-base;
+
+    @include screen-sm {
+      top: 7px;
+      left: 7px;
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+.vacancies-offer__text {
+  margin: 0;
+  color: $color-base;
+  @include font(16px, 1.35);
+
+  @include screen-sm {
+    @include font(15px, 1.4);
+  }
+}
+
+.vacancies-offer__doodle {
+  position: absolute;
+  display: none;
+  top: -385px;
+  right: -350px;
+  z-index: 1;
+  width: 760px;
+  opacity: .12;
+  pointer-events: none;
+
+  @include screen-xhl {
+    top: -280px;
+    right: -270px;
+    width: 560px;
+    opacity: .6;
+  }
+
+  @include screen-sm {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.vacancies-steps {
+  position: relative;
+  padding: 72px 0 116px;
+  background:
+    radial-gradient(circle at 50% 69%, rgba(143, 143, 45, .72) 0, rgba(93, 92, 0, .46) 30%, rgba(0, 0, 0, 0) 59%),
+    $color-black;
+
+  @include screen-xhl {
+    padding: 62px 0 76px;
+  }
+
+  @include screen-sm {
+    padding: 48px 0 58px;
+  }
+}
+
+.vacancies-steps__title {
+  margin-bottom: 58px;
+  text-align: center;
+
+  @include screen-xhl {
+    margin-bottom: 36px;
+  }
+}
+
+.vacancies-steps__timeline {
+  position: relative;
+  min-height: 430px;
+  color: $color-green1;
+
+  @include screen-xhl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    min-height: 0;
+    color: $color-base;
+  }
+
+  @include screen-sm {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vacancies-steps__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center 73%;
+
+  @include screen-xhl {
+    display: none;
+  }
+}
+
+.vacancies-steps__point {
+  position: absolute;
+  z-index: 3;
+  color: $color-white;
+
+  @include screen-xhl {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 86px;
+    padding: 18px 20px;
+    border-radius: 26px;
+    background: $color-green1;
+    color: $color-base;
+  }
+
+  span {
+    display: none;
+    width: 52px;
+    height: 52px;
+    border: 5px dashed $color-green1;
+    border-radius: 50%;
+    background: transparent;
+
+    @include screen-xhl {
+      display: block;
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-width: 3px;
+      border-color: $color-green2;
+    }
+  }
+
+  p {
+    position: absolute;
+    width: 220px;
+    @include font(24px, 1.2);
+
+    @include screen-xhl {
+      position: static;
+      width: auto;
+      @include font(19px, 1.3);
+    }
+  }
+}
+
+.vacancies-steps__point--1 {
+  left: 2%;
+  bottom: 66px;
+
+  p {
+    left: -12px;
+    bottom: 70px;
+  }
+}
+
+.vacancies-steps__point--2 {
+  left: 27%;
+  top: 102px;
+
+  p {
+    left: -88px;
+    bottom: 70px;
+    text-align: center;
+  }
+}
+
+.vacancies-steps__point--3 {
+  left: 50%;
+  bottom: 76px;
+
+  p {
+    left: -72px;
+    bottom: 62px;
+    text-align: center;
+  }
+}
+
+.vacancies-steps__point--4 {
+  left: 68%;
+  top: 117px;
+
+  p {
+    left: -70px;
+    bottom: 66px;
+    text-align: center;
+  }
+}
+
+.vacancies-steps__point--5 {
+  right: 5%;
+  bottom: 98px;
+
+  p {
+    right: 62px;
+    bottom: 14px;
+    text-align: right;
+  }
+}
+
+@include screen-md {
+  .vacancies-steps__point--1,
+  .vacancies-steps__point--2,
+  .vacancies-steps__point--3,
+  .vacancies-steps__point--4,
+  .vacancies-steps__point--5 {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    p {
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      text-align: left;
+    }
+  }
+}
+
+.vacancies-steps__flag {
+  position: absolute;
+  top: -20px;
+  right: -18px;
+  width: 360px;
+
+  @include screen-xxl {
+    width: 290px;
+  }
+
+  @include screen-xhl {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.vacancies-referral {
+  padding: 72px 0 54px;
+  background: $color-white;
+  overflow: hidden;
+
+  @include screen-xhl {
+    padding: 62px 0 46px;
+  }
+
+  @include screen-sm {
+    padding: 48px 0 38px;
+  }
+}
+
+.vacancies-referral__title {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.vacancies-referral__layout {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  align-items: end;
+  gap: 34px;
+
+  @include screen-xhl {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vacancies-referral__content {
+  max-width: 870px;
+}
+
+.vacancies-referral__lead {
+  margin-bottom: 36px;
+  @include font(36px, 1.25);
+
+  @include screen-xxl {
+    @include font(28px, 1.3);
+  }
+
+  @include screen-sm {
+    margin-bottom: 24px;
+    @include font(21px, 1.35);
+  }
+}
+
+.vacancies-referral__subtitle,
+.vacancies-courses__subtitle {
+  margin-bottom: 28px;
+  @include font(22px, 1.35, 700);
+
+  @include screen-sm {
+    margin-bottom: 18px;
+    @include font(17px, 1.4, 700);
+  }
+}
+
+.vacancies-check-list {
+  li {
+    position: relative;
+    min-height: 46px;
+    padding-left: 64px;
+    @include font(24px, 1.35);
+
+    @include screen-xxl {
+      @include font(20px, 1.35);
+    }
+
+    @include screen-sm {
+      min-height: 34px;
+      padding-left: 44px;
+      @include font(16px, 1.45);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 26px;
+
+      @include screen-sm {
+        margin-bottom: 18px;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: $color-green1;
+
+      @include screen-sm {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 9px;
+      width: 20px;
+      height: 12px;
+      border-left: 4px solid $color-white;
+      border-bottom: 4px solid $color-white;
+      transform: rotate(-45deg);
+
+      @include screen-sm {
+        top: 8px;
+        left: 7px;
+        width: 15px;
+        height: 9px;
+        border-width: 3px;
+      }
+    }
+  }
+}
+
+.vacancies-referral__visual {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+
+  @include screen-xhl {
+    max-width: 620px;
+    min-height: 270px;
+    margin-left: auto;
+  }
+
+  @include screen-sm {
+    min-height: 190px;
+  }
+
+  img {
+    position: absolute;
+    right: -70px;
+    bottom: -235px;
+    width: 700px;
+    max-width: none;
+    height: auto;
+
+    @include screen-xhl {
+      right: -70px;
+      bottom: -235px;
+      width: 640px;
+    }
+
+    @include screen-sm {
+      right: -90px;
+      bottom: -150px;
+      width: 420px;
+    }
+  }
+}
+
+.vacancies-courses {
+  padding: 92px 0 106px;
+  background:
+    radial-gradient(circle at 76% 48%, rgba(143, 143, 45, .66) 0, rgba(93, 92, 0, .42) 30%, rgba(0, 0, 0, 0) 62%),
+    $color-black;
+  overflow: hidden;
+
+  @include screen-xhl {
+    padding: 70px 0 80px;
+  }
+
+  @include screen-sm {
+    padding: 52px 0 58px;
+  }
+}
+
+.vacancies-courses__title {
+  margin-bottom: 76px;
+  text-align: center;
+
+  @include screen-xhl {
+    margin-bottom: 46px;
+  }
+}
+
+.vacancies-courses__layout {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  align-items: center;
+  gap: 40px;
+
+  @include screen-xhl {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vacancies-courses__card {
+  width: min(100%, 820px);
+  padding: 72px 86px;
+  border-radius: 92px;
+  background: #9A992C;
+  color: $color-white;
+
+  @include screen-xxl {
+    padding: 58px 64px;
+    border-radius: 70px;
+  }
+
+  @include screen-sm {
+    padding: 32px 24px;
+    border-radius: 40px;
+  }
+
+  p {
+    margin-bottom: 30px;
+    @include font(24px, 1.38);
+
+    @include screen-xxl {
+      @include font(20px, 1.4);
+    }
+
+    @include screen-sm {
+      @include font(16px, 1.45);
+    }
+  }
+}
+
+.vacancies-courses__list {
+  margin-bottom: 44px;
+
+  @include screen-sm {
+    margin-bottom: 28px;
+  }
+
+  li {
+    position: relative;
+    padding-left: 32px;
+    @include font(22px, 1.24);
+
+    @include screen-xxl {
+      @include font(18px, 1.3);
+    }
+
+    @include screen-sm {
+      padding-left: 26px;
+      @include font(16px, 1.35);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 20px;
+      height: 12px;
+      border-left: 3px solid $color-white;
+      border-bottom: 3px solid $color-white;
+      transform: rotate(-45deg);
+
+      @include screen-sm {
+        top: 4px;
+        width: 16px;
+        height: 10px;
+      }
+    }
+  }
+}
+
+.vacancies-courses__button {
+  width: min(100%, 520px);
+  min-height: 74px;
+  margin: 0 auto;
+  background: $color-black;
+  color: $color-white;
+
+  @include screen-sm {
+    min-height: 58px;
+  }
+
+  &:hover {
+    background: $color-green1;
+    color: $color-base;
+  }
+}
+
+.vacancies-courses__visual {
+  position: relative;
+  min-height: 590px;
+
+  @include screen-xhl {
+    max-width: 430px;
+    min-height: 440px;
+    margin: 0 auto;
+  }
+
+  @include screen-sm {
+    min-height: 300px;
+  }
+
+  img {
+    position: absolute;
+    right: -110px;
+    bottom: -205px;
+    width: 720px;
+    max-width: none;
+    height: auto;
+
+    @include screen-xhl {
+      right: -150px;
+      bottom: -195px;
+      width: 600px;
+    }
+
+    @include screen-sm {
+      right: -120px;
+      bottom: -132px;
+      width: 410px;
+    }
+  }
+}
+
+.vacancies-faq {
+  position: relative;
+  padding: 64px 0 92px;
+  background:
+    radial-gradient(circle at 11% 25%, rgba(211, 211, 96, .45) 0, rgba(143, 143, 45, .3) 25%, rgba(0, 0, 0, 0) 55%),
+    radial-gradient(circle at 64% 16%, rgba(143, 143, 45, .55) 0, rgba(93, 92, 0, .24) 28%, rgba(0, 0, 0, 0) 61%),
+    $color-black;
+  overflow: hidden;
+
+  @include screen-sm {
+    padding: 50px 0 60px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -40px -15%;
+    background: url("../img/faq-bg.svg") center / cover no-repeat;
+    opacity: .3;
+    pointer-events: none;
+  }
+
+  .container {
+    z-index: 2;
+  }
+
+  .faq-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 44px;
+    color: $color-base;
+    @include font-family($font-title);
+    @include font(64px, 1.1);
+    font-weight: 400;
+
+    @include screen-sm {
+      gap: 10px;
+      margin-bottom: 28px;
+      @include font(42px, 1.15);
+    }
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: $color-green1;
+      @include font-family($font-base);
+      @include font(42px, 1, 700);
+
+      @include screen-sm {
+        width: 32px;
+        height: 32px;
+        @include font(30px, 1, 700);
+      }
+    }
+  }
+
+  .faq-list {
+    width: min(100%, 1380px);
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 14px;
+    background: $color-white;
+    overflow: hidden;
+
+    @include screen-sm {
+      margin-bottom: 12px;
+      border-radius: 12px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .faq-item__header {
+    position: relative;
+    padding: 24px 86px 24px 44px;
+    color: $color-base;
+    @include font(22px, 1.3, 700);
+    cursor: pointer;
+
+    @include screen-sm {
+      padding: 18px 54px 18px 18px;
+      @include font(16px, 1.35, 700);
+    }
+
+    svg {
+      position: absolute;
+      top: calc(50% - 9px);
+      right: 38px;
+      color: $color-green2;
+      transition: transform .3s;
+
+      @include screen-sm {
+        right: 18px;
+        width: 24px;
+        height: auto;
+      }
+    }
+  }
+
+  .faq-item__content {
+    display: none;
+    padding: 0 86px 28px 44px;
+    color: $color-base;
+    @include font(18px, 1.45);
+
+    @include screen-sm {
+      padding: 0 18px 20px;
+      @include font(15px, 1.45);
+    }
+  }
+
+  .faq-item.active {
+    .faq-item__content {
+      display: block;
+    }
+
+    .faq-item__header svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+@media all and (min-width: 767px) and (max-width: 1080px) {
+  .page-vacancies {
+    .vacancies-hero {
+      padding: 118px 0 0;
+
+      .container {
+        grid-template-columns: 42% 58%;
+        gap: 0;
+        align-items: end;
+        min-height: 600px;
+      }
+    }
+
+    .vacancies-hero__content {
+      align-self: center;
+      justify-self: auto;
+      max-width: none;
+      padding-bottom: 42px;
+      text-align: left;
+    }
+
+    .vacancies-hero__title {
+      max-width: 420px;
+      margin-bottom: 28px;
+      @include font(52px, 1.34);
+    }
+
+    .vacancies-hero__text {
+      max-width: 390px;
+      margin: 0;
+      @include font(17px, 1.45);
+    }
+
+    .vacancies-hero__stats {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      max-width: none;
+      margin: 34px 0 24px;
+    }
+
+    .vacancies-hero__stat {
+      display: flex;
+      gap: 14px;
+      text-align: left;
+
+      span {
+        @include font(46px, 1);
+      }
+
+      p {
+        @include font(30px, 1);
+      }
+    }
+
+    .vacancies-hero__button {
+      width: 310px;
+      margin: 0;
+    }
+
+    .vacancies-hero__media {
+      max-width: none;
+      min-height: 585px;
+    }
+
+    .vacancies-hero__globe-wrap {
+      left: auto;
+      right: -62%;
+      bottom: -34%;
+      width: 700px;
+      height: 700px;
+      transform: none;
+    }
+
+    .vacancies-hero__team {
+      left: auto;
+      right: -62%;
+      bottom: -28%;
+      width: 800px;
+      transform: none;
+    }
+
+    .vacancies-teachers__layout {
+      grid-template-columns: 46% 54%;
+      min-height: 560px;
+    }
+
+    .vacancies-teachers__content {
+      max-width: 720px;
+      padding-bottom: 70px;
+    }
+
+    .vacancies-teachers__visual {
+      min-height: 430px;
+    }
+
+    .vacancies-teachers__blob {
+      right: -180px;
+      bottom: -255px;
+      width: 880px;
+    }
+
+    .vacancies-teachers__person {
+      right: -120px;
+      bottom: -96px;
+      width: 650px;
+    }
+
+    .vacancies-offer {
+      .vacancies-offer__list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 44px 48px;
+      }
+    }
+
+    .vacancies-steps__timeline {
+      display: block;
+      min-height: 430px;
+      color: $color-green1;
+    }
+
+    .vacancies-steps__line {
+      display: block;
+    }
+
+    .vacancies-steps__point {
+      position: absolute;
+      display: block;
+      min-height: 0;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: $color-white;
+
+      span {
+        display: none;
+      }
+
+      p {
+        position: absolute;
+        width: 200px;
+        @include font(20px, 1.2);
+      }
+    }
+
+    .vacancies-steps__flag {
+      display: block;
+      width: 260px;
+    }
+
+    .vacancies-referral__layout,
+    .vacancies-courses__layout {
+      grid-template-columns: 58% 42%;
+    }
+
+    .vacancies-referral__visual {
+      min-height: 310px;
+    }
+
+    .vacancies-courses__visual {
+      max-width: none;
+      min-height: 540px;
+    }
+
+    .vacancies-courses__visual img {
+      right: -330px;
+      bottom: -200px;
+      width: 660px;
+    }
+  }
+}
+
+@include screen-sm {
+  .page-vacancies {
+    .vacancies-title,
+    .vacancies-hero__title {
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .vacancies-hero__content {
+      width: 100%;
+      max-width: 100%;
+      justify-self: stretch;
+    }
+
+    .vacancies-hero__title {
+      @include font(34px, 1.28);
+    }
+
+    .vacancies-hero__text {
+      max-width: 330px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vacancies-hero__button {
+      width: calc(100% - 20px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .vacancies-dot-list li,
+    .vacancies-offer__text,
+    .vacancies-check-list li {
+      max-width: 330px;
+    }
+
+    .vacancies-courses__card p,
+    .vacancies-courses__list li {
+      max-width: 300px;
+    }
+  }
+}

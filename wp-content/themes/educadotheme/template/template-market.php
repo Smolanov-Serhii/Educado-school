@@ -77,7 +77,21 @@ $banneronclass = "";
                                         foreach ($items as $item) { ?>
                                             <div class="ed-home-market__item">
                                                 <div class="ed-home-market__item-img">
-                                                    <span class="ed-home-market__item-theme"><?= $item['tematika']; ?></span>
+                                                    <span class="ed-home-market__item-theme">
+                                                        <?php
+                                                            if ($item['tag']){
+                                                                ?>
+                                                                    <span class="ed-home-market__item-tag">
+                                                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                             data-src="<?php echo get_template_directory_uri(); ?>/assets/img/tag.png"
+                                                                             decoding="async" alt="icon">
+                                                                        <?= $item['tag']; ?>
+                                                                    </span>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                        <?= $item['tematika']; ?>
+                                                    </span>
                                                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                                          data-src="<?= $item['zobrazhennya']; ?>"
                                                          decoding="async" alt="<?= $item['tematika']; ?>">
