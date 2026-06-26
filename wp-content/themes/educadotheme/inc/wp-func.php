@@ -542,6 +542,54 @@ add_filter('wp_get_attachment_image_attributes', function ($attr) {
     return $attr;
 }, 10);
 
+function educado_internal_redirect_link_map()
+{
+    return [
+        [home_url('/anhliyska/fnhliyska-mova-z-nosiyem'), home_url('/anhliyska/anhliyska-mova-z-nosiyem/'), true],
+        [home_url('/anhliyska/anglijska-dlya-roboty'), home_url('/anhliyska/anglijska-dlya-roboty/'), false],
+        [home_url('/anhliyska/anglijska-pidhotovka-do-ispytiv'), home_url('/anhliyska/anglijska-pidhotovka-do-ispytiv/'), false],
+        [home_url('/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv'), home_url('/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv/'), false],
+        [home_url('/ispanska/ispanska-dlya-doroslyh'), home_url('/ispanska/ispanska-dlya-doroslyh/'), false],
+        [home_url('/ispanska/ispanska-dlya-ditey-ta-pidlitkiv'), home_url('/ispanska/ispanska-dlya-ditey-ta-pidlitkiv/'), false],
+        [home_url('/magazyn'), home_url('/mahazyn-kursiv-z-ispanskoyi/'), true],
+        [home_url('/language/ispanska/page/1'), home_url('/language/ispanska/'), true],
+    ];
+}
+
+function educado_rewrite_internal_redirect_links($html)
+{
+    if (!is_string($html) || $html === '') {
+        return $html;
+    }
+
+    foreach (educado_internal_redirect_link_map() as $rule) {
+        $from = rtrim((string) ($rule[0] ?? ''), '/');
+        $to = (string) ($rule[1] ?? '');
+        $optional_slash = !empty($rule[2]);
+
+        if ($from === '' || $to === '') {
+            continue;
+        }
+
+        $pattern = '~' . preg_quote($from, '~') . ($optional_slash ? '/?' : '') . '(?=(["\'\s<>#?]|$))~u';
+        $replaced = preg_replace($pattern, $to, $html);
+
+        if (is_string($replaced)) {
+            $html = $replaced;
+        }
+    }
+
+    return $html;
+}
+
+add_action('template_redirect', function () {
+    if (is_admin() || wp_doing_ajax() || is_feed() || is_robots() || is_trackback()) {
+        return;
+    }
+
+    ob_start('educado_rewrite_internal_redirect_links');
+}, 2);
+
 function educado_reviews_cache_key()
 {
     return 'educado_reviews_items_v1';

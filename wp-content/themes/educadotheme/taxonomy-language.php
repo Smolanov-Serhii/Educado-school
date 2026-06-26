@@ -24,15 +24,34 @@ $shown_post_ids = [];
     <section class="ed-blog">
         <div class="container">
             <div class="banner-content">
+                <?php
+                $term_title = '';
+                $term_subtitle = '';
+
+                if ($current_term instanceof WP_Term) {
+                    $term_acf_key = 'term_' . $current_term->term_id;
+                    $term_title = get_field('zagolovok_stornki', $term_acf_key);
+                    $term_subtitle = get_field('pdzagolovok_na_stornku', $term_acf_key);
+                }
+
+                if (!$term_title && $current_term instanceof WP_Term) {
+                    $term_title = $current_term->name;
+                }
+
+                if (!$term_subtitle) {
+                    $term_subtitle = get_field('pdgagolovok_bloku', 1084);
+                }
+                ?>
+
                 <h1 class="banner-title h1">
-                    <?= get_field('zagolovok_bloku', 1084); ?>
+                    <?= esc_html($term_title); ?>
                 </h1>
                 <div class="banner-subtitle h3">
-                    <?= get_field('pdgagolovok_bloku', 1084); ?>
+                    <?= esc_html($term_subtitle); ?>
                 </div>
             </div>
             <div class="banner-world">
-                <img src="<?= get_field('kartinka_dlya_bloku', 1084); ?>" alt="<?= get_field('zagolovok_bloku', 1084); ?>">
+                <img src="<?= esc_url(get_field('kartinka_dlya_bloku', 1084)); ?>" alt="<?= esc_attr($term_title); ?>">
             </div>
         </div>
     </section>
