@@ -1,6 +1,53 @@
 import { EnableScroll } from '../utils/scroll.js'
 
+const formVacanciesSend = (form) => {
+    const status = form.querySelector('[data-vacancies-status]')
+    const submit = form.querySelector('button[type="submit"]')
+
+    if (status) {
+        status.hidden = true
+        status.textContent = ''
+    }
+
+    if (submit) submit.disabled = true
+
+    fetch(form.action || window.location.href, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        body: new FormData(form)
+    })
+        .then(async response => {
+            const result = await response.json().catch(() => null)
+
+            if (!response.ok || !result || !result.success) {
+                const message = result && result.data && result.data.message
+                    ? result.data.message
+                    : 'Не вдалося відправити заявку. Спробуйте ще раз.'
+
+                throw new Error(message)
+            }
+
+            form.reset()
+            formSuccessSubmit(form)
+        })
+        .catch(error => {
+            if (!status) return
+
+            status.textContent = error.message
+            status.hidden = false
+        })
+        .finally(() => {
+            if (submit) submit.disabled = false
+        })
+}
+
 const formAjaxSend = (form) => {
+    if (form.hasAttribute('data-vacancies-form')) {
+        formVacanciesSend(form)
+        return
+    }
+
     const actionInput = form.querySelector('input[name="action"]')
     const urlInput = form.querySelector('input[name="url"]')
     const fields =  form.querySelectorAll('input, textarea')

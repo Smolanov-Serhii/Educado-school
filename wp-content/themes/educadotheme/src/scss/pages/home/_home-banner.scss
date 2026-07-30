@@ -401,4 +401,120 @@
             font-weight: 100;
         }
     }
+    &-vacancies{
+        background-image: url('../img/vacancies/fon-grenn.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        padding-top: 150px;
+        .banner-world{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            max-width: 800px;
+
+            &__responsive-image {
+                width: 100%;
+
+                &--mobile {
+                    display: none;
+                }
+
+                @media all and (max-width: 1080px) {
+                    &--desktop {
+                        display: none;
+                    }
+
+                    &--mobile {
+                        display: block;
+                    }
+                }
+            }
+
+            @media all and (max-width: 1780px) {
+                width: 50%;
+                transform: scale(1);
+            }
+            @media all and (max-width: 1080px) {
+                position: static;
+            }
+            @media all and (max-width: 768px) {
+                width: 90%;
+            }
+        }
+        .banner-title{
+            color: #FFF;
+        }
+        .banner-title{
+            font-size: 70px;
+            line-height: normal;
+            font-weight: 400;
+            @include screen-sm {
+                font-size: 50px;
+            }
+            @media all and (max-width: 500px){
+                font-size: 32px;
+                line-height: 37px;
+            }
+        }
+        .banner-subtitle{
+            font-size: 18px;
+            color: #FFF;
+            @include screen-sm {
+                font-size: 16px;
+                br{
+                    display: none;
+                }
+            }
+            li{
+                display: inline-flex;
+                @media all and (max-width: 1080px) {
+                    display: inline-block;
+                }
+                @media all and (max-width: 500px){
+                    font-size: 16px;
+                    line-height: 2;
+                }
+                &:before{
+                    content: "";
+                    display: inline;
+                    width: 36px;
+                    height: 36px;
+                    background-image: url("../img/li.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    margin-right: 10px;
+                    transform: translateY(6px);
+                    flex-shrink: 0;
+                    @media all and (max-width: 1080px) {
+                        display: inline-block;
+                    }
+                    @include screen-sm {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        .banner-desc{
+            color: #d3d360;
+            font-size: 60px;
+            line-height: normal;
+            font-weight: 400;
+            font-family: "Poiret One";
+            @media all and (max-width: 768px) {
+                font-size: 40px;
+            }
+        }
+        .vacancies-form{
+            background-color: #8f8f2d;
+        }
+        .vacancies-form.button{
+            padding-right: 54px;
+            padding-left: 54px;
+        }
+    }
 }

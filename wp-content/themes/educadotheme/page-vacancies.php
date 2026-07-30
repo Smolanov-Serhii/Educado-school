@@ -1,9 +1,185 @@
 <?php
 /**
- * Template Name: Шаблон платформи
+ * Template Name: Шаблон вакансії
  */
+
+// Окрема адреса для заявок із цієї сторінки.
+$vacancies_recipient_email = 'educadorecruitment@gmail.com';
+
+if (
+    isset($_SERVER['REQUEST_METHOD'])
+    && 'POST' === strtoupper(sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'])))
+    && isset($_POST['vacancies_form_action'])
+    && 'submit' === sanitize_key(wp_unslash($_POST['vacancies_form_action']))
+) {
+    $nonce = isset($_POST['vacancies_nonce'])
+        ? sanitize_text_field(wp_unslash($_POST['vacancies_nonce']))
+        : '';
+
+    if (!wp_verify_nonce($nonce, 'submit_vacancies_form')) {
+        wp_send_json_error(
+            ['message' => 'Сесію форми завершено. Оновіть сторінку та спробуйте ще раз.'],
+            403
+        );
+    }
+
+    // Поле-пастка для автоматичних спам-ботів.
+    $website = isset($_POST['company_website'])
+        ? sanitize_text_field(wp_unslash($_POST['company_website']))
+        : '';
+
+    if ('' !== $website) {
+        wp_send_json_success(['message' => 'Дякуємо! Заявку прийнято.']);
+    }
+
+    $candidate_name = isset($_POST['candidate_name'])
+        ? sanitize_text_field(wp_unslash($_POST['candidate_name']))
+        : '';
+    $candidate_phone = isset($_POST['phone'])
+        ? sanitize_text_field(wp_unslash($_POST['phone']))
+        : '';
+    $candidate_telegram = isset($_POST['telegram'])
+        ? sanitize_text_field(wp_unslash($_POST['telegram']))
+        : '';
+    $vacancy_name = isset($_POST['vacancy'])
+        ? sanitize_text_field(wp_unslash($_POST['vacancy']))
+        : 'Загальна заявка';
+
+    $communication_fields = [
+        'Call' => 'Телефонний дзвінок',
+        'Telegram' => 'Telegram',
+        'Viber' => 'Viber',
+        'Whatsap' => 'WhatsApp',
+    ];
+    $selected_communication = [];
+
+    foreach ($communication_fields as $field_name => $communication_label) {
+        if (isset($_POST[$field_name])) {
+            $selected_communication[] = $communication_label;
+        }
+    }
+
+    $phone_digits = preg_replace('/\D+/', '', $candidate_phone);
+
+    if (strlen(trim($candidate_name)) < 2) {
+        wp_send_json_error(['message' => 'Вкажіть, будь ласка, ваше ім’я.'], 422);
+    }
+
+    if (strlen($phone_digits) < 7) {
+        wp_send_json_error(['message' => 'Вкажіть коректний номер телефону.'], 422);
+    }
+
+    if (!$selected_communication) {
+        $selected_communication[] = 'Не обрано';
+    }
+
+    $tracking_keys = [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_content',
+        'utm_term',
+        'utm_id',
+        'utm_source_platform',
+        'utm_creative_format',
+        'utm_marketing_tactic',
+        'gclid',
+    ];
+    $tracking_data = [];
+
+    foreach ($tracking_keys as $tracking_key) {
+        if (!empty($_POST[$tracking_key])) {
+            $tracking_data[$tracking_key] = sanitize_text_field(
+                wp_unslash($_POST[$tracking_key])
+            );
+        }
+    }
+
+    $visitor_ip = '';
+
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $forwarded_ips = explode(',', wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']));
+        $visitor_ip = sanitize_text_field(trim((string) ($forwarded_ips[0] ?? '')));
+    }
+
+    if (!$visitor_ip && !empty($_SERVER['REMOTE_ADDR'])) {
+        $visitor_ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR']));
+    }
+
+    $visitor_country = '';
+
+    if ($visitor_ip) {
+        $country_response = wp_remote_get(
+            'http://ip-api.com/json/' . rawurlencode($visitor_ip) . '?lang=ru',
+            ['timeout' => 2]
+        );
+
+        if (!is_wp_error($country_response)) {
+            $country_data = json_decode(wp_remote_retrieve_body($country_response), true);
+
+            if (is_array($country_data) && !empty($country_data['country'])) {
+                $visitor_country = sanitize_text_field($country_data['country']);
+            }
+        }
+    }
+
+    $recipient = is_email($vacancies_recipient_email)
+        ? $vacancies_recipient_email
+        : get_option('admin_email');
+
+    if (!is_email($recipient)) {
+        wp_send_json_error(['message' => 'Не налаштовано адресу для отримання заявок.'], 500);
+    }
+
+    $site_name = wp_specialchars_decode(get_bloginfo('name'), ENT_QUOTES);
+    $mail_subject = sprintf(
+        '[%s] Нова заявка на вакансію: %s',
+        $site_name,
+        $vacancy_name ?: 'Загальна заявка'
+    );
+    $tracking_html = '';
+
+    foreach ($tracking_data as $tracking_key => $tracking_value) {
+        $tracking_html .= '<p><strong>' . esc_html($tracking_key) . ':</strong> '
+            . esc_html($tracking_value) . '</p>';
+    }
+
+    if ($tracking_html) {
+        $tracking_html = '<hr><h3>Аналітика</h3>' . $tracking_html;
+    }
+
+    $mail_body = '<h2>Нова заявка зі сторінки вакансій</h2>'
+        . '<p><strong>Ім’я:</strong> ' . esc_html($candidate_name) . '</p>'
+        . '<p><strong>Телефон:</strong> ' . esc_html($candidate_phone) . '</p>'
+        . '<p><strong>Telegram:</strong> ' . esc_html($candidate_telegram ?: 'не вказано') . '</p>'
+        . '<p><strong>Зручний зв’язок:</strong> ' . esc_html(implode(', ', $selected_communication)) . '</p>'
+        . '<p><strong>Вакансія:</strong> ' . esc_html($vacancy_name ?: 'Загальна заявка') . '</p>'
+        . ($visitor_ip ? '<p><strong>IP:</strong> ' . esc_html($visitor_ip) . '</p>' : '')
+        . ($visitor_country ? '<p><strong>Країна:</strong> ' . esc_html($visitor_country) . '</p>' : '')
+        . $tracking_html
+        . '<p><strong>Сторінка:</strong> Вакансії</p>'
+        . '<p><strong>URL:</strong> <a href="' . esc_url(get_permalink()) . '">'
+        . esc_html(get_permalink()) . '</a></p>';
+
+    $mail_sent = wp_mail(
+        $recipient,
+        $mail_subject,
+        $mail_body,
+        ['Content-Type: text/html; charset=UTF-8']
+    );
+
+    if (!$mail_sent) {
+        wp_send_json_error(
+            ['message' => 'Не вдалося відправити заявку. Спробуйте ще раз трохи пізніше.'],
+            500
+        );
+    }
+
+    wp_send_json_success(['message' => 'Дякуємо! Наш HR зв’яжеться з вами.']);
+}
+
+get_header();
 ?>
-<?php get_header(); ?>
 <main class="ed-home vacancies">
     <?php
     $data = get_fields();
@@ -11,21 +187,101 @@
     <section class="ed-home-banner ed-home-banner-vacancies">
         <div class="container">
             <div class="banner-content">
-                <h1 class="banner-title h1"><?= $data['section_1_zagolovok']; ?></h1>
-                <div class="banner-subtitle h3"><?= $data['section_1_pdzagolovok']; ?></div>
-                <div class="button vacancies-form" data-popup="trial">
+                <h1 class="banner-title h1"><?= $data['zagolovok_baneru']; ?></h1>
+                <div class="banner-subtitle h3"><?= $data['pdzagolovok_baneru']; ?></div>
+                <div class="banner-desc"><?= $data['punkti_baneru']; ?></div>
+                <button
+                    type="button"
+                    class="button vacancies-form callpopup"
+                    data-popup="trial"
+                    data-vacancy="Заявка зі сторінки вакансії"
+                    aria-haspopup="dialog"
+                >
                     Заповнити анкету
-                </div>
+                </button>
             </div>
-            <div class="banner-world">
-                <div class="banner-world__image">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                         data-src="<?= $data['kartinka_v_pershij_blok']; ?>" alt="<?= $data['section_1_zagolovok']; ?>">
+            <?php
+            $banner_desktop_image = !empty($data['zobrazhennya_banera_pk'])
+                ? $data['zobrazhennya_banera_pk']
+                : '';
+            $banner_mobile_image = !empty($data['zobrazhennya_banera_mobajl'])
+                ? $data['zobrazhennya_banera_mobajl']
+                : '';
+            $banner_desktop_image = $banner_desktop_image ?: $banner_mobile_image;
+            $banner_mobile_image = $banner_mobile_image ?: $banner_desktop_image;
+            ?>
+            <?php if ($banner_desktop_image || $banner_mobile_image) { ?>
+                <div class="banner-world">
+                    <div class="banner-world__responsive-image banner-world__responsive-image--desktop">
+                        <img
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            data-src="<?= esc_url($banner_desktop_image); ?>"
+                            alt="<?= esc_attr($data['zagolovok_baneru']); ?>"
+                        >
+                    </div>
+                    <div class="banner-world__responsive-image banner-world__responsive-image--mobile">
+                        <img
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                            data-src="<?= esc_url($banner_mobile_image); ?>"
+                            alt="<?= esc_attr($data['zagolovok_baneru']); ?>"
+                        >
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+    <section class="page-vacancy-2">
+        <div class="page-vacancy-2__block">
+            <div class="container">
+                <div class="page-vacancy-2__title h1">
+                    <?= $data['zagolovok_blo2']; ?>
+                </div>
+                <div class="page-vacancy-2__desc">
+                    <?= $data['pdzagolovok_blok_2']; ?>
+                </div>
+                <div class="page-vacancy-2__content">
+                    <?= $data['blok_opisu_bloku_2']; ?>
                 </div>
             </div>
         </div>
+        <div class="page-vacancy-2__bg">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                 data-src="<?= $data['zobrazhennya_bloku_2']; ?>"
+                 class="language__image-active" alt="<?= $data['zagolovok_blo2']; ?>">
+        </div>
     </section>
+    <section class="page-vacancy-3">
+        <div class="page-vacancy-3_block">
+            <div class="container">
+                <div class="page-vacancy-3__title h1">
+                    <?= $data['zagolovok_bloku_garyach_vakans']; ?>
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/vacancies/fire.svg" width="" height="" alt="" />
+                </div>
+                <?php if ($perel = get_field('garyach_vakans_perelk_punktv')) : ?>
+                    <div class="page-vacancy-3__list">
+                        <?php foreach ($perel as $item) : ?>
+                            <?php
+                                if ($item['posilannya_na_vkansyu_yaksho']){
+                                    ?>
+                                    <a href="<?php $item['posilannya_na_vkansyu_yaksho'] ?>" class="page-vacancy-3__item">
+                                        <div class="page-vacancy-3__item-title"><?= $item['nazva_vakans']; ?></div>
+                                    </a>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="page-vacancy-3__item">
+                                        <div class="page-vacancy-3__item-title"><?= $item['nazva_vakans']; ?></div>
+                                    </div>
+                                    <?php
+                                }
+                            ?>
 
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
     <section class="ed-home-courses ed-home-courses-platform">
         <div class="ed-home-courses__bg">
             <svg width="1871" height="352" viewBox="0 0 1871 352" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,83 +368,113 @@
             <?php endif; ?>
         </div>
     </section>
-    <section class="ed-home-week">
-        <div class="ed-home-week__container container">
-            <div class="ed-home-week__title h1">
-                <?= $data['zagolovok_bloku_tvj_tizhden_educado']; ?>
+    <section class="page-vacancy-4">
+        <div class="page-vacancy-4__abs">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                 data-src="<?= $data['zobrazhennya_sprava']; ?>"
+                 class="language__image-active" alt="<?= $data['zaggolovok_bloku_5_krokv_do_dealno_roboti']; ?>">
+        </div>
+        <div class="page-vacancy-4__block">
+            <div class="container">
+                <div class="page-vacancy-4__title h1">
+                    <?= $data['zaggolovok_bloku_5_krokv_do_dealno_roboti']; ?>
+                </div>
             </div>
-            <div class="ed-home-week__picture">
+        </div>
+        <?php
+        $steps_desktop_image = !empty($data['zobrazhennya_krokv_pk'])
+            ? $data['zobrazhennya_krokv_pk']
+            : '';
+        $steps_mobile_image = !empty($data['zobrazhennya_krokv_mob'])
+            ? $data['zobrazhennya_krokv_mob']
+            : '';
+
+        // На production desktop.svg завантажено, але ACF-поле для нього порожнє.
+        if (!$steps_desktop_image && $steps_mobile_image) {
+            $steps_desktop_candidate = preg_replace(
+                '/mobile(\.[a-z0-9]+)$/i',
+                'desktop$1',
+                $steps_mobile_image
+            );
+            $uploads = wp_get_upload_dir();
+
+            if (
+                $steps_desktop_candidate !== $steps_mobile_image
+                && !empty($uploads['baseurl'])
+                && !empty($uploads['basedir'])
+                && 0 === strpos($steps_desktop_candidate, $uploads['baseurl'])
+            ) {
+                $steps_desktop_path = wp_normalize_path(
+                    $uploads['basedir'] . substr(
+                        $steps_desktop_candidate,
+                        strlen($uploads['baseurl'])
+                    )
+                );
+
+                if (is_readable($steps_desktop_path)) {
+                    $steps_desktop_image = $steps_desktop_candidate;
+                }
+            }
+        }
+
+        $steps_default_image = $steps_mobile_image ?: $steps_desktop_image;
+        ?>
+        <div class="page-vacancy-4__bg">
+            <?php if ($steps_default_image) { ?>
                 <picture>
-                    <source srcset="<?= $data['zobrazhennya_bloku_pk']; ?>" media="(min-width: 1024px)" />
-                    <source srcset="<?= $data['zobrazhennya_bloku_planshet']; ?>" media="(min-width: 500px)" />
-                    <img src="<?= $data['zobrazhennya_bloku_mobajl']; ?>" alt="<?= $data['zagolovok_bloku_tvj_tizhden_educado']; ?>" />
+                    <?php if ($steps_desktop_image) { ?>
+                        <source
+                            srcset="<?= esc_url($steps_desktop_image); ?>"
+                            media="(min-width: 500px)"
+                        >
+                    <?php } ?>
+                    <img
+                        src="<?= esc_url($steps_default_image); ?>"
+                        alt="<?= esc_attr($data['zaggolovok_bloku_5_krokv_do_dealno_roboti']); ?>"
+                    >
                 </picture>
-            </div>
+            <?php } ?>
         </div>
     </section>
 
-    <?php if ($sec_languages = $data['lang_movi']) : ?>
-        <section class="ed-home-languages">
-            <div class="languages-ticker">
-                <div class="languages-ticker__wrapper">
-                    <div class="languages-ticker__line">
-                        <?php foreach ($sec_languages as $item) { ?>
-                            <div class="language">
-                                <div class="language__image">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                         data-src="<?= $item['konka']; ?>"
-                                         class="language__image-normal" alt="language-icon">
-
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                         data-src="<?= $item['konka_hover']; ?>"
-                                         class="language__image-active" alt="language-icon">
-                                </div>
-
-                                <div class="technology__title"><?= $item['mova']; ?></div>
-                            </div>
-                        <?php } ?>
-                    </div>
+    <section class="page-vacancy-6">
+        <div class="page-vacancy-6__block">
+            <div class="container">
+                <div class="page-vacancy-6__title h1">
+                    <?= $data['zagolovok_referalna_programa']; ?>
+                </div>
+                <div class="page-vacancy-6__desc">
+                    <?= $data['kontent_referalna_programa']; ?>
+                </div>
+                <div class="page-vacancy-6__bg">
+                    <img src="<?= $data['zobrazhennya_referalna_programa']; ?>" alt="<?= $data['zagolovok_referalna_programa']; ?>" />
                 </div>
             </div>
-
-            <div class="languages-ticker languages-ticker--reverse">
-                <div class="languages-ticker__wrapper">
-                    <div class="languages-ticker__line">
-                        <?php
-                        $reversed_languages = array_reverse($sec_languages);
-                        foreach ($reversed_languages as $item) { ?>
-                            <div class="language">
-                                <div class="language__image">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                         data-src="<?= $item['konka']; ?>"
-                                         class="language__image-normal" alt="language-icon">
-
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                         data-src="<?= $item['konka_hover']; ?>"
-                                         class="language__image-active" alt="language-icon">
-                                </div>
-
-                                <div class="technology__title"><?= $item['mova']; ?></div>
-                            </div>
-                            <?php
-                        }
-                        ?>
-                    </div>
+        </div>
+    </section>
+    <section class="page-vacancy-5">
+        <div class="page-vacancy-5__block">
+            <div class="container">
+                <div class="page-vacancy-5__title h1">
+                    <?= $data['zagolovok_kursi_dlya_vchitelv']; ?>
+                </div>
+                <div class="page-vacancy-5__desc">
+                    <?= $data['kontent_kursi_dlya_vchitelv']; ?>
+                    <div class="button callpopup" data-popup="callback">Детальніше </div>
+                </div>
+                <div class="page-vacancy-5__bg">
+                    <img src="<?= $data['zobrazhennya_kursi_dlya_vchitelv']; ?>" alt="<?= $data['zagolovok_kursi_dlya_vchitelv']; ?>" />
                 </div>
             </div>
-        </section>
-    <?php endif; ?>
-
-    <section class="ed-home-faq">
+        </div>
+    </section>
+    <section class="ed-home-faq block-faq">
         <div class="container">
             <div class="faq-title h1">
-                <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M51.5706 31.6454C43.42 20.2436 45.8237 15.4021 42.0863 6.18706C38.5794 -2.46402 29.8195 1.43857 28.7586 1.94851C27.7008 1.43557 18.947 -2.47302 15.4279 6.17206C11.6784 15.3811 14.076 20.2256 5.91021 31.6184C-2.25253 43.0082 -1.31592 56.0568 7.61672 63.814C15.7007 70.8332 27.4886 70.0203 28.7162 69.9153C29.9407 70.0233 41.7287 70.8512 49.8217 63.841C58.7634 56.0958 59.7182 43.0502 51.5706 31.6484V31.6454Z"
-                          fill="#D3D360"/>
-                    <path d="M51.2886 23.9675L47.904 31.5707H58.5975V32.9933H47.3153L41.1837 46.8753H39.614L45.7456 32.9933H36.6218L30.4901 46.8753H28.9695L35.0521 32.9933H27.1055V31.5707H35.6898L38.9763 23.9675H27.1055V22.545H39.6631L45.0589 10.1836H46.6777L41.2818 22.545H50.3566L55.7525 10.1836H57.3712L51.9754 22.545H58.5975V23.9675H51.2886ZM49.7189 23.9675H40.5951L37.2595 31.5707H46.3343L49.7189 23.9675Z"
-                          fill="#161616"/>
-                    <path d="M51.9767 22.5451L57.3726 10.1833H55.7535L50.3582 22.5451H41.2833L46.6792 10.1833H45.0601L39.6641 22.5451H27.1066V23.9671H38.9777L35.6909 31.5708H27.1066V32.9935H35.0531L28.9707 46.8752H30.4913L36.6229 32.9935H45.7472L39.6155 46.8752H41.1847L47.3164 32.9935H58.599V31.5708H47.9056L51.2896 23.9671H58.599V22.5451H51.9767ZM49.7204 23.9671L46.3357 31.5708H37.2607L40.5962 23.9671H49.7204ZM39.4061 30.1692H45.4255L47.5627 25.3686H41.5125L39.4061 30.1692ZM60.0005 25.3686H52.1998L50.0633 30.1692H60.0005V34.395H48.2299L42.0983 48.2767H37.464L43.5956 34.395H37.5365L31.4042 48.2767H26.8267L32.9091 34.395H25.7051V30.1692H34.7698L36.8454 25.3686H25.7051V21.1436H38.7464L44.1424 8.78174H48.8198L43.4239 21.1436H49.4405L54.8365 8.78174H59.5132L54.118 21.1436H60.0005V25.3686Z"
-                          fill="#161616"/>
+                <svg width="60" height="72" viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M51.2562 33.2392C43.1056 21.8374 45.5092 16.9959 41.7719 7.78089C38.2649 -0.870194 28.545 0.0272379 28.545 0.0272379C28.545 0.0272379 18.6325 -0.879194 15.1134 7.76589C11.3639 16.9749 13.7615 21.8194 5.59576 33.2122C-2.56698 44.602 -1.63037 57.6506 7.30227 65.4078C15.3862 72.4271 27.1741 71.6141 28.4017 71.5091C29.6263 71.6171 41.4142 72.445 49.5072 65.4348C58.449 57.6896 59.4038 44.644 51.2562 33.2422V33.2392Z" fill="#D3D360"/>
+                    <path d="M50.9742 25.5613L47.5895 33.1645H58.2831V34.587H47.0009L40.8693 48.469H39.2996L45.4312 34.587H36.3073L30.1757 48.469H28.655L34.7376 34.587H26.791V33.1645H35.3753L38.6619 25.5613H26.791V24.1387H39.3486L44.7444 11.7773H46.3632L40.9674 24.1387H50.0422L55.438 11.7773H57.0568L51.6609 24.1387H58.2831V25.5613H50.9742ZM49.4045 25.5613H40.2806L36.945 33.1645H46.0198L49.4045 25.5613Z" fill="#161616"/>
+                    <path d="M51.6622 24.1388L57.0582 11.777H55.4391L50.0438 24.1388H40.9688L46.3648 11.777H44.7457L39.3497 24.1388H26.7921V25.5609H38.6633L35.3764 33.1645H26.7921V34.5872H34.7386L28.6563 48.469H30.1769L36.3085 34.5872H45.4327L39.3011 48.469H40.8703L47.0019 34.5872H58.2845V33.1645H47.5911L50.9751 25.5609H58.2845V24.1388H51.6622ZM49.406 25.5609L46.0212 33.1645H36.9463L40.2817 25.5609H49.406ZM39.0917 31.763H45.1111L47.2483 26.9624H41.1981L39.0917 31.763ZM59.686 26.9624H51.8853L49.7488 31.763H59.686V35.9888H47.9155L41.7839 49.8705H37.1495L43.2812 35.9888H37.2221L31.0898 49.8705H26.5122L32.5946 35.9888H25.3906V31.763H34.4553L36.5309 26.9624H25.3906V22.7373H38.432L43.828 10.3755H48.5054L43.1094 22.7373H49.1261L54.522 10.3755H59.1988L53.8035 22.7373H59.686V26.9624Z" fill="#161616"/>
                 </svg>
                 <?= $data['zaglovok_bloku_faq']; ?>
             </div>

@@ -8,6 +8,7 @@ $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
 $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
 $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
 $send_btn_txt = get_field('common_form_data_tekst_knopki_vdpravki_formi', 'options');
+$is_vacancies_page = is_page_template('page-vacancies.php');
 ?>
 <?php
 $data = get_fields();
@@ -58,6 +59,9 @@ $data = get_fields();
             <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>" style="display: none">
             <input type="hidden" name="title" value="Записатися на пробний урок">
             <input type="hidden" name="button_item" value="">
+            <?php if ($is_vacancies_page) { ?>
+                <input type="text" name="Сторінка" value="Вакансії" style="display: none">
+            <?php } ?>
             <?php
                 if ($data['tema_knopki']){
                     ?>
@@ -168,15 +172,37 @@ $data = get_fields();
             <span></span>
         </div>
         <div class="popup-head">
-            <div class="popup-head__title h2"><?php echo $poup_title; ?></div>
-            <div class="popup-head__subtitle"><?php echo $poup_subtitle; ?></div>
+            <div class="popup-head__title h2">
+                <?php echo $is_vacancies_page ? 'Залиш заявку' : $poup_title; ?>
+            </div>
+            <div class="popup-head__subtitle">
+                <?php echo $is_vacancies_page ? 'Наш HR зв’яжеться з тобою' : $poup_subtitle; ?>
+            </div>
         </div>
 
-        <form class="form">
-            <input type="hidden" name="action" value="ed_callback">
-            <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
-            <?php wp_nonce_field('ed_callback'); ?>
-            <input type="hidden" name="title" value="Записатися на пробний урок">
+        <form
+            class="form"
+            <?php if ($is_vacancies_page) { ?>
+                action="<?php echo esc_url(get_permalink()); ?>"
+                method="post"
+                data-vacancies-form
+            <?php } ?>
+        >
+            <?php if ($is_vacancies_page) { ?>
+                <input type="hidden" name="vacancies_form_action" value="submit">
+                <input type="hidden" name="vacancy" value="Загальна заявка">
+                <input type="text" name="company_website" value="" tabindex="-1" autocomplete="off" style="display: none">
+                <?php wp_nonce_field('submit_vacancies_form', 'vacancies_nonce'); ?>
+            <?php } else { ?>
+                <input type="hidden" name="action" value="ed_callback">
+                <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
+                <?php wp_nonce_field('ed_callback'); ?>
+            <?php } ?>
+            <input
+                type="hidden"
+                name="title"
+                value="<?php echo $is_vacancies_page ? 'Заявка зі сторінки вакансій' : 'Записатися на пробний урок'; ?>"
+            >
             <input type="hidden" name="button_item" value="">
             <input type="text" name="utm_source" value="<?php echo $_GET['utm_source']; ?>" style="display: none">
             <input type="text" name="utm_medium" value="<?php echo $_GET['utm_medium']; ?>" style="display: none">
@@ -185,13 +211,29 @@ $data = get_fields();
             <input type="text" name="utm_term" value="<?php echo $_GET['utm_term']; ?>" style="display: none">
 
             <div class="form-row">
-                <input class="form-row__input required" type="text" name="name" placeholder="<?= $name_text; ?>">
+                <input
+                    class="form-row__input required"
+                    type="text"
+                    name="<?= $is_vacancies_page ? 'candidate_name' : 'name'; ?>"
+                    placeholder="<?= $name_text; ?>"
+                >
             </div>
             <div class="form-row">
                 <input class="form-row__input required-phone" type="text" name="phone"
                        placeholder="<?php echo $phone_number_text?>:">
                 <span><?= $enter_success_number; ?></span>
             </div>
+            <?php if ($is_vacancies_page) { ?>
+                <div class="form-row">
+                    <input
+                        class="form-row__input"
+                        type="text"
+                        name="telegram"
+                        placeholder="Введи свій нік в телеграмі (необов’язково)"
+                        autocomplete="off"
+                    >
+                </div>
+            <?php } ?>
             <div class="form-row form-row--title"><?= $convenient_way; ?></div>
 
             <div class="form-row">
@@ -265,6 +307,16 @@ $data = get_fields();
             <div class="form-row">
                 <div class="form-row__agreement"><?= $agreement_txt; ?> <a href="<?= $agreement_link; ?>" target="_blank"><?= $agreement_link_txt; ?></a></div>
             </div>
+
+            <?php if ($is_vacancies_page) { ?>
+                <div
+                    class="form-row form-row--vacancies-status"
+                    data-vacancies-status
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                ></div>
+            <?php } ?>
 
             <div class="form-row form-row--button">
                 <button class="button" type="submit"><?= $button_text; ?></button>
