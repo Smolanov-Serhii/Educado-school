@@ -1,4 +1,5 @@
 import { EnableScroll } from '../utils/scroll.js'
+import { applyUtmToForm } from './cookie_utm.js'
 
 const formVacanciesSend = (form) => {
     const status = form.querySelector('[data-vacancies-status]')
@@ -43,6 +44,8 @@ const formVacanciesSend = (form) => {
 }
 
 const formAjaxSend = (form) => {
+    applyUtmToForm(form)
+
     if (form.hasAttribute('data-vacancies-form')) {
         formVacanciesSend(form)
         return
@@ -60,7 +63,7 @@ const formAjaxSend = (form) => {
         fields && fields.length && fields.forEach(field => {
             if(field.type === 'checkbox' && field.checked == true){
                 data[field.name] = 'Обрано: <br>';
-            } else if(field.type === 'text'){
+            } else if(field.type === 'text' || field.type === 'hidden'){
                 data[field.name] =  field.value.replace(/\n/g, '<br/>');
             }
         })
