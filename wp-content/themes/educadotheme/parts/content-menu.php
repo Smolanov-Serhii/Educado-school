@@ -76,4 +76,7 @@ $data = get_fields();
             <a href="https://educado.school/blog/">Блог</a>
         </li>
     <?php endif; ?>
+    <li>
+        <a href="https://educado.school/vakansiyi/">Вакансії</a>
+    </li>
 </ul>
