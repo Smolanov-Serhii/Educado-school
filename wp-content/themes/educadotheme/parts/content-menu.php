@@ -62,13 +62,13 @@ $data = get_fields();
 
     <?php if ($menu['tekst_reviews']) : ?>
         <li>
-            <a href="#ed-testimonials"><?= $menu['tekst_reviews']; ?></a>
+            <a href="<?= esc_url(home_url('/#ed-testimonials')); ?>"><?= $menu['tekst_reviews']; ?></a>
         </li>
     <?php endif; ?>
 
     <?php if ($menu['tekst_teaches']) : ?>
         <li>
-            <a href="#ed-teachers"><?= $menu['tekst_teaches']; ?></a>
+            <a href="<?= esc_url(home_url('/#ed-teachers')); ?>"><?= $menu['tekst_teaches']; ?></a>
         </li>
     <?php endif; ?>
     <?php if ($menu['tekst_teaches']) : ?>

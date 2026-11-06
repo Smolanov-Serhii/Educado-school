@@ -34,11 +34,11 @@
                 </li>
 
                 <li>
-                    <a class="scroll-lnk" href="#ed-testimonials">Відгуки</a>
+                    <a class="scroll-lnk" href="<?= esc_url(home_url('/#ed-testimonials')); ?>">Відгуки</a>
                 </li>
 
                 <li>
-                    <a class="scroll-lnk" href="#ed-teachers">Вчителі</a>
+                    <a class="scroll-lnk" href="<?= esc_url(home_url('/#ed-teachers')); ?>">Вчителі</a>
                 </li>
                 <li>
                     <a href="<?php echo get_permalink(338)?>">Оферта</a>

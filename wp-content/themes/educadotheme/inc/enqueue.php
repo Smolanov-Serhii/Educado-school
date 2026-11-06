@@ -112,6 +112,15 @@ add_action('wp_enqueue_scripts', function () {
             true
     );
 
+    $home_navigation = '/assets/js/libraries/home-navigation.js';
+    wp_enqueue_script(
+            'ed-home-navigation',
+            get_template_directory_uri() . $home_navigation,
+            ['ed-main'],
+            educado_asset_version(get_template_directory() . $home_navigation),
+            true
+    );
+
 }, 20);
 
 function educado_asset_version($path)
