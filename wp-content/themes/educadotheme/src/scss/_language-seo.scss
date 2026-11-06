@@ -1,0 +1,33 @@
+/* Keep the existing class-driven design when changing semantic elements. */
+:where(.educado-seo-language h2,
+.educado-seo-language h3,
+.educado-seo-language p.look-subtitle,
+.educado-seo-language p.start-step__title) {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.educado-seo-language h3.faq-item__header {
+    font-weight: 600;
+}
+.educado-seo-language .whyus-list {
+    list-style: none;
+    padding-left: 0;
+}
+.educado-seo-language .ed-home-chield__item > h3 {
+    font-size: inherit;
+    line-height: inherit;
+}
+.ed-home-language-beginners {
+    padding: 60px 0;
+}
+.ed-home-language-beginners h2 {
+    margin-bottom: 30px;
+}
+.language-beginners-content {
+    max-width: 75ch;
+}
+@media (max-width: 768px) {
+    .ed-home-language-beginners { padding: 30px 0; }
+    .ed-home-language-beginners h2 { margin-bottom: 20px; }
+}

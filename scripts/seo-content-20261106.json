@@ -1,0 +1,642 @@
+[
+  {
+    "slug": "anhliyska",
+    "id": 773,
+    "template": "template/template-rozvod.php",
+    "updates": {
+      "field_68ef60fe62124": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання англійської мови в EDUCADO"
+      },
+      "field_68ef60fe6223d": {
+        "before": "Наші викладачі",
+        "after": "Викладачі англійської мови"
+      },
+      "field_68ef60fe622e5": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси англійської мови"
+      },
+      "field_68ef60fe62378": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68ef61646d7ed": {
+        "before": "Англійська мова",
+        "after": "Курси англійської мови під вашу мету"
+      },
+      "field_68ef619f6d7f0": {
+        "before": [
+          {
+            "nazva_elementu": "Англійська для дорослих",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anhliyska-dlya-doroslykh/"
+          },
+          {
+            "nazva_elementu": "Андглійська для дітей та підлітків",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv"
+          },
+          {
+            "nazva_elementu": "Підготовка до іспитів з англійської",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anglijska-pidhotovka-do-ispytiv"
+          },
+          {
+            "nazva_elementu": "Англійська з носієм",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/fnhliyska-mova-z-nosiyem"
+          },
+          {
+            "nazva_elementu": "Англійська для роботи ",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anglijska-dlya-roboty"
+          }
+        ],
+        "after": [
+          {
+            "nazva_elementu": "Англійська для дорослих",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anhliyska-dlya-doroslykh/"
+          },
+          {
+            "nazva_elementu": "Англійська для дітей та підлітків",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv"
+          },
+          {
+            "nazva_elementu": "Підготовка до іспитів з англійської",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anglijska-pidhotovka-do-ispytiv"
+          },
+          {
+            "nazva_elementu": "Англійська з носієм",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/fnhliyska-mova-z-nosiyem"
+          },
+          {
+            "nazva_elementu": "Англійська для роботи ",
+            "posilannya_na_stornku": "https://educado.school/anhliyska/anglijska-dlya-roboty"
+          }
+        ]
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси англійської мови",
+      "field_educado_beginner_heading": "Англійська з нуля для початківців",
+      "field_educado_beginner_content": ""
+    }
+  },
+  {
+    "slug": "ispanska",
+    "id": 536,
+    "template": "template/template-rozvod.php",
+    "updates": {
+      "field_68ef60fe62124": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання іспанської мови в EDUCADO"
+      },
+      "field_68ef60fe6223d": {
+        "before": "Наші викладачі",
+        "after": "Викладачі іспанської мови"
+      },
+      "field_68ef60fe622e5": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси іспанської мови"
+      },
+      "field_68ef60fe62378": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68ef61646d7ed": {
+        "before": "Іспанська мова",
+        "after": "Курси іспанської мови під вашу мету"
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси іспанської мови",
+      "field_educado_beginner_heading": "Іспанська мова з нуля для початківців",
+      "field_educado_beginner_content": ""
+    }
+  },
+  {
+    "slug": "frantsuzka",
+    "id": 499,
+    "template": "template/template-language.php",
+    "updates": {
+      "field_68db860253585": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання французької мови в EDUCADO"
+      },
+      "field_68db884a51ae6": {
+        "before": "Наші викладачі",
+        "after": "Викладачі французької мови"
+      },
+      "field_68db8d4d09d56": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси французької мови"
+      },
+      "field_68db8da709d5b": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68df672b4fd21": {
+        "before": " Переваги навчання з нами",
+        "after": "Переваги курсів французької мови онлайн"
+      },
+      "field_68e7c4985724f": {
+        "before": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу французької мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "599 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "489 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "270 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: DELF, DALF, TCF, TEF Canada. 99% наших студентів складають іспити успішно.",
+            "zagolovok_bloku_z_spiskom": "Ціна: ",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "829 грн/55 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "З носіями мови можуть навчатися студенти будь-якого рівня, адже наші вчителі володіють методикою викладання французької як іноземної з нуля. На уроках головний акцент робимо на практиці говоріння, застосовуємо безперекладний метод. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Доступне розтермінування від школи та банків.",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "769 грн /45 хвилин"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають викладачі з досвідом у потрібній для тебе сфері. Ми пропонуємо курси французької за напрямками: бізнес, фінанси, ІТ, медицина, юриспруденція, готельно-ресторанна справа тощо.",
+            "zagolovok_bloku_z_spiskom": "Ціна: ",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "769 грн/45 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ],
+        "after": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу французької мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси французької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "599 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "489 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "270 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: DELF, DALF, TCF, TEF Canada. 99% наших студентів складають іспити успішно.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси французької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "829 грн/55 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "З носіями мови можуть навчатися студенти будь-якого рівня, адже наші вчителі володіють методикою викладання французької як іноземної з нуля. На уроках головний акцент робимо на практиці говоріння, застосовуємо безперекладний метод. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Доступне розтермінування від школи та банків.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси французької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "769 грн /45 хвилин"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають викладачі з досвідом у потрібній для тебе сфері. Ми пропонуємо курси французької за напрямками: бізнес, фінанси, ІТ, медицина, юриспруденція, готельно-ресторанна справа тощо.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси французької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "769 грн/45 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ]
+      },
+      "field_68daacd26c4c0": {
+        "before": "Ціна:",
+        "after": "Ціни на курси французької мови"
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси французької мови"
+    }
+  },
+  {
+    "slug": "nimetska",
+    "id": 487,
+    "template": "template/template-language.php",
+    "updates": {
+      "field_68db860253585": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання німецької мови в EDUCADO"
+      },
+      "field_68db884a51ae6": {
+        "before": "Наші викладачі",
+        "after": "Викладачі німецької мови"
+      },
+      "field_68db8d4d09d56": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси німецької мови"
+      },
+      "field_68db8da709d5b": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68df672b4fd21": {
+        "before": "Переваги навчання з нами",
+        "after": "Переваги курсів німецької мови онлайн"
+      },
+      "field_68e7c4985724f": {
+        "before": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів німецькій мові  будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. \r\n",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "599 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "499 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "260 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: Göthe-Zertifikat, Telc, TestDaF, DTZ, DSH, Goethe-Test PRO Pflege, Fachsprachprüfung / Berufprüfung, ÖIF.  99% наших студентів складають інтеграційний іспит з 1-го разу. Ми пишаємося неймовірними історіями студентів, які всього за 4 місяці підняли свій рівень з A2 до B2 та успішно склали іспит в німецькомовній країні.",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "<p><b>Göthe-Zertifikat, Telc, TestDaF, DTZ, DSH, Goethe-Test PRO Pflege, Fachsprachprüfung/Berufprüfung, ÖIF</b></p>\n<ul>\n<li>Індивідуально :<span style=\"font-weight: 400;\"> 799 грн/55 хв</span></li>\n</ul>\n<p>&nbsp;</p>\n<p><b>Інтеграційний іспит,</b><b> ЄВІ</b><b>, </b><b>НМТ</b><b>, </b><b>ДПА</b></p>\n<ul>\n<li>Індивідуально :<span style=\"font-weight: 400;\"> 699 грн/55 хв</span></li>\n</ul>\n",
+            "kontent_tabi": false,
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають викладачі з досвідом у порібній для тебе сфері. Ми пропонуємо курси німецької за напрямками: сільське господарство, бізнес та фінанси, ІТ, медицина, журналістика, косметологія, ветеринарія, Altenpflege.",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "649 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "549 грн/55 хв (для одного учня)"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ],
+        "after": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів німецькій мові  будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. \r\n",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси німецької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "599 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "499 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "260 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: Göthe-Zertifikat, Telc, TestDaF, DTZ, DSH, Goethe-Test PRO Pflege, Fachsprachprüfung / Berufprüfung, ÖIF.  99% наших студентів складають інтеграційний іспит з 1-го разу. Ми пишаємося неймовірними історіями студентів, які всього за 4 місяці підняли свій рівень з A2 до B2 та успішно склали іспит в німецькомовній країні.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси німецької мови",
+            "pdzagolovok_bloku_z_spiskom": "<p><b>Göthe-Zertifikat, Telc, TestDaF, DTZ, DSH, Goethe-Test PRO Pflege, Fachsprachprüfung/Berufprüfung, ÖIF</b></p>\n<ul>\n<li>Індивідуально :<span style=\"font-weight: 400;\"> 799 грн/55 хв</span></li>\n</ul>\n<p>&nbsp;</p>\n<p><b>Інтеграційний іспит,</b><b> ЄВІ</b><b>, </b><b>НМТ</b><b>, </b><b>ДПА</b></p>\n<ul>\n<li>Індивідуально :<span style=\"font-weight: 400;\"> 699 грн/55 хв</span></li>\n</ul>\n",
+            "kontent_tabi": false,
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають викладачі з досвідом у порібній для тебе сфері. Ми пропонуємо курси німецької за напрямками: сільське господарство, бізнес та фінанси, ІТ, медицина, журналістика, косметологія, ветеринарія, Altenpflege.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси німецької мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "649 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "549 грн/55 хв (для одного учня)"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ]
+      },
+      "field_68daacd26c4c0": {
+        "before": "Ціна:",
+        "after": "Ціни на курси німецької мови"
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси німецької мови",
+      "field_educado_beginner_heading": "Німецька мова з нуля для початківців",
+      "field_educado_beginner_content": ""
+    }
+  },
+  {
+    "slug": "polska",
+    "id": 495,
+    "template": "template/template-language.php",
+    "updates": {
+      "field_68db860253585": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання польської мови в EDUCADO"
+      },
+      "field_68db884a51ae6": {
+        "before": "Наші викладачі",
+        "after": "Викладачі польської мови"
+      },
+      "field_68db8d4d09d56": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси польської мови"
+      },
+      "field_68db8da709d5b": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68df672b4fd21": {
+        "before": "Переваги навчання з нами",
+        "after": "Переваги курсів польської мови онлайн"
+      },
+      "field_68e7c4985724f": {
+        "before": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу польської мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціна: ",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "449 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "419 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "250 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів А1- С1 та підготовки до співбесід на Карту Поляка, Карту Побуту. 99% наших студентів складають іспити успішно.",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "689 грн/55 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "489 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "250 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ],
+        "after": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу польської мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси польської мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "449 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "419 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "250 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів А1- С1 та підготовки до співбесід на Карту Поляка, Карту Побуту. 99% наших студентів складають іспити успішно.",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси польської мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "689 грн/55 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "489 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "250 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ]
+      },
+      "field_68daacd26c4c0": {
+        "before": "Ціна:",
+        "after": "Ціни на курси польської мови"
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси польської мови"
+    }
+  },
+  {
+    "slug": "italiyska",
+    "id": 492,
+    "template": "template/template-language.php",
+    "updates": {
+      "field_68db860253585": {
+        "before": "Особливості навчання",
+        "after": "Як почати навчання італійської мови в EDUCADO"
+      },
+      "field_68db884a51ae6": {
+        "before": "Наші викладачі",
+        "after": "Викладачі італійської мови"
+      },
+      "field_68db8d4d09d56": {
+        "before": "FAQ",
+        "after": "Часті запитання про курси італійської мови"
+      },
+      "field_68db8da709d5b": {
+        "before": "Якщо у тебе залишилися питання, \r\nяк з тобою зв`язатися?",
+        "after": "Залишилися питання? Залиш заявку — ми зв’яжемося з тобою"
+      },
+      "field_68df672b4fd21": {
+        "before": "Переваги навчання з нами",
+        "after": "Переваги курсів італійської мови онлайн"
+      },
+      "field_68e7c4985724f": {
+        "before": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу італійської мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "499 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "399 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "240 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: CILS, CELI, PLIDA A1-C1.  99% наших студентів складають іспити успішно. ",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально: ",
+                "cna": "749 грн/55 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "З носіями мови можуть навчатися студенти будь-якого рівня, адже наші вчителі володіють методикою викладання  італійської як іноземної з нуля. На уроках головний акцент робимо на практиці говоріння, застосовуємо безперекладний метод. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Доступне розтермінування від школи та банків.\r\n",
+            "zagolovok_bloku_z_spiskom": "Ціна:",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально: ",
+                "cna": "699 грн/45 хв "
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ],
+        "after": [
+          {
+            "tekst_tretogo_bloku_in": "Ми навчаємо студентів будь-якого віку з нуля до рівня C1 з акцентом на практику  говоріння з першого заняття. Після курсу італійської мови ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Є розтермінування від школи та банків. ",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси італійської мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально:",
+                "cna": "499 грн/45 хв"
+              },
+              {
+                "zogolovok": "В парах:",
+                "cna": "399 грн/55 хв (для одного учня)"
+              },
+              {
+                "zogolovok": "В групі:",
+                "cna": "240 грн/60 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "Тебе навчають вчителі з досвідом підготовки до іспитів: CILS, CELI, PLIDA A1-C1.  99% наших студентів складають іспити успішно. ",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси італійської мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально: ",
+                "cna": "749 грн/55 хв"
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          },
+          {
+            "tekst_tretogo_bloku_in": "З носіями мови можуть навчатися студенти будь-якого рівня, адже наші вчителі володіють методикою викладання  італійської як іноземної з нуля. На уроках головний акцент робимо на практиці говоріння, застосовуємо безперекладний метод. Після курсу ти впевнено спілкуватимешся на теми, що потрібні в повсякденному житті. Доступне розтермінування від школи та банків.\r\n",
+            "zagolovok_bloku_z_spiskom": "Ціни на курси італійської мови",
+            "pdzagolovok_bloku_z_spiskom": "",
+            "kontent_tabi": [
+              {
+                "zogolovok": "Індивідуально: ",
+                "cna": "699 грн/45 хв "
+              }
+            ],
+            "mlkij_tekst_opis": ""
+          }
+        ]
+      },
+      "field_68daacd26c4c0": {
+        "before": "Ціна:",
+        "after": "Ціни на курси італійської мови"
+      }
+    },
+    "new": {
+      "field_educado_reviews_heading": "Відгуки про курси італійської мови",
+      "field_educado_beginner_heading": "Італійська мова з нуля для початківців",
+      "field_educado_beginner_content": ""
+    }
+  }
+]

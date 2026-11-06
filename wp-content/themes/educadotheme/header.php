@@ -41,7 +41,7 @@
 <!-- End Meta Pixel (noscript) -->
 
 <?php $educado_cookie = $_COOKIE['educado'] ?? ''; ?>
-<?php if (!$educado_cookie || $educado_cookie != 1) { ?>
+<?php if (false && (!$educado_cookie || $educado_cookie != 1)) { /* krasprod 08.10.2026: заставку вимкнено на прохання школи */ ?>
     <div class="ed-preloader" id="ed-preloader">
         <div class="ed-preloader-wrapper">
             <svg class="ed-preloader-logo" viewBox="0 0 119 100" fill="none" xmlns="http://www.w3.org/2000/svg">

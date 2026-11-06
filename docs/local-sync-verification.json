@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-06",
+  "source": "https://educado.school",
+  "local": "https://educado-school.loc",
+  "checked_sha256_files": {
+    "core": 3343,
+    "plugins": 10576,
+    "images": 2531,
+    "theme_mu": 166
+  },
+  "mismatches": [],
+  "production_db_dump_sha256": "3158a8061ffd343082da9f4408ca457cd051c256c2b3c060cfdc33fc2bd42bd6",
+  "menu_sha256": "79ab4374fb85b5a6350de2985bb330d96a650a02db666d2766588a36e8ce792a",
+  "local_web_php": "7.4.33",
+  "local_cli_php": "8.2.30",
+  "production_web_php": "8.2.35",
+  "local_db": "educado_school_prod_20261106",
+  "old_local_db_retained": "educado_school",
+  "historical_h1_restored": true,
+  "seo_styles_in_build_source": true
+}

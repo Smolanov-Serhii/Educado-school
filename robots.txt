@@ -1,0 +1,102 @@
+# robots.txt — educado.school
+# Оновлено: 29.10.2026
+
+# ============================================================
+# 1. Основні правила для всіх роботів (Google, Bing та інші)
+# ============================================================
+User-agent: *
+# Адмінка WordPress (admin-ajax потрібен для форм і динамічних блоків)
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+
+# Внутрішній пошук по сайту
+Disallow: /?s=
+Disallow: /*?s=
+Disallow: /*&s=
+Disallow: /search/
+
+# Службові адреси WordPress, які дублюють контент
+Disallow: /*?replytocom=
+Disallow: /trackback/
+Disallow: /*/trackback/
+Disallow: /feed/
+Disallow: /*/feed/
+Disallow: /comments/feed/
+Disallow: /*?preview=
+Disallow: /*&preview=
+
+# Рекламні та трекінгові мітки (сторінки з мітками — копії основних)
+Disallow: /*?utm_
+Disallow: /*&utm_
+Disallow: /*?gclid=
+Disallow: /*&gclid=
+Disallow: /*?fbclid=
+Disallow: /*&fbclid=
+Disallow: /*?yclid=
+Disallow: /*&yclid=
+
+# CSS, JS і зображення відкриті — без них Google не відмалює сторінку
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/
+Allow: /wp-content/plugins/
+Allow: /wp-includes/*.js
+Allow: /wp-includes/*.css
+
+# ============================================================
+# 2. AI-пошук і AI-асистенти — дозволено
+#    (щоб школу знаходили та цитували ChatGPT, Claude, Perplexity,
+#    Gemini, Copilot). Службові розділи закриті так само, як для всіх.
+# ============================================================
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: CCBot
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-login.php
+Disallow: /*?s=
+Disallow: /*?utm_
+Disallow: /*&utm_
+Allow: /
+
+# ============================================================
+# 3. Роботи без користі для сайту — заборонено
+#    (агресивні скрапери та бази посилань, які лише навантажують сервер)
+# ============================================================
+User-agent: Bytespider
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: PetalBot
+User-agent: SeekportBot
+User-agent: Barkrowler
+User-agent: ImagesiftBot
+Disallow: /
+
+# Яндекс заблоковано в Україні — сканування закрито
+User-agent: Yandex
+User-agent: YandexBot
+User-agent: YandexImages
+User-agent: YandexMobileBot
+Disallow: /
+
+# ============================================================
+# 4. Карта сайту
+# ============================================================
+Sitemap: https://educado.school/sitemap_index.xml
+

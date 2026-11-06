@@ -1,0 +1,30 @@
+[
+  {
+    "font": "70px",
+    "height": 1080,
+    "line": "79.8px",
+    "overflow": false,
+    "width": 1920
+  },
+  {
+    "font": "70px",
+    "height": 720,
+    "line": "79.8px",
+    "overflow": false,
+    "width": 1920
+  },
+  {
+    "font": "50px",
+    "height": 900,
+    "line": "57px",
+    "overflow": false,
+    "width": 1440
+  },
+  {
+    "font": "32px",
+    "height": 844,
+    "line": "37px",
+    "overflow": false,
+    "width": 390
+  }
+]

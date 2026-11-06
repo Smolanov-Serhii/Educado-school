@@ -196,39 +196,8 @@
     }
     &-language{
         position: relative;
-        padding-top: 150px;
-        @media all and (max-width: 1920px){
-            padding-top: 150px;
-        }
-        @media all and (max-width: 1440px){
-            padding-top: 120px;
-        }
-        @media all and (max-width: 1024px){
-            padding-top: 60px;
-        }
         @include screen-sm {
             padding-top: 40px;
-        }
-        .accordion-block__text{
-            ul{
-                list-style: none;
-                padding-left: 46px;
-                li{
-                    position: relative;
-                    &:before{
-                        content: "";
-                        position: absolute;
-                        width: 36px;
-                        height: 36px;
-                        top: 0;
-                        left: -46px;
-                        background-image: url("../img/limon.svg");
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: contain;
-                    }
-                }
-            }
         }
         .ed-home-whyus{
             padding-bottom: 0;
@@ -357,48 +326,6 @@
                 }
                 &:after{
                     top: 0;
-                }
-            }
-        }
-    }
-    &-language__col{
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 60px;
-        @media all and (max-width: 768px){
-            flex-direction: column;
-            align-items: center;
-        }
-        > div{
-            margin-right: 60px;
-            display: flex;
-            align-items: center;
-            @media all and (max-width: 768px){
-                flex-direction: column;
-                align-items: center;
-                margin-right: 0;
-                margin-bottom: 30px;
-            }
-            &:last-child{
-                margin-right: 0;
-            }
-            div{
-                font-size: 44px;
-                color: #818000;
-                margin-right: 20px;
-                font-family: 'Poiret One';
-                @media all and (max-width: 768px){
-                    margin-right: 0;
-                    line-height: normal;
-                }
-
-            }
-            span{
-                color: #818000;
-                font-size: 16px;
-                line-height: normal;
-                @media all and (max-width: 768px){
-                    text-align: center;
                 }
             }
         }

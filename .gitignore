@@ -86,3 +86,35 @@
 /wp-content/plugins/
 /wp-content/temp-write-test-6906603f724293-26298928
 /wp-content/themes/educadotheme/node_modules/
+
+/.gitnexus/
+
+/docs/architecture/gitnexus-index.log
+
+# Keep the scoped SEO additions visible despite the legacy wp-content exclusion.
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/educadotheme/
+/wp-content/themes/educadotheme/*
+!/wp-content/themes/educadotheme/inc/
+/wp-content/themes/educadotheme/inc/*
+!/wp-content/themes/educadotheme/inc/language-seo.php
+!/wp-content/themes/educadotheme/parts/
+/wp-content/themes/educadotheme/parts/*
+!/wp-content/themes/educadotheme/parts/content-language-beginners.php
+!/wp-content/themes/educadotheme/assets/
+/wp-content/themes/educadotheme/assets/*
+!/wp-content/themes/educadotheme/assets/css/
+/wp-content/themes/educadotheme/assets/css/*
+
+# Local runtime files and the environment-gated local WordPress guard.
+/.serena/
+/docs/architecture/FILE_INDEX.json
+!/wp-content/mu-plugins/
+/wp-content/mu-plugins/*
+!/wp-content/mu-plugins/educado-local-environment.php
+!/wp-content/mu-plugins/krasprod-market-images.php
+!/wp-content/mu-plugins/krasprod-search-filter-only-where-used.php
+!/wp-content/mu-plugins/krasprod-sf-chosen-defer.php

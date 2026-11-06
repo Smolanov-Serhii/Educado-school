@@ -73,10 +73,10 @@ $data = get_fields();
     <?php endif; ?>
     <?php if ($menu['tekst_teaches']) : ?>
         <li>
-            <a href="https://educado.school/blog/">Блог</a>
+            <a href="<?= esc_url(home_url('/blog/')); ?>">Блог</a>
         </li>
     <?php endif; ?>
     <li>
-        <a href="https://educado.school/vakansiyi/">Вакансії</a>
+        <a href="<?= esc_url(home_url('/vakansiyi/')); ?>">Вакансії</a>
     </li>
 </ul>

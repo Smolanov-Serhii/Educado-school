@@ -3,8 +3,16 @@
  * Template Name: Шаблон мови
  */
 ?>
-<?php get_header(); ?>
-<main class="ed-home еуіе">
+<?php get_header();
+$seo_headings = educado_has_language_headings();
+$h2 = $seo_headings ? 'h2' : 'div';
+$h3 = $seo_headings ? 'h3' : 'div';
+$paragraph = $seo_headings ? 'p' : 'div';
+$row_tag = $seo_headings ? 'span' : 'div';
+$list_tag = $seo_headings ? 'ul' : 'div';
+$list_item_tag = $seo_headings ? 'li' : 'div';
+?>
+<main class="ed-home еуіе<?= $seo_headings ? ' educado-seo-language' : ''; ?>">
     <?php
     $data = get_fields();
     if ($data['vikoristovuvati_angljsku'] === true) {
@@ -50,21 +58,20 @@
 
     <section class="ed-home-look ed-home-look-language">
         <div class="container">
-            <div class="look-title">
+            <<?= $h2 ?> class="look-title">
                 <?php
                 $sec_2_title = $data['how_stady_zagolovok'];
                 ?>
-                <div class="look-title__row">
+                <<?= $row_tag ?> class="look-title__row">
                     <span><?= $sec_2_title['chastina_1']; ?></span>
-                </div>
+                </<?= $row_tag ?>>
 
-                <div class="look-title__row">
-                    <span><?= $sec_2_title['chastina_2']; ?></span>
-                    <span><?= $sec_2_title['chastina_4']; ?></span>
-                </div>
-            </div>
+                <<?= $row_tag ?> class="look-title__row">
+                    <span><?= $sec_2_title['chastina_2']; ?></span><span><?= $sec_2_title['chastina_4']; ?></span>
+                </<?= $row_tag ?>>
+            </<?= $h2 ?>>
 
-            <div class="look-subtitle h2"><?= $data['how_stady_pdzagolovok']; ?></div>
+            <<?= $paragraph ?> class="look-subtitle h2"><?= $data['how_stady_pdzagolovok']; ?></<?= $paragraph ?>>
 
             <div class="look-button">
                 <div class="button callpopup" data-popup="callback"><?= $data['how_stady_tekst_knopki']; ?></div>
@@ -136,17 +143,17 @@
         </div>
         <div class="ed-home-whyus">
             <div class="container">
-                <div class="ed-home-courses-language__title h1">
+                <<?= $h2 ?> class="ed-home-courses-language__title h1">
                     <?= $data['zagolovok_nad_perelkom']; ?>
-                </div>
+                </<?= $h2 ?>>
                 <?php if ($perel = get_field('perelk_punktv')) : ?>
-                    <div class="whyus-list">
+                    <<?= $list_tag ?> class="whyus-list">
                         <?php foreach ($perel as $item) : ?>
-                            <div class="whyus-list__item">
+                            <<?= $list_item_tag ?> class="whyus-list__item">
                                 <div class="feature-title"><?= $item['tekst_punktu']; ?></div>
-                            </div>
+                            </<?= $list_item_tag ?>>
                         <?php endforeach; ?>
-                    </div>
+                    </<?= $list_tag ?>>
                 <?php endif; ?>
             </div>
 
@@ -197,7 +204,7 @@
                                         <?= $item['tekst_tretogo_bloku_in']; ?>
                                     </div>
                                     <div class="accordion-block">
-                                        <div class="h4"><?= $item['zagolovok_bloku_z_spiskom']; ?></div>
+                                        <<?= $h3 ?> class="h4"><?= $item['zagolovok_bloku_z_spiskom']; ?></<?= $h3 ?>>
                                         <?php if ($item['pdzagolovok_bloku_z_spiskom']){
                                             ?>
                                                 <div class="accordion-block__text"><?= $item['pdzagolovok_bloku_z_spiskom']; ?></div>
@@ -238,7 +245,7 @@
                             </div>
                             <?php $price = get_field('cni') ?>
                             <div class="accordion-block">
-                                <div class="h4"><?= $data['zagolovok_bloku_z_spiskom']; ?></div>
+                                <<?= $h3 ?> class="h4"><?= $data['zagolovok_bloku_z_spiskom']; ?></<?= $h3 ?>>
                                 <?php if ($data['pdzagolovok_bloku_z_spiskom']){
                                     ?>
                                     <strong><?= $data['pdzagolovok_bloku_z_spiskom']; ?></strong>
@@ -350,6 +357,7 @@
             </div>
         </div>
     </section>
+    <?php get_template_part('parts/content-language-beginners'); ?>
     <section class="ed-home-start">
         <div class="start-lines">
             <svg viewBox="0 0 1920 627" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -364,7 +372,7 @@
 
         <div class="start-content">
             <div class="container">
-                <div class="start-title h1"><?= $data['how_start_zagolovok']; ?></div>
+                <<?= $h2 ?> class="start-title h1"><?= $data['how_start_zagolovok']; ?></<?= $h2 ?>>
 
                 <div class="start-steps">
                     <div class="start-step">
@@ -378,7 +386,7 @@
                         </div>
 
                         <div class="start-step__pretitle h4"><?= $how_start_card_1['tekst_1']; ?></div>
-                        <div class="start-step__title h3"><?= $how_start_card_1['tekst_2']; ?></div>
+                        <<?= $h3 ?> class="start-step__title h3"><?= $how_start_card_1['tekst_2']; ?></<?= $h3 ?>>
 
                         <div class="button callpopup"
                              data-popup="callback"><?= $how_start_card_1['tekst_knopki']; ?></div>
@@ -395,14 +403,14 @@
                         </div>
 
                         <div class="start-step__pretitle h4"><?= $how_start_card_2['tekst_1']; ?></div>
-                        <div class="start-step__title h3"><?= $how_start_card_2['tekst_2']; ?></div>
+                        <<?= $h3 ?> class="start-step__title h3"><?= $how_start_card_2['tekst_2']; ?></<?= $h3 ?>>
                     </div>
 
                     <div class="start-step">
                         <?php
                         $how_start_card_3 = $data['how_start_kartka_3'];
                         ?>
-                        <div class="start-step__title h3"><?= $how_start_card_3['zagolovok']; ?></div>
+                        <<?= $paragraph ?> class="start-step__title h3"><?= $how_start_card_3['zagolovok']; ?></<?= $paragraph ?>>
 
                         <div class="start-step__list h5">
                             <?php
@@ -426,7 +434,7 @@
                             ?>
                         </div>
 
-                        <div class="start-step__title h3"><?= $how_start_card_3['tekst']; ?></div>
+                        <<?= $paragraph ?> class="start-step__title h3"><?= $how_start_card_3['tekst']; ?></<?= $paragraph ?>>
                     </div>
                 </div>
             </div>
@@ -488,7 +496,7 @@
     <section class="ed-home-about">
         <div class="container">
             <div class="about-teachers" id="ed-teachers">
-                <div class="about-teachers-title h1"><?= $data['teachers_zagolovok']; ?></div>
+                <<?= $h2 ?> class="about-teachers-title h1"><?= $data['teachers_zagolovok']; ?></<?= $h2 ?>>
 
                 <?php if ($teachers_list = $data['teachers_vikladach']) : ?>
                     <div class="about-teachers-slider swiper">
@@ -516,15 +524,15 @@
             } else {
                 ?>
                     <div class="about-reviews" id="ed-testimonials">
-                        <div class="about-reviews-title h1">
+                        <<?= $h2 ?> class="about-reviews-title h1">
                             <?php
                             if ($data['vikoristovuvati_angljsku']){
                                 echo get_field('what_say_zagolovok_en', 5);
                             } else {
-                                echo get_field('what_say_zagolovok', 5);
+                                echo get_field('seo_reviews_heading') ?: get_field('what_say_zagolovok', 5);
                             }
                             ?>
-                        </div>
+                        </<?= $h2 ?>>
                         <?php
                         /** Reviews block **/
                         get_template_part('parts/content', 'reviews');
@@ -549,7 +557,7 @@
 
     <section class="ed-home-faq">
         <div class="container">
-            <div class="faq-title h1">
+            <<?= $h2 ?> class="faq-title h1">
                 <svg width="60" height="70" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M51.5706 31.6454C43.42 20.2436 45.8237 15.4021 42.0863 6.18706C38.5794 -2.46402 29.8195 1.43857 28.7586 1.94851C27.7008 1.43557 18.947 -2.47302 15.4279 6.17206C11.6784 15.3811 14.076 20.2256 5.91021 31.6184C-2.25253 43.0082 -1.31592 56.0568 7.61672 63.814C15.7007 70.8332 27.4886 70.0203 28.7162 69.9153C29.9407 70.0233 41.7287 70.8512 49.8217 63.841C58.7634 56.0958 59.7182 43.0502 51.5706 31.6484V31.6454Z"
                           fill="#D3D360"/>
@@ -559,13 +567,13 @@
                           fill="#161616"/>
                 </svg>
                 <?= $data['zaglovok_bloku_faq']; ?>
-            </div>
+            </<?= $h2 ?>>
             <div class="faq-list">
                 <?php
                 $faqlist = $data['pitannya_vdpovd_bloku'];
                 foreach ($faqlist as $item) { ?>
                     <div class="faq-item">
-                        <div class="faq-item__header">
+                        <<?= $h3 ?> class="faq-item__header">
                             <?= $item['pitannya']; ?>
                             <svg width="33" height="18" viewBox="0 0 33 18" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -577,7 +585,7 @@
                                 <path d="M16.208 17.4165L23.2791 24.4876L16.208 31.5587L9.13694 24.4876L16.208 17.4165ZM16.208 16.2987L23.2791 23.3698L16.208 30.4408L9.13694 23.3698L16.208 16.2987ZM0.838108 0.928805L-6.23296 7.99987C-2.48205 11.7508 3.59936 11.7508 7.35027 7.99987L0.279202 0.928806L-6.79187 -6.14226C-2.73229 -10.2018 3.8496 -10.2018 7.90918 -6.14226L0.838108 0.928805ZM0.279202 0.928806L7.35027 7.99987C11.1012 4.24897 11.1012 -1.83245 7.35027 -5.58336L0.279203 1.48771L-6.79187 8.55878C-10.8514 4.4992 -10.8514 -2.08268 -6.79187 -6.14226L0.279202 0.928806ZM0.279203 1.48771L7.35027 -5.58336L23.2791 10.3454L16.208 17.4165L9.13694 24.4876L-6.79187 8.55878L0.279203 1.48771ZM16.208 17.4165L9.13694 10.3454L25.0657 -5.58336L32.1368 1.48771L39.2079 8.55878L23.2791 24.4876L16.208 17.4165ZM32.1368 1.48771L25.0657 -5.58336C21.3148 -1.83245 21.3148 4.24897 25.0657 7.99987L32.1368 0.928806L39.2079 -6.14226C43.2675 -2.08268 43.2675 4.4992 39.2079 8.55878L32.1368 1.48771ZM32.1368 0.928806L25.0657 7.99987C28.8167 11.7508 34.8981 11.7508 38.649 7.99987L31.5779 0.928805L24.5068 -6.14226C28.5664 -10.2018 35.1483 -10.2018 39.2079 -6.14226L32.1368 0.928806ZM31.5779 0.928805L38.649 7.99987L23.2791 23.3698L16.208 16.2987L9.13694 9.22764L24.5068 -6.14226L31.5779 0.928805ZM16.208 16.2987L9.13694 23.3698L-6.23296 7.99987L0.838108 0.928805L7.90918 -6.14226L23.2791 9.22764L16.208 16.2987Z"
                                       fill="#858523" mask="url(#path-1-inside-1_1911_16460)"/>
                             </svg>
-                        </div>
+                        </<?= $h3 ?>>
                         <div class="faq-item__content">
                             <?= $item['vdpovd']; ?>
                         </div>
@@ -593,7 +601,7 @@
         <div class="container">
             <div class="questions-wrapper">
                 <div class="questions-form">
-                    <div class="questions-title h1"><?= $data['questions_zagolovok']; ?></div>
+                    <<?= $h2 ?> class="questions-title h1"><?= $data['questions_zagolovok']; ?></<?= $h2 ?>>
                     <div class="questions-subtitle h3"><?= $data['questions_pdzagolovok']; ?></div>
 
                     <form class="form">

@@ -1,0 +1,14 @@
+{
+  "task": "gulp/task/scss.js::scssBuild",
+  "exit_code": 0,
+  "h1_rules": [
+    ".h1{font-size:70px;line-height:1.14;font-family:\"Poiret One\"}",
+    ".h1{font-size:50px}",
+    ".h1{font-size:50px;line-height:58px}",
+    ".h1{font-size:32px;line-height:37px}"
+  ],
+  "seo_rules_emitted": true,
+  "source_reference": "907d2bd",
+  "old_source_change": "90e8657",
+  "old_compiled_change": "bbb80af"
+}

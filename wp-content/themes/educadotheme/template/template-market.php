@@ -93,7 +93,7 @@ $banneronclass = "";
                                                         <?= $item['tematika']; ?>
                                                     </span>
                                                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                         data-src="<?= $item['zobrazhennya']; ?>"
+                                                         data-src="<?= function_exists('educado_krasprod_card_img') ? educado_krasprod_card_img($item['zobrazhennya']) : $item['zobrazhennya']; ?>"
                                                          decoding="async" alt="<?= $item['tematika']; ?>">
                                                 </div>
                                                 <div class="ed-home-market__item-desc">
