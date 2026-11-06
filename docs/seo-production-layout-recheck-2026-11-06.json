@@ -1,0 +1,520 @@
+[
+  {
+    "benefitItems": 0,
+    "canonical": "https://educado.school/anhliyska/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з англійської?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/anhliyska/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "benefitItems": 0,
+    "canonical": "https://educado.school/ispanska/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з іспанської?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/ispanska/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "benefitItems": 6,
+    "benefitList": "UL",
+    "canonical": "https://educado.school/frantsuzka/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з французької?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [
+      "Ціни на курси французької мови",
+      "Ціни на курси французької мови",
+      "Ціни на курси французької мови",
+      "Ціни на курси французької мови"
+    ],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/frantsuzka/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "benefitItems": 6,
+    "benefitList": "UL",
+    "canonical": "https://educado.school/nimetska/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з німецької?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [
+      "Ціни на курси німецької мови",
+      "Ціни на курси німецької мови",
+      "Ціни на курси німецької мови"
+    ],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/nimetska/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "benefitItems": 6,
+    "benefitList": "UL",
+    "canonical": "https://educado.school/polska/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з польської?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [
+      "Ціни на курси польської мови",
+      "Ціни на курси польської мови"
+    ],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/polska/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "benefitItems": 6,
+    "benefitList": "UL",
+    "canonical": "https://educado.school/italiyska/",
+    "faqQuestions": [
+      {
+        "tag": "H3",
+        "text": "Хто вчитель?"
+      },
+      {
+        "tag": "H3",
+        "text": "Який графік занять?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки часу я вчитиму мову?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває пробний урок?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки студентів навчається в групі?"
+      },
+      {
+        "tag": "H3",
+        "text": "Скільки триває онлайн-урок з італійської?"
+      },
+      {
+        "tag": "H3",
+        "text": "Чи видаєте ви сертифікат?"
+      }
+    ],
+    "h1Count": 1,
+    "h1Font": "70px",
+    "nonHeadings": true,
+    "overflow": false,
+    "priceHeadings": [
+      "Ціни на курси італійської мови",
+      "Ціни на курси італійської мови",
+      "Ціни на курси італійської мови"
+    ],
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "url": "/italiyska/",
+    "viewport": 1920,
+    "faq_copy_source": "Final HTTP readback after ACF punctuation fix"
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 5,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/09/course_gbr.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-chield__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/anhliyska/",
+    "viewport": 390
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 2,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/10/course_esp.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-chield__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/ispanska/",
+    "viewport": 390
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 0,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/10/course_fra.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-courses-language__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/frantsuzka/",
+    "viewport": 390
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 0,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/10/course_deu.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-courses-language__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/nimetska/",
+    "viewport": 390
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 0,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/10/course_pol.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-courses-language__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/polska/",
+    "viewport": 390
+  },
+  {
+    "beginnerSection": false,
+    "cardHeadingCount": 0,
+    "faqTags": [
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3",
+      "H3"
+    ],
+    "h1Count": 1,
+    "h1Font": "32px",
+    "heroImages": [
+      {
+        "loaded": true,
+        "src": "https://educado.school/wp-content/uploads/2025/10/course_ita.svg"
+      }
+    ],
+    "overflow": false,
+    "steps": [
+      "H3",
+      "H3",
+      "P",
+      "P"
+    ],
+    "tags": {
+      ".about-reviews-title": "H2",
+      ".about-teachers-title": "H2",
+      ".ed-home-courses-language__title": "H2",
+      ".faq-title": "H2",
+      ".look-subtitle": "P",
+      ".look-title": "H2",
+      ".questions-title": "H2",
+      ".start-title": "H2"
+    },
+    "url": "/italiyska/",
+    "viewport": 390
+  }
+]

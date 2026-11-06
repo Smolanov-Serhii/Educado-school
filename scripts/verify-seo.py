@@ -56,6 +56,17 @@ def check_page(slug):
     ]
     for item in required:
         assert item in headings, (slug, 'missing', item)
+    faq_start = headings.index(['h2', f'Часті запитання про курси {g} мови']) + 1
+    faq_questions = [
+        'Хто вчитель?',
+        'Який графік занять?',
+        'Скільки часу я вчитиму мову?',
+        'Скільки триває пробний урок?',
+        'Скільки студентів навчається в групі?',
+        f'Скільки триває онлайн-урок з {g}?',
+        'Чи видаєте ви сертифікат?',
+    ]
+    assert headings[faq_start:faq_start + 7] == [['h3', text] for text in faq_questions], (slug, 'FAQ copy/order mismatch')
     assert html.count('class="faq-item__header"') == 7
     assert sum(tag == 'h3' and text.endswith('?') for tag, text in headings) == 7
     if slug in ('anhliyska', 'ispanska'):

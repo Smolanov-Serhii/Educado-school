@@ -1,0 +1,13 @@
+{
+  "page_sitemaps": [
+    "https://educado.school/page-sitemap.xml"
+  ],
+  "language_urls_in_sitemap": {
+    "anhliyska": true,
+    "ispanska": true,
+    "frantsuzka": true,
+    "nimetska": true,
+    "polska": true,
+    "italiyska": true
+  }
+}

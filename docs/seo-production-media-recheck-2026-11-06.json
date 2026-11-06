@@ -1,0 +1,68 @@
+{
+  "images_checked": 66,
+  "card_links_checked": 7,
+  "failures": [],
+  "card_links": [
+    {
+      "url": "https://educado.school/anhliyska/anglijska-dlya-roboty/",
+      "status": 200,
+      "final_url": "https://educado.school/anhliyska/anglijska-dlya-roboty/"
+    },
+    {
+      "url": "https://educado.school/anhliyska/anglijska-pidhotovka-do-ispytiv/",
+      "status": 200,
+      "final_url": "https://educado.school/anhliyska/anglijska-pidhotovka-do-ispytiv/"
+    },
+    {
+      "url": "https://educado.school/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv/",
+      "status": 200,
+      "final_url": "https://educado.school/anhliyska/anhliyska-dlya-ditey-ta-pidlitkiv/"
+    },
+    {
+      "url": "https://educado.school/anhliyska/anhliyska-dlya-doroslykh/",
+      "status": 200,
+      "final_url": "https://educado.school/anhliyska/anhliyska-dlya-doroslykh/"
+    },
+    {
+      "url": "https://educado.school/anhliyska/anhliyska-mova-z-nosiyem/",
+      "status": 200,
+      "final_url": "https://educado.school/anhliyska/anhliyska-mova-z-nosiyem/"
+    },
+    {
+      "url": "https://educado.school/ispanska/ispanska-dlya-ditey-ta-pidlitkiv/",
+      "status": 200,
+      "final_url": "https://educado.school/ispanska/ispanska-dlya-ditey-ta-pidlitkiv/"
+    },
+    {
+      "url": "https://educado.school/ispanska/ispanska-dlya-doroslyh/",
+      "status": 200,
+      "final_url": "https://educado.school/ispanska/ispanska-dlya-doroslyh/"
+    }
+  ],
+  "optional_faqpage": [
+    {
+      "slug": "anhliyska",
+      "faqpage_present": true
+    },
+    {
+      "slug": "ispanska",
+      "faqpage_present": true
+    },
+    {
+      "slug": "frantsuzka",
+      "faqpage_present": true
+    },
+    {
+      "slug": "nimetska",
+      "faqpage_present": true
+    },
+    {
+      "slug": "polska",
+      "faqpage_present": true
+    },
+    {
+      "slug": "italiyska",
+      "faqpage_present": true
+    }
+  ]
+}
