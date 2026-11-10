@@ -21,3 +21,5 @@ Production acceptance recorded 2026-11-06 in [the specification audit](../SEO-PR
 Remaining dependency is editorial: beginner content for English, Spanish, German and Italian awaits user-supplied text; Polish requires separate approval. The existing ACF group and conditional template already support publication without new markup or schema changes. Keep the current empty-body guard until content is supplied.
 
 The crawler text files use UTF-8 without BOM and LF. The web root `.htaccess` includes the rules stored in [crawler-charset.conf](../seo-spec/crawler-charset.conf) outside the WordPress-managed block. The rules set the explicit UTF-8 HTTP charset for the two static crawler files. Keep the block when replacing the server-specific `.htaccess`.
+
+The local clone was refreshed again on 2026-11-10. See the [sync record](../LOCAL-PRODUCTION-SYNC-2026-11-06.md#обновление-локальной-копии--2026-11-10) for the active database, rollback target and file verification.
