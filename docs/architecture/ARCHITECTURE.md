@@ -19,3 +19,5 @@ Home-section navigation (2026-11-06): header/mobile `parts/content-menu.php` and
 Production acceptance recorded 2026-11-06 in [the specification audit](../SEO-PRODUCTION-AUDIT-2026-11-06.md): six page outlines, all 42 FAQ titles, FAQPage output, self-canonicals, sitemap membership, crawler files, media and home-section navigation verified. Implementation/recheck commits are `1789fbb`, `c1fe105` and `9b7ff4b`, pushed to `origin/main`.
 
 Remaining dependency is editorial: beginner content for English, Spanish, German and Italian awaits user-supplied text; Polish requires separate approval. The existing ACF group and conditional template already support publication without new markup or schema changes. Keep the current empty-body guard until content is supplied.
+
+The crawler text files use UTF-8 without BOM and LF. The web root `.htaccess` includes the rules stored in [crawler-charset.conf](../seo-spec/crawler-charset.conf) outside the WordPress-managed block. The rules set the explicit UTF-8 HTTP charset for the two static crawler files. Keep the block when replacing the server-specific `.htaccess`.

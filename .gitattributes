@@ -1,0 +1,5 @@
+/robots.txt text eol=lf
+/llms.txt text eol=lf
+/docs/seo-spec/robots.txt text eol=lf
+/docs/seo-spec/llms.txt text eol=lf
+/docs/seo-spec/crawler-charset.conf text eol=lf
