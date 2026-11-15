@@ -1,0 +1,67 @@
+.ed-pricing {
+    padding: 48px;
+    border: 1px solid #999;
+    border-radius: 44px;
+    background: $color-white;
+    color: $color-base;
+
+    [hidden] { display: none !important; }
+    &__header { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-bottom: 36px; }
+    &__title { margin: 0; font: 500 40px/1.2 $font-base; }
+    &__filters { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 40px; border-bottom: 1px solid #999; margin-bottom: 28px; }
+    &__options { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+    &__options legend { float: left; width: auto; padding: 0; margin: 0 12px 0 0; font-size: 16px; color: #505050; }
+    &__choices { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    &__choice { position: relative; cursor: pointer; font-size: 18px; line-height: 1.5; margin: 0; }
+    &__choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    &__choice span { display: block; padding: 12px 2px; border-bottom: 3px solid transparent; color: #595959; }
+    &__choice input:checked + span { border-color: $color-green1; color: $color-base; }
+    &__choice input:focus-visible + span { outline: 2px solid $color-base; outline-offset: 3px; border-radius: 4px; }
+    &__choice:hover span { color: $color-base; }
+    &__options--course { background: #f3f3ef; padding: 5px; border-radius: 36px; }
+    &__options--course legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    &__options--course .ed-pricing__choices { gap: 4px; }
+    &__options--course .ed-pricing__choice span { padding: 12px 20px; border: 0; border-radius: 30px; font-size: 16px; }
+    &__options--course input:checked + span { background: $color-white; box-shadow: 0 2px 4px rgba(0, 0, 0, .12); }
+    &__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    &__card { border: 1px solid #999; border-radius: 28px; padding: 28px; }
+    &__card--best { background: $color-green1; border-color: $color-green1; }
+    &__card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; font-size: 18px; }
+    &__badge { font-size: 13px; }
+    &__price { margin: 30px 0 14px; line-height: 1.2; }
+    &__price strong { font-size: 48px; font-weight: 500; font-variant-numeric: tabular-nums; }
+    &__price span { font-size: 16px; color: #454545; white-space: nowrap; }
+    &__note { font-size: 16px; color: #454545; margin: 0; }
+    &__installments { display: flex; align-items: center; gap: 20px; margin: 30px 0; font-size: 18px; }
+    &__installments img { max-width: 140px; max-height: 48px; width: auto; height: auto; object-fit: contain; }
+    &__installments p, &__bonus { margin: 0; }
+    &__bonus, &__empty { font-size: 16px; line-height: 1.6; color: #454545; }
+    &__form { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 44px; }
+    &__form .form-row { flex: 0 1 320px; margin: 0; }
+    &__form .form-row--button { flex-basis: auto; }
+    &__form .button { width: 100%; font-size: 18px; }
+
+    @media (max-width: 1100px) {
+        padding: 32px;
+        &__header { align-items: flex-start; flex-direction: column; gap: 20px; }
+        &__card { padding: 22px; }
+        &__price strong { font-size: 40px; }
+    }
+    @media (max-width: 700px) {
+        padding: 24px 18px;
+        border-radius: 28px;
+        &__title { font-size: 30px; }
+        &__header { margin-bottom: 24px; }
+        &__filters { flex-direction: column; align-items: stretch; gap: 18px; padding-bottom: 12px; }
+        &__options { display: block; }
+        &__options legend { float: none; margin: 0 0 6px; }
+        &__options--course .ed-pricing__choice span { padding: 10px 12px; }
+        &__choices { gap: 6px 18px; }
+        &__cards { grid-template-columns: 1fr; gap: 12px; }
+        &__price { margin-top: 20px; }
+        &__card-top { font-size: 18px; }
+        &__installments { align-items: flex-start; flex-direction: column; font-size: 16px; }
+        &__form { margin-top: 28px; }
+        &__form .form-row { flex: 1 1 100%; }
+    }
+}

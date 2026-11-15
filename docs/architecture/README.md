@@ -11,3 +11,5 @@ Initialized by the global project-architecture-audit skill. Codex reviews releva
 
 - [Historical heading sizes and build validation](../HEADING-TYPOGRAPHY-2026-11-06.md)
 - [Production specification recheck](../SEO-PRODUCTION-AUDIT-2026-11-06.md)
+
+- [Language pricing v2 and filling guide](../LANGUAGE-PRICING-DESIGN.md)

@@ -23,3 +23,5 @@ Remaining dependency is editorial: beginner content for English, Spanish, German
 The crawler text files use UTF-8 without BOM and LF. The web root `.htaccess` includes the rules stored in [crawler-charset.conf](../seo-spec/crawler-charset.conf) outside the WordPress-managed block. The rules set the explicit UTF-8 HTTP charset for the two static crawler files. Keep the block when replacing the server-specific `.htaccess`.
 
 The local clone was refreshed again on 2026-11-10. See the [sync record](../LOCAL-PRODUCTION-SYNC-2026-11-06.md#обновление-локальной-копии--2026-11-10) for the active database, rollback target and file verification.
+
+Language pricing v2 (local implementation, 2026-11-15) uses inc/language-pricing.php for a template-scoped native ACF group, stable option IDs, combination validation and a production release guard. template-language.php selects the old markup or parts/content-language-pricing.php. Local Polish has twelve blank draft rows and pricing_visual=v2. The source/asset JS pairs use Gulp copy; pricing.scss is a separate native Sass entry alongside style.scss. See [the filling guide and release boundary](../LANGUAGE-PRICING-DESIGN.md).

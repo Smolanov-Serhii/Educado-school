@@ -1,16 +1,16 @@
 {
   "project": "D:\\OSPanel\\home\\educado-school.loc",
   "languages": {
-    "PHP": 7440,
+    "PHP": 7444,
     "HTML": 68,
     "Python": 1,
-    "CSS": 961,
-    "JavaScript": 641,
+    "CSS": 962,
+    "JavaScript": 646,
     "SQL": 6,
     "Shell": 4,
     "TypeScript": 1
   },
-  "files": 9122,
+  "files": 9132,
   "created": [],
   "inventory_truncated": false,
   "index": "not-requested"

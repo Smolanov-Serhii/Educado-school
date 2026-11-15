@@ -158,6 +158,9 @@ $list_item_tag = $seo_headings ? 'li' : 'div';
             </div>
 
         </div>
+        <?php if (educado_pricing_v2_visible()) : ?>
+            <?php get_template_part('parts/content-language-pricing'); ?>
+        <?php else : ?>
         <div class="accordion accordion-language active tabs" id="example-tabs">
             <div class="container">
                 <div class="accordion-body">
@@ -356,6 +359,7 @@ $list_item_tag = $seo_headings ? 'li' : 'div';
                 </div>
             </div>
         </div>
+    <?php endif; ?>
     </section>
     <?php get_template_part('parts/content-language-beginners'); ?>
     <section class="ed-home-start">
