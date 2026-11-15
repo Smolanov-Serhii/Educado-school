@@ -46,7 +46,7 @@ if (educado_has_language_headings()) {
                 <?php if (!empty($settings['banks'])) : ?>
                     <?php echo wp_get_attachment_image((int) $settings['banks'], 'medium', false, ['alt' => 'Банки-партнери розтермінування']); ?>
                 <?php else : ?>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/pricing-banks.svg'); ?>" width="140" height="42" alt="Банки-партнери розтермінування">
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/pricing-banks.png'); ?>" width="410" height="130" alt="Банки-партнери розтермінування">
                 <?php endif; ?>
                 <p><?php echo esc_html($settings['installments']); ?></p>
             </div>
