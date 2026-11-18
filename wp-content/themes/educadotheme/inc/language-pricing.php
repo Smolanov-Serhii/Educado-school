@@ -79,7 +79,7 @@ function educado_pricing_v2_visible() {
     if (isset($_GET['ed_pricing_preview'], $_GET['_wpnonce']) && current_user_can('edit_post', get_the_ID()) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'ed-pricing-' . get_the_ID())) {
         return true;
     }
-    return defined('EDUCADO_PRICING_V2_PUBLIC') && EDUCADO_PRICING_V2_PUBLIC && $model['ready'];
+    return !empty($model['prices']) && !$model['errors'];
 }
 
 add_action('acf/init', function () {
@@ -127,7 +127,7 @@ add_action('acf/init', function () {
         'key' => 'group_educado_pricing', 'title' => 'Блок цін — поточний / Ціни v2', 'menu_order' => -10, 'position' => 'acf_after_title',
         'fields' => [
             ['key' => 'field_edp_visual', 'name' => 'pricing_visual', 'label' => 'Який вигляд блоку використовувати', 'type' => 'select', 'choices' => ['legacy' => 'Поточний блок', 'v2' => 'Ціни v2'], 'default_value' => 'legacy',
-                'instructions' => 'На проді новий блок закритий для відвідувачів до окремого випуску. Виберіть «Ціни v2», щоб відкрити поля для заповнення. Поточні ціни зберігаються у старих полях.'],
+                'instructions' => 'Виберіть «Ціни v2» та заповніть хоча б одну комбінацію зі станом «Ціни заповнено» — новий блок з’явиться на сайті автоматично після збереження сторінки. Незаповнені варіанти показують повідомлення про недоступність. Якщо готових цін ще немає, відвідувачі бачать поточний блок.'],
             ['key' => 'field_edp_pricing_v2', 'name' => 'pricing_v2', 'label' => 'Налаштування Ціни v2', 'type' => 'group', 'layout' => 'block', 'sub_fields' => $fields,
                 'conditional_logic' => [[['field' => 'field_edp_visual', 'operator' => '==', 'value' => 'v2']]]],
         ],
