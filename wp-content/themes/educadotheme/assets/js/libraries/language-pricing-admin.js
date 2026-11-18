@@ -1,7 +1,7 @@
 (function ($, acf) {
     'use strict';
     if (!acf) return;
-    var dimensions = ['course', 'duration', 'level'];
+    var dimensions = window.educadoPricingAdmin.dimensions || ['course', 'duration', 'level'];
     var busy = false;
 
     function fieldInput($row, name) {
@@ -22,7 +22,8 @@
             lists[dimension] = [];
             var seen = new Set();
             var field = acf.getField('field_edp_' + dimension + '_options');
-            if (!field) return;
+            var enabled = acf.getField('field_edp_' + dimension + '_enabled');
+            if (!field || (enabled && !enabled.$el.find('input[type="checkbox"]').prop('checked'))) return;
             field.$rows().each(function () {
                 var $row = $(this);
                 var $id = fieldInput($row, dimension + '_id');
@@ -42,6 +43,9 @@
         busy = true;
         var lists = options();
         table.$el.addClass('edp-price-table');
+        dimensions.forEach(function (dimension) {
+            table.$el.find('[data-key="field_edp_' + dimension + '_ref"]').toggle(lists[dimension].length > 0);
+        });
         table.$rows().each(function () {
             var $row = $(this);
             dimensions.forEach(function (dimension) {
@@ -54,7 +58,7 @@
                 if (current && !lists[dimension].some(function (option) { return option.id === current; })) {
                     $select.append(new Option('Видалений варіант — ціни збережено', current));
                 }
-                $select.val(current || '');
+                $select.val(current || (dimension === 'format' && lists.format.length ? lists.format[0].id : ''));
             });
         });
         var $tools = table.$el.children('.edp-tools');
@@ -63,7 +67,7 @@
             table.$el.children('.acf-label').after($tools);
             $tools.find('button').on('click', generate);
         }
-        var expected = lists.course.length * lists.duration.length * lists.level.length;
+        var expected = dimensions.filter(function (d) { return lists[d].length; }).reduce(function (count, d) { return count * lists[d].length; }, 1);
         $tools.find('p').text('Варіантів комбінацій: ' + expected + '. Цін для заповнення: ' + expected * 3 + '. Введені ціни зберігаються під час перейменування та зміни порядку.');
         busy = false;
     }
@@ -72,35 +76,42 @@
         refresh();
         var lists = options();
         var table = acf.getField('field_edp_price_rows');
+        var active = dimensions.filter(function (d) { return lists[d].length; });
         var existing = new Set();
         table.$rows().each(function () {
             var $row = $(this);
-            existing.add(dimensions.map(function (dimension) { return fieldInput($row, dimension + '_ref').val(); }).join('|'));
+            existing.add(active.map(function (dimension) { return fieldInput($row, dimension + '_ref').val(); }).join('|'));
         });
-        var missing = [];
-        lists.course.forEach(function (course) {
-            lists.level.forEach(function (level) {
-                lists.duration.forEach(function (duration) {
-                    var values = [course.id, duration.id, level.id];
-                    if (!existing.has(values.join('|'))) missing.push(values);
+        var combinations = [{}];
+        active.forEach(function (dimension) {
+            var expanded = [];
+            combinations.forEach(function (combination) {
+                lists[dimension].forEach(function (option) {
+                    var next = Object.assign({}, combination);
+                    next[dimension] = option.id;
+                    expanded.push(next);
                 });
             });
+            combinations = expanded;
+        });
+        var missing = combinations.filter(function (combination) {
+            return !existing.has(active.map(function (d) { return combination[d]; }).join('|'));
         });
         var limit = Number(window.educadoPricingAdmin && window.educadoPricingAdmin.inputLimit);
         var inputCount = $('#post').serializeArray().length;
-        if (limit > 0 && inputCount + missing.length * 8 + 100 > limit) {
+        if (limit > 0 && inputCount + missing.length * (dimensions.length + 5) + 100 > limit) {
             table.$el.find('.edp-tools p').text('Для цієї кількості комбінацій потрібно збільшити max_input_vars на сервері. Зверніться до розробника. Наявні ціни збережено.');
             return;
         }
         busy = true;
         missing.forEach(function (values) {
             var $row = table.add();
-            dimensions.forEach(function (dimension, index) {
+            active.forEach(function (dimension) {
                 var $select = fieldInput($row, dimension + '_ref');
                 lists[dimension].forEach(function (option) {
                     $select.append(new Option(option.label, option.id));
                 });
-                $select.val(values[index]);
+                $select.val(values[dimension]);
             });
         });
         busy = false;
@@ -112,7 +123,7 @@
     acf.addAction('append', refresh);
     acf.addAction('remove', function () { window.setTimeout(refresh, 0); });
     acf.addAction('sortstop', refresh);
-    $(document).on('input change', '[data-key^="field_edp_"][data-key$="_label"] input', refresh);
+    $(document).on('input change', '[data-key^="field_edp_"][data-key$="_label"] input, [data-key^="field_edp_"][data-key$="_enabled"] input', refresh);
     acf.addFilter('validation_complete', function (result, $form) {
         var limit = Number(window.educadoPricingAdmin && window.educadoPricingAdmin.inputLimit);
         if (acf.getField('field_edp_price_rows') && limit > 0 && $form.serializeArray().length + 50 > limit) {

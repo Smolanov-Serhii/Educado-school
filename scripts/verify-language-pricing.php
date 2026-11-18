@@ -55,4 +55,47 @@ foreach ($value as $name => $rows) {
 }
 pricing_check(educado_pricing_model($post)['prices'] === $model['prices'], 'Native ACF POST keys not supported');
 pricing_check(!educado_pricing_model([])['ready'], 'Empty group marked ready');
-echo 'PASS: 12 combinations, stable references, drafts, deletion, duplicates, availability, decimal prices and native ACF POST keys.' . PHP_EOL;
+
+$acf_empty = $value;
+$acf_empty['format_options'] = false;
+pricing_check(educado_pricing_model($acf_empty)['prices'] === $model['prices'] && !educado_pricing_model($acf_empty)['errors'], 'Native ACF false repeater broke legacy prices');
+$acf_empty = ['course_options' => false, 'duration_options' => false, 'level_options' => false, 'format_options' => false, 'price_rows' => false];
+pricing_check(!educado_pricing_model($acf_empty)['errors'] && !educado_pricing_model($acf_empty)['prices'], 'Native ACF empty group rejected');
+$with_format = $value;
+$first_format = 'opt_1000000000000001';
+$second_format = 'opt_1000000000000002';
+$with_format['format_options'] = [
+    ['format_id' => $first_format, 'format_label' => 'Індивідуально'],
+    ['format_id' => $second_format, 'format_label' => 'Парні'],
+];
+$format_model = educado_pricing_model($with_format);
+pricing_check(count($format_model['prices']) === 12 && !$format_model['errors'], 'Adding format lost legacy prices');
+foreach ($model['prices'] as $key => $prices) {
+    pricing_check($format_model['prices'][$key . '|' . $first_format] === $prices, 'Legacy price was not assigned to first format');
+    pricing_check(!isset($format_model['prices'][$key . '|' . $second_format]), 'Individual price leaked into paired format');
+}
+$paired = $with_format['price_rows'][0];
+$paired['format_ref'] = $second_format;
+$paired['price_8'] = '333';
+$with_format['price_rows'][] = $paired;
+$paired_model = educado_pricing_model($with_format);
+pricing_check(count($paired_model['prices']) === 13 && !$paired_model['errors'], 'Independent paired price collided');
+$key = implode('|', [$paired['course_ref'], $paired['duration_ref'], $paired['level_ref'], $second_format]);
+pricing_check($paired_model['prices'][$key][8] === '333', 'Wrong paired price');
+$disabled = $value;
+$disabled['duration_enabled'] = '0';
+pricing_check(educado_pricing_model($disabled)['errors'], 'Disabling an axis silently chose conflicting prices');
+$disabled['price_rows'] = array_values(array_filter($disabled['price_rows'], function ($row) use ($value) {
+    return $row['duration_ref'] === $value['duration_options'][0]['duration_id'];
+}));
+$disabled_model = educado_pricing_model($disabled);
+pricing_check(count($disabled_model['prices']) === 4 && !isset($disabled_model['options']['duration']) && !$disabled_model['errors'], 'Disabled axis still affects combinations');
+$disabled['duration_enabled'] = 1;
+pricing_check(isset(educado_pricing_model($disabled)['options']['duration']), 'Re-enabling axis lost its options');
+$no_duration = $disabled;
+$no_duration['duration_options'] = [];
+pricing_check(count(educado_pricing_model($no_duration)['prices']) === 4, 'Empty axis still affects combinations');
+$no_axes = ['price_rows' => [$value['price_rows'][0]]];
+$no_axes_model = educado_pricing_model($no_axes);
+pricing_check($no_axes_model['ready'] && isset($no_axes_model['prices']['']), 'Pricing without any switches failed');
+echo 'PASS: legacy combinations, optional format, independent paired prices, disabled/empty axes, collision protection and pricing without switches.' . PHP_EOL;

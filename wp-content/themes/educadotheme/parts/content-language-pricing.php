@@ -4,10 +4,13 @@ $settings = (array) get_field('pricing_v2');
 $model = educado_pricing_model($settings);
 $selected = [];
 foreach ($model['options'] as $dimension => $options) {
-    $selected[] = key($options);
+    $selected[$dimension] = key($options);
 }
-if ($model['prices']) {
-    $selected = explode('|', key($model['prices']));
+if ($model['prices'] && $model['options']) {
+    $ids = explode('|', key($model['prices']));
+    foreach (array_keys($model['options']) as $index => $dimension) {
+        $selected[$dimension] = $ids[$index];
+    }
 }
 $initial = $model['prices'][implode('|', $selected)] ?? null;
 $block_id = 'ed-pricing-' . get_the_ID();
@@ -17,15 +20,20 @@ if (educado_has_language_headings()) {
 }
 ?>
 <div class="container">
-    <div class="ed-pricing" id="<?php echo esc_attr($block_id); ?>" data-ed-pricing>
+    <div class="ed-pricing" id="<?php echo esc_attr($block_id); ?>" data-ed-pricing data-pricing-dimensions="<?php echo esc_attr(wp_json_encode(array_keys($model['options']))); ?>">
         <div class="ed-pricing__header">
             <h3 class="ed-pricing__title"><?php echo esc_html($heading); ?></h3>
-            <?php $dimension = 'course'; $index = 0; $legend = 'Тип курсу'; include __DIR__ . '/pricing-options.php'; ?>
+            <div class="ed-pricing__header-options">
+                <?php $dimension = 'format'; $legend = 'Формат занять'; include __DIR__ . '/pricing-options.php'; ?>
+                <?php $dimension = 'course'; $legend = 'Тип курсу'; include __DIR__ . '/pricing-options.php'; ?>
+            </div>
         </div>
+        <?php if (isset($model['options']['duration']) || isset($model['options']['level'])) : ?>
         <div class="ed-pricing__filters">
-            <?php $dimension = 'duration'; $index = 1; $legend = 'Тривалість уроку'; include __DIR__ . '/pricing-options.php'; ?>
-            <?php $dimension = 'level'; $index = 2; $legend = 'Рівень'; include __DIR__ . '/pricing-options.php'; ?>
+            <?php $dimension = 'duration'; $legend = 'Тривалість уроку'; include __DIR__ . '/pricing-options.php'; ?>
+            <?php $dimension = 'level'; $legend = 'Рівень'; include __DIR__ . '/pricing-options.php'; ?>
         </div>
+        <?php endif; ?>
         <div class="ed-pricing__result" aria-live="polite" aria-atomic="true">
             <p class="ed-pricing__empty" <?php echo $initial ? 'hidden' : ''; ?>>Ця комбінація поки недоступна. Залиште номер телефону — менеджер допоможе підібрати навчання.</p>
             <div class="ed-pricing__cards" <?php echo $initial ? '' : 'hidden'; ?>>

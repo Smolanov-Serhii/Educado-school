@@ -4,12 +4,20 @@ function educado_pricing_value($row, $name) {
     return $row[$name] ?? $row['field_edp_' . $name] ?? null;
 }
 
+function educado_pricing_dimensions() {
+    return ['course' => 'Тип курсу', 'duration' => 'Тривалість уроку', 'level' => 'Рівень', 'format' => 'Формат занять'];
+}
+
 function educado_pricing_model($value) {
     $model = ['options' => [], 'prices' => [], 'ready' => false, 'errors' => []];
     $value = is_array($value) ? $value : [];
-    foreach (['course', 'duration', 'level'] as $dimension) {
+    foreach (educado_pricing_dimensions() as $dimension => $label) {
+        if (in_array(educado_pricing_value($value, $dimension . '_enabled'), [false, 0, '0'], true)) {
+            continue;
+        }
         $options = [];
-        foreach ((array) educado_pricing_value($value, $dimension . '_options') as $option) {
+        $rows = educado_pricing_value($value, $dimension . '_options');
+        foreach (is_array($rows) ? $rows : [] as $option) {
             $id = (string) educado_pricing_value($option, $dimension . '_id');
             $label = trim((string) educado_pricing_value($option, $dimension . '_label'));
             if (!preg_match('/^opt_[a-f0-9]{16}$/D', $id) || isset($options[$id]) || $label === '') {
@@ -18,15 +26,22 @@ function educado_pricing_model($value) {
             }
             $options[$id] = $label;
         }
-        $model['options'][$dimension] = $options;
+        if ($options) {
+            $model['options'][$dimension] = $options;
+        }
     }
     $seen = [];
     $resolved = 0;
-    foreach ((array) educado_pricing_value($value, 'price_rows') as $row) {
+    $rows = educado_pricing_value($value, 'price_rows');
+    foreach (is_array($rows) ? $rows : [] as $row) {
         $ids = [];
         $current = true;
         foreach ($model['options'] as $dimension => $options) {
             $id = (string) educado_pricing_value($row, $dimension . '_ref');
+            // Legacy rows predate lesson formats and belong only to the first format.
+            if ($dimension === 'format' && $id === '') {
+                $id = (string) key($options);
+            }
             $ids[] = $id;
             $current = $current && isset($options[$id]);
         }
@@ -36,7 +51,7 @@ function educado_pricing_model($value) {
         }
         $key = implode('|', $ids);
         if (isset($seen[$key])) {
-            $model['errors'][] = 'Комбінація типу курсу, тривалості та рівня повторюється. Залиште один рядок для кожної комбінації.';
+            $model['errors'][] = 'Комбінація активних перемикачів повторюється. Залиште один рядок для кожної комбінації. Перед вимкненням групи приберіть рядки, які після цього стануть однаковими.';
             continue;
         }
         $seen[$key] = true;
@@ -62,7 +77,10 @@ function educado_pricing_model($value) {
             $model['prices'][$key] = $prices;
         }
     }
-    $expected = count($model['options']['course']) * count($model['options']['duration']) * count($model['options']['level']);
+    $expected = 1;
+    foreach ($model['options'] as $options) {
+        $expected *= count($options);
+    }
     $model['errors'] = array_values(array_unique($model['errors']));
     $model['ready'] = $expected > 0 && $resolved === $expected && $model['prices'] && !$model['errors'];
     return $model;
@@ -87,12 +105,15 @@ add_action('acf/init', function () {
         return;
     }
     $fields = [];
-    $dimensions = ['course' => 'Типи курсу', 'duration' => 'Тривалість уроку', 'level' => 'Рівні'];
+    $dimensions = educado_pricing_dimensions();
     foreach ($dimensions as $dimension => $label) {
+        $fields[] = ['key' => 'field_edp_' . $dimension . '_enabled', 'name' => $dimension . '_enabled', 'label' => 'Показувати перемикач «' . $label . '»', 'type' => 'true_false', 'ui' => 1, 'default_value' => 1,
+            'instructions' => 'Вимкнена або порожня група не бере участі у розрахунку комбінацій. Якщо після вимкнення рядки дублюються, залиште один рядок для кожної активної комбінації.'];
         $fields[] = [
             'key' => 'field_edp_' . $dimension . '_options', 'name' => $dimension . '_options',
             'label' => $label, 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Додати варіант',
-            'instructions' => 'Додайте потрібні варіанти для цієї мови. Порядок рядків визначає порядок перемикачів. Після зміни списків створіть відсутні комбінації нижче.',
+            'instructions' => 'Додайте потрібні варіанти для цієї мови. Порожній список приховує перемикач. Порядок рядків визначає порядок варіантів. Після зміни списків створіть відсутні комбінації нижче.' . ($dimension === 'format' ? ' Наприклад, «Індивідуально», «Парні», «Групові». Наявні ціни без формату належать лише першому варіанту у списку.' : ''),
+            'conditional_logic' => [[['field' => 'field_edp_' . $dimension . '_enabled', 'operator' => '==', 'value' => '1']]],
             'sub_fields' => [
                 ['key' => 'field_edp_' . $dimension . '_id', 'name' => $dimension . '_id', 'label' => 'Службовий ID', 'type' => 'text', 'readonly' => 1, 'wrapper' => ['class' => 'edp-option-id']],
                 ['key' => 'field_edp_' . $dimension . '_label', 'name' => $dimension . '_label', 'label' => 'Назва для відвідувача', 'type' => 'text', 'required' => 1],
@@ -108,7 +129,7 @@ add_action('acf/init', function () {
         $row_fields[] = ['key' => 'field_edp_price_' . $size, 'name' => 'price_' . $size, 'label' => ($size === 24 ? '24 уроки' : $size . ' уроків') . ' — грн за урок', 'type' => 'number', 'min' => 0.01, 'max' => 9999999.99, 'step' => '0.01'];
     }
     $fields[] = ['key' => 'field_edp_price_rows', 'name' => 'price_rows', 'label' => 'Комбінації та ціни', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Додати комбінацію вручну', 'sub_fields' => $row_fields,
-        'instructions' => 'У кожному рядку — один тип курсу, одна тривалість і один рівень. Введіть ціну ОДНОГО уроку в кожному пакеті. Переведіть готові рядки у стан «Ціни заповнено». Чернетки можна зберігати частково.'];
+        'instructions' => 'У кожному рядку — одна комбінація активних перемикачів. Введіть ціну ОДНОГО уроку в кожному пакеті. Переведіть готові рядки у стан «Ціни заповнено». Чернетки можна зберігати частково.'];
     foreach ([
         'heading' => ['Заголовок блоку', 'Ціна'],
         'note_8' => ['Підпис пакета 8 уроків', 'Старт без зобов’язань'],
@@ -143,7 +164,7 @@ add_filter('acf/validate_value/key=field_edp_pricing_v2', function ($valid, $val
     return $model['errors'] ? implode(' ', $model['errors']) : true;
 }, 10, 2);
 
-foreach (['course', 'duration', 'level'] as $dimension) {
+foreach (array_keys(educado_pricing_dimensions()) as $dimension) {
     add_filter('acf/load_field/key=field_edp_' . $dimension . '_ref', function ($field) use ($dimension) {
         $post_id = isset($_GET['post']) ? absint($_GET['post']) : get_the_ID();
         $value = $post_id ? get_post_meta($post_id, 'pricing_v2_' . $dimension . '_options', true) : 0;
@@ -169,7 +190,7 @@ foreach (['course', 'duration', 'level'] as $dimension) {
 add_action('acf/input/admin_enqueue_scripts', function () {
     $base = '/assets/js/libraries/language-pricing-admin.js';
     wp_enqueue_script('educado-pricing-admin', get_template_directory_uri() . $base, ['acf-input'], educado_asset_version(get_template_directory() . $base), true);
-    wp_localize_script('educado-pricing-admin', 'educadoPricingAdmin', ['inputLimit' => (int) ini_get('max_input_vars')]);
+    wp_localize_script('educado-pricing-admin', 'educadoPricingAdmin', ['inputLimit' => (int) ini_get('max_input_vars'), 'dimensions' => array_keys(educado_pricing_dimensions())]);
     wp_add_inline_style('acf-input', '.edp-option-id,[data-key^="field_edp_"][data-key$="_id"]{display:none!important}.edp-tools{padding:12px 0}.edp-tools p{margin:8px 0}.edp-price-table{overflow-x:auto}.edp-price-table>.acf-input>.acf-repeater{min-width:900px}');
 });
 

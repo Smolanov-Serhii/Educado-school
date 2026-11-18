@@ -4,7 +4,8 @@
     color: $color-base;
 
     [hidden] { display: none !important; }
-    &__header { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-bottom: 36px; }
+    &__header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; margin-bottom: 36px; }
+    &__header-options { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; max-width: 100%; }
     &__title { margin: 0; font: 500 40px/1.2 $font-base; }
     &__filters { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 40px; border-bottom: 1px solid #999; margin-bottom: 28px; }
     &__options { border: 0; padding: 0; margin: 0; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
@@ -16,11 +17,11 @@
     &__choice input:checked + span { border-color: $color-green1; color: $color-base; }
     &__choice input:focus-visible + span { outline: 2px solid $color-base; outline-offset: 3px; border-radius: 4px; }
     &__choice:hover span { color: $color-base; }
-    &__options--course { background: #f3f3ef; padding: 5px; border-radius: 36px; }
-    &__options--course legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-    &__options--course .ed-pricing__choices { gap: 4px; }
-    &__options--course .ed-pricing__choice span { padding: 12px 20px; border: 0; border-radius: 30px; font-size: 16px; }
-    &__options--course input:checked + span { background: $color-white; box-shadow: 0 2px 4px rgba(0, 0, 0, .12); }
+    &__options--pill, &__options--course { background: #f3f3ef; padding: 5px; border-radius: 36px; }
+    &__options--pill legend, &__options--course legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    &__options--pill .ed-pricing__choices, &__options--course .ed-pricing__choices { gap: 4px; }
+    &__options--pill .ed-pricing__choice span, &__options--course .ed-pricing__choice span { padding: 12px 20px; border: 0; border-radius: 30px; font-size: 16px; }
+    &__options--pill input:checked + span, &__options--course input:checked + span { background: $color-white; box-shadow: 0 2px 4px rgba(0, 0, 0, .12); }
     &__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     &__card { border: 1px solid #999; border-radius: 28px; padding: 28px; }
     &__card--best { background: $color-green1; border-color: $color-green1; }
@@ -48,13 +49,14 @@
         margin-top: 48px;
         &__title { font-size: 30px; }
         &__header { margin-bottom: 24px; }
+        &__header-options { width: 100%; }
         &__filters { flex-direction: column; align-items: stretch; gap: 18px; padding-bottom: 12px; }
         &__options { display: block; }
         &__options legend { float: none; margin: 0 0 6px; }
-        &__options--course { width: 100%; border-radius: 22px; }
-        &__options--course .ed-pricing__choices { gap: 4px; }
-        &__options--course .ed-pricing__choice { flex: 1 1 auto; }
-        &__options--course .ed-pricing__choice span { padding: 10px 12px; text-align: center; }
+        &__options--pill, &__options--course { width: 100%; border-radius: 22px; }
+        &__options--pill .ed-pricing__choices, &__options--course .ed-pricing__choices { gap: 4px; }
+        &__options--pill .ed-pricing__choice, &__options--course .ed-pricing__choice { flex: 1 1 auto; }
+        &__options--pill .ed-pricing__choice span, &__options--course .ed-pricing__choice span { padding: 10px 12px; text-align: center; }
         &__choices { gap: 6px 18px; }
         &__cards { grid-template-columns: 1fr; gap: 12px; }
         &__price { margin-top: 20px; }
