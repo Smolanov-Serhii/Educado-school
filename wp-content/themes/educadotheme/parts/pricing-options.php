@@ -10,8 +10,19 @@ $choice = $selected[$dimension] ?? ($selected[$index ?? -1] ?? null);
     <legend><?php echo esc_html($legend); ?></legend>
     <div class="ed-pricing__choices">
         <?php foreach ($model['options'][$dimension] as $id => $label) : ?>
-            <label class="ed-pricing__choice">
-                <input type="radio" name="<?php echo esc_attr($block_id . '-' . $dimension); ?>" value="<?php echo esc_attr($id); ?>" <?php checked($choice, $id); ?>>
+            <?php
+            $available = false;
+            $axis = array_search($dimension, array_keys($model['options']), true);
+            foreach (array_keys($model['prices']) as $key) {
+                $values = explode('|', $key);
+                if (($values[$axis] ?? null) === $id) {
+                    $available = true;
+                    break;
+                }
+            }
+            ?>
+            <label class="ed-pricing__choice<?php echo $available ? '' : ' ed-pricing__choice--disabled'; ?>">
+                <input type="radio" name="<?php echo esc_attr($block_id . '-' . $dimension); ?>" value="<?php echo esc_attr($id); ?>" <?php checked($choice, $id); ?> <?php disabled(!$available); ?> aria-disabled="<?php echo $available ? 'false' : 'true'; ?>">
                 <span><?php echo esc_html($label); ?></span>
             </label>
         <?php endforeach; ?>

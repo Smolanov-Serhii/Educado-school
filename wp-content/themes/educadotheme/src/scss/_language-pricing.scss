@@ -17,6 +17,8 @@
     &__choice input:checked + span { border-color: $color-green1; color: $color-base; }
     &__choice input:focus-visible + span { outline: 2px solid $color-base; outline-offset: 3px; border-radius: 4px; }
     &__choice:hover span { color: $color-base; }
+    &__choice--disabled { cursor: not-allowed; }
+    &__choice input:disabled + span { color: #929292; border-color: transparent; box-shadow: none; }
     &__options--pill, &__options--course { background: #f3f3ef; padding: 5px; border-radius: 36px; }
     &__options--pill legend, &__options--course legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     &__options--pill .ed-pricing__choices, &__options--course .ed-pricing__choices { gap: 4px; }

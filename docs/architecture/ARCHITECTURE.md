@@ -30,3 +30,6 @@ Pricing preparation is deployed on production as of 2026-11-15. Native ACF field
 
 
 Optional pricing axes (2026-11-18) are defined centrally by educado_pricing_dimensions(). Each page can enable/disable course, duration, level and format, with empty lists omitted. The model builds keys only from active axes; the frontend receives the canonical key order through data-pricing-dimensions. The admin generator computes the active Cartesian product. Chinese local/production now have individual/paired formats.
+
+
+Pricing selector availability (2026-11-18): the existing price map is also the availability source; there is no additional admin switch. Server markup disables globally empty options, while frontend filtering follows visible format/course/duration/level order and selects compatible descendants automatically. Only enabled dimensions participate. Empty preview retains its fallback message; public legacy/v2 visibility rules remain unchanged.

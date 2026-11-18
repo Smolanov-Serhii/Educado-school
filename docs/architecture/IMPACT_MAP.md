@@ -31,3 +31,6 @@ Pricing visual correction (2026-11-15) removes the outer frame, aligns content t
 
 
 Optional format rollout (2026-11-18) updates nine theme source/asset files, the native ACF editor, model and both views. Read-only independent review found no blocking issues; its input-count correction was applied. Expanded PHP tests cover native false repeaters, absent/disabled axes, stable first-format binding and collision protection. Guest HTTP checks confirmed matching production/local price maps; browser checks confirmed individual/paired selection and mobile overflow bounds. Legacy and empty pages continue to use their existing display rules.
+
+
+Pricing availability (2026-11-18): available complete model rows drive native disabled radio options in pricing-options.php and dependent filtering in source/emitted language-pricing.js. Visible group order constrains later groups; incompatible downstream selections move to the first available option, preserving reachability between disjoint price rows. Disabled styling lives in source SCSS and compiled pricing.min.css. No ACF schema or stored price changes. Browser fixtures cover disconnected rows, optional axes, no axes and empty preview.
