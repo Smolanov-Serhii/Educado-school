@@ -46,3 +46,18 @@ ssh -p 21098 -i C:\Users\Serhii\.ssh\id_ed25519 -o IdentitiesOnly=yes educadoc@e
 В cPanel: **Доступ по SSH → Управление ключами SSH → serhii_local_ed25519 → Управлять → Authorize**.
 Для повторной проверки после подключения: `whoami`, `pwd`, `ls -ld /home/educadoc/educado.school`.
 Не публиковать документацию с приватными ключами, паролями или URL с `cpsess`.
+
+## DNS-подтверждение домена для OpenAI
+
+20 ноября 2026 года в редакторе DNS-зоны cPanel для `educado.school` добавили
+запись `TXT` с именем `openai-business-profile.educado.school.` и TTL 1200 секунд.
+Значение берётся из настроек подтверждения домена в OpenAI Business Profile
+и начинается с `openai-business-profile=`.
+
+Точное значение записи проверили на `dns1.twinservers.net`,
+`dns2.twinservers.net` и публичном резолвере `1.1.1.1`.
+Для повторной проверки в PowerShell:
+
+```powershell
+Resolve-DnsName -Name openai-business-profile.educado.school -Type TXT -Server 1.1.1.1 -DnsOnly
+```
