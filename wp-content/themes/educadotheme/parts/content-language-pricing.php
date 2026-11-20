@@ -2,6 +2,8 @@
 /** Pricing v2 replaces the old block only through the guarded template entry. */
 $settings = (array) get_field('pricing_v2');
 $model = educado_pricing_model($settings);
+$group_settings = (array) get_field('pricing_group');
+$group_model = educado_group_pricing_model($group_settings, $settings);
 $selected = [];
 foreach ($model['options'] as $dimension => $options) {
     $selected[$dimension] = key($options);
@@ -13,6 +15,8 @@ if ($model['prices'] && $model['options']) {
     }
 }
 $initial = $model['prices'][implode('|', $selected)] ?? null;
+$group_initial = !$initial && $group_model['ready'];
+if ($group_initial) $selected['format'] = $group_model['format_ref'];
 $block_id = 'ed-pricing-' . get_the_ID();
 $heading = $settings['heading'] ?? 'Ціна';
 if (educado_has_language_headings()) {
@@ -20,21 +24,21 @@ if (educado_has_language_headings()) {
 }
 ?>
 <div class="container">
-    <div class="ed-pricing" id="<?php echo esc_attr($block_id); ?>" data-ed-pricing data-pricing-dimensions="<?php echo esc_attr(wp_json_encode(array_keys($model['options']))); ?>">
+    <div class="ed-pricing" id="<?php echo esc_attr($block_id); ?>" data-ed-pricing data-group-format="<?php echo esc_attr($group_model['ready'] ? $group_model['format_ref'] : ''); ?>" data-pricing-dimensions="<?php echo esc_attr(wp_json_encode(array_keys($model['options']))); ?>">
         <div class="ed-pricing__header">
             <h3 class="ed-pricing__title"><?php echo esc_html($heading); ?></h3>
             <div class="ed-pricing__header-options">
                 <?php $dimension = 'format'; $legend = 'Формат занять'; include __DIR__ . '/pricing-options.php'; ?>
-                <?php $dimension = 'course'; $legend = 'Тип курсу'; include __DIR__ . '/pricing-options.php'; ?>
+                <div data-package-only <?php echo $group_initial ? 'hidden' : ''; ?>><?php $dimension = 'course'; $legend = 'Тип курсу'; include __DIR__ . '/pricing-options.php'; ?></div>
             </div>
         </div>
         <?php if (isset($model['options']['duration']) || isset($model['options']['level'])) : ?>
-        <div class="ed-pricing__filters">
+        <div class="ed-pricing__filters" data-package-only <?php echo $group_initial ? 'hidden' : ''; ?>>
             <?php $dimension = 'duration'; $legend = 'Тривалість уроку'; include __DIR__ . '/pricing-options.php'; ?>
             <?php $dimension = 'level'; $legend = 'Рівень'; include __DIR__ . '/pricing-options.php'; ?>
         </div>
         <?php endif; ?>
-        <div class="ed-pricing__result" aria-live="polite" aria-atomic="true">
+        <div class="ed-pricing__result" data-package-only <?php echo $group_initial ? 'hidden' : ''; ?> aria-live="polite" aria-atomic="true">
             <p class="ed-pricing__empty" <?php echo $initial ? 'hidden' : ''; ?>>Ця комбінація поки недоступна. Залиште номер телефону — менеджер допоможе підібрати навчання.</p>
             <div class="ed-pricing__cards" <?php echo $initial ? '' : 'hidden'; ?>>
                 <?php foreach ([8 => '8 уроків', 24 => '24 уроки', 48 => '48 уроків'] as $size => $title) : ?>
@@ -49,17 +53,13 @@ if (educado_has_language_headings()) {
                 <?php endforeach; ?>
             </div>
         </div>
-        <?php if (!empty($settings['installments'])) : ?>
-            <div class="ed-pricing__installments">
-                <?php if (!empty($settings['banks'])) : ?>
-                    <?php echo wp_get_attachment_image((int) $settings['banks'], 'medium', false, ['alt' => 'Банки-партнери розтермінування']); ?>
-                <?php else : ?>
-                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/img/pricing-banks.png'); ?>" width="410" height="130" alt="Банки-партнери розтермінування">
-                <?php endif; ?>
-                <p><?php echo esc_html($settings['installments']); ?></p>
-            </div>
-        <?php endif; ?>
-        <?php if (!empty($settings['bonus'])) : ?><p class="ed-pricing__bonus"><?php echo esc_html($settings['bonus']); ?></p><?php endif; ?>
+        <?php if ($group_model['ready']) include __DIR__ . '/pricing-group.php'; ?>
+        <?php include __DIR__ . '/pricing-installments.php'; ?>
+        <?php if (!empty($settings['bonus'])) : ?><p class="ed-pricing__bonus" data-package-only <?php echo $group_initial ? 'hidden' : ''; ?>><?php echo esc_html($settings['bonus']); ?></p><?php endif; ?>
+        <?php if ($group_model['ready']) : ?><div class="ed-pricing__group-notes" data-group-only <?php echo $group_initial ? '' : 'hidden'; ?>>
+            <p class="ed-pricing__bonus"><?php echo esc_html($group_settings['trial_note'] ?? ''); ?></p>
+            <p class="ed-pricing__footnote"><?php echo esc_html($group_settings['footnote'] ?? ''); ?></p>
+        </div><?php endif; ?>
         <form class="form ed-pricing__form">
             <input type="hidden" name="action" value="ed_callback">
             <input type="hidden" name="url" value="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">

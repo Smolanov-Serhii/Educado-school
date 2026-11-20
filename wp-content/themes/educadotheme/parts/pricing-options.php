@@ -20,6 +20,7 @@ $choice = $selected[$dimension] ?? ($selected[$index ?? -1] ?? null);
                     break;
                 }
             }
+            if ($dimension === 'format' && !empty($group_model['ready']) && $id === $group_model['format_ref']) $available = true;
             ?>
             <label class="ed-pricing__choice<?php echo $available ? '' : ' ed-pricing__choice--disabled'; ?>">
                 <input type="radio" name="<?php echo esc_attr($block_id . '-' . $dimension); ?>" value="<?php echo esc_attr($id); ?>" <?php checked($choice, $id); ?> <?php disabled(!$available); ?> aria-disabled="<?php echo $available ? 'false' : 'true'; ?>">

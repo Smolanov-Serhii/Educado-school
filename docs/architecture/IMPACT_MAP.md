@@ -34,3 +34,9 @@ Optional format rollout (2026-11-18) updates nine theme source/asset files, the 
 
 
 Pricing availability (2026-11-18): available complete model rows drive native disabled radio options in pricing-options.php and dependent filtering in source/emitted language-pricing.js. Visible group order constrains later groups; incompatible downstream selections move to the first available option, preserving reachability between disjoint price rows. Disabled styling lives in source SCSS and compiled pricing.min.css. No ACF schema or stored price changes. Browser fixtures cover disconnected rows, optional axes, no axes and empty preview.
+
+
+2026-11-20 group pricing (local only): shared language-template consumers receive an optional format-bound group panel and refreshed installment layout. Incomplete/disabled offers cannot activate the group view; regular availability filtering remains intact. Native ACF generation excludes the configured group format while retaining existing rows. Regression evidence: native admin generation/save, original 13-page pricing fingerprints preserved after excluding additions, PHP model/visibility/group checks, JS syntax and 1440/768/390/320 browser layout checks. Chinese local fixture uses approved mockup amounts; no production DB/file changes. Deploy new helper/partials before consumers in a future release, and transfer only approved group fields rather than overwriting production DB.
+
+
+Group pricing production verification (2026-11-20): twelve files passed preflight against HEAD/new content and remote readback; PHP lint passed. Chinese group view, original pair/exam price selections and unavailable durations verified in the live browser. Production admin fields and example amounts confirmed; desktop/mobile overflow absent. Cleared Autoptimize and LiteSpeed. Existing Chinese pricing preserved; all data writes scoped to the added format and new group on 504, with other production page data left in place.

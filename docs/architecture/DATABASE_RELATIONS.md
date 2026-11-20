@@ -18,3 +18,9 @@ Pricing v2 adds native ACF postmeta only. Each language page has pricing_visual 
 
 
 Pricing adds course_enabled/duration_enabled/level_enabled/format_enabled, a format_options repeater and format_ref per row, all in native postmeta. Native empty-repeaters false values normalize to empty lists. Legacy keys remain three-part without a format; missing legacy format refs map to the first configured format. Chinese rows were explicitly bound to the individual format and then expanded to 24 rows, preserving six existing complete price rows. Disabled-axis key collisions are rejected before saving. No database schema changes were applied.
+
+
+2026-11-20 group offer (local only): separate postmeta/ACF group `pricing_group` stores `enabled`, `format_ref`, three condition texts, module/course labels and notes, module/course prices, optional previous price, trial note and footnote. `format_ref` logically references `pricing_v2.format_options[].format_id`; there is no SQL FK. No label matching or automatic price derivation. Existing `pricing_v2.price_rows` retain their package amounts and stable references. Two additional copy fields (`school_installments`, `bank_installments`) belong to pricing_v2; the historical installments text remains stored. Local Chinese fixture adds one format without changing any existing option or price row; other pages receive only field definitions.
+
+
+Production rollout (2026-11-20): native ACF writes scoped to Chinese page 504, appending its group format and creating pricing_group. The full pricing_v2 group and other page groups were not written. Existing Chinese pricing fingerprint matches the pre-feature baseline after excluding additions. Pages 499/492/495 contain production data newer/different from the early local baseline and were retained as-is. Production and local group format IDs are environment-specific; use each page's saved reference.

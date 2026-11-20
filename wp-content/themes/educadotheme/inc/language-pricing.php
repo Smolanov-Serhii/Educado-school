@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/language-group-pricing.php';
 /** Per-page price combinations for the shared language template. */
 function educado_pricing_value($row, $name) {
     return $row[$name] ?? $row['field_edp_' . $name] ?? null;
@@ -97,7 +98,8 @@ function educado_pricing_v2_visible() {
     if (isset($_GET['ed_pricing_preview'], $_GET['_wpnonce']) && current_user_can('edit_post', get_the_ID()) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'ed-pricing-' . get_the_ID())) {
         return true;
     }
-    return !empty($model['prices']) && !$model['errors'];
+    $group = educado_group_pricing_model(get_field('pricing_group'), get_field('pricing_v2'));
+    return (!empty($model['prices']) || $group['ready']) && !$model['errors'];
 }
 
 add_action('acf/init', function () {
@@ -137,6 +139,8 @@ add_action('acf/init', function () {
         'note_48' => ['Підпис пакета 48 уроків', 'Можна розтермінувати'],
         'badge' => ['Позначка пакета 48 уроків', 'Найвигідніше'],
         'installments' => ['Текст про розтермінування', 'Розтермінування від банків та школи для пакетів від 24 уроків'],
+        'school_installments' => ['Розтермінування — текст біля 0%', 'Розтермінування від школи'],
+        'bank_installments' => ['Розтермінування — текст біля банків', 'Або «Оплата частинами» від банку'],
         'bonus' => ['Додаткове пояснення', 'Про додатковий бонус дізнайся у менеджера.'],
         'button' => ['Текст кнопки', 'Хочу на безкоштовний урок'],
     ] as $name => $copy) {

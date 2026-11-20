@@ -33,3 +33,9 @@ Optional pricing axes (2026-11-18) are defined centrally by educado_pricing_dime
 
 
 Pricing selector availability (2026-11-18): the existing price map is also the availability source; there is no additional admin switch. Server markup disables globally empty options, while frontend filtering follows visible format/course/duration/level order and selects compatible descendants automatically. Only enabled dimensions participate. Empty preview retains its fallback message; public legacy/v2 visibility rules remain unchanged.
+
+
+Group pricing extension (2026-11-20, local only): `inc/language-group-pricing.php` registers a separate native ACF `pricing_group` and validates the selected active format, terms and module/course prices. `inc/language-pricing.php` loads the helper and permits a ready group-only offer under the existing v2 selection. `parts/content-language-pricing.php` composes `pricing-group.php` and shared `pricing-installments.php`. Source/emitted JS switches views within the block and preserves the package selection. Source SCSS and generated pricing CSS cover two-column desktop and stacked mobile layouts. No production release yet.
+
+
+Group pricing production status (2026-11-20): supersedes the local-only status above. Twelve theme source/runtime files deployed and verified by readback. ACF fields are registered for every language template page; only Chinese (504) received an explicitly approved example group offer. Existing production package data remain authoritative; no local DB import.

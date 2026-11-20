@@ -42,6 +42,17 @@
         if (!table) return;
         busy = true;
         var lists = options();
+        var groupSelect = acf.getField('field_edg_format_ref');
+        if (groupSelect) {
+            var $groupInput = groupSelect.$el.find('select');
+            var groupCurrent = $groupInput.val();
+            $groupInput.empty().append(new Option('Оберіть формат групових занять', ''));
+            (lists.format || []).forEach(function (option) { $groupInput.append(new Option(option.label, option.id)); });
+            if (groupCurrent && !(lists.format || []).some(function (option) { return option.id === groupCurrent; })) {
+                $groupInput.append(new Option('Видалений формат — оберіть активний', groupCurrent));
+            }
+            $groupInput.val(groupCurrent || '');
+        }
         table.$el.addClass('edp-price-table');
         dimensions.forEach(function (dimension) {
             table.$el.find('[data-key="field_edp_' + dimension + '_ref"]').toggle(lists[dimension].length > 0);
@@ -67,15 +78,33 @@
             table.$el.children('.acf-label').after($tools);
             $tools.find('button').on('click', generate);
         }
-        var expected = dimensions.filter(function (d) { return lists[d].length; }).reduce(function (count, d) { return count * lists[d].length; }, 1);
+        var groupOnly = lists.format.length > 0;
+        excludeGroupFormat(lists);
+        groupOnly = groupOnly && !lists.format.length;
+        var expected = groupOnly ? 0 : dimensions.filter(function (d) { return lists[d].length; }).reduce(function (count, d) { return count * lists[d].length; }, 1);
         $tools.find('p').text('Варіантів комбінацій: ' + expected + '. Цін для заповнення: ' + expected * 3 + '. Введені ціни зберігаються під час перейменування та зміни порядку.');
         busy = false;
+    }
+
+    function excludeGroupFormat(lists) {
+        var enabled = acf.getField('field_edg_enabled');
+        var select = acf.getField('field_edg_format_ref');
+        if (enabled && select && enabled.$el.find('input[type="checkbox"]').prop('checked')) {
+            var groupId = select.$el.find('select').val();
+            lists.format = (lists.format || []).filter(function (option) { return option.id !== groupId; });
+        }
     }
 
     function generate() {
         refresh();
         var lists = options();
+        var hadFormats = lists.format.length > 0;
+        excludeGroupFormat(lists);
         var table = acf.getField('field_edp_price_rows');
+        if (hadFormats && !lists.format.length) {
+            table.$el.find('.edp-tools p').text('Для групового формату заповніть окремі умови та дві ціни нижче. Комбінації 8/24/48 не потрібні.');
+            return;
+        }
         var active = dimensions.filter(function (d) { return lists[d].length; });
         var existing = new Set();
         table.$rows().each(function () {
@@ -124,6 +153,7 @@
     acf.addAction('remove', function () { window.setTimeout(refresh, 0); });
     acf.addAction('sortstop', refresh);
     $(document).on('input change', '[data-key^="field_edp_"][data-key$="_label"] input, [data-key^="field_edp_"][data-key$="_enabled"] input', refresh);
+    $(document).on('change', '[data-key="field_edg_format_ref"] select, [data-key="field_edg_enabled"] input', refresh);
     acf.addFilter('validation_complete', function (result, $form) {
         var limit = Number(window.educadoPricingAdmin && window.educadoPricingAdmin.inputLimit);
         if (acf.getField('field_edp_price_rows') && limit > 0 && $form.serializeArray().length + 50 > limit) {

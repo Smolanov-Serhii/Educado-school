@@ -10,7 +10,29 @@
         var availableRows = Object.keys(prices).map(function (key) {
             return key.split('|');
         });
+        var groupFormat = block.dataset.groupFormat || '';
+        var formatGroup = block.querySelector('[data-dimension="format"]');
+        var formatIndex = dimensions.indexOf('format');
         function update() {
+            if (formatGroup && groupFormat) {
+                var formatInputs = Array.from(formatGroup.querySelectorAll('input[type="radio"]'));
+                formatInputs.forEach(function (input) {
+                    var available = input.value === groupFormat || availableRows.some(function (row) { return row[formatIndex] === input.value; });
+                    input.disabled = !available;
+                    input.setAttribute('aria-disabled', String(!available));
+                    input.closest('label').classList.toggle('ed-pricing__choice--disabled', !available);
+                });
+                if (!formatGroup.querySelector('input:checked:not(:disabled)')) {
+                    formatInputs.forEach(function (input) { input.checked = false; });
+                    var firstFormat = formatInputs.find(function (input) { return !input.disabled; });
+                    if (firstFormat) firstFormat.checked = true;
+                }
+            }
+            var selectedFormat = formatGroup && formatGroup.querySelector('input:checked');
+            var isGroup = Boolean(groupFormat && selectedFormat && selectedFormat.value === groupFormat);
+            block.querySelectorAll('[data-package-only]').forEach(function (node) { node.hidden = isGroup; });
+            block.querySelectorAll('[data-group-only]').forEach(function (node) { node.hidden = !isGroup; });
+            if (isGroup) return;
             var compatible = availableRows;
             // Earlier visible groups constrain later ones. Keep a valid selection where possible.
             groups.forEach(function (group) {
@@ -18,7 +40,7 @@
                 var inputs = Array.from(group.querySelectorAll('input[type="radio"]'));
                 var selected = group.querySelector('input:checked');
                 inputs.forEach(function (input) {
-                    var available = compatible.some(function (row) {
+                    var available = (group.dataset.dimension === 'format' && input.value === groupFormat) || compatible.some(function (row) {
                         return row[index] === input.value;
                     });
                     input.disabled = !available;
