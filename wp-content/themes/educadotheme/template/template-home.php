@@ -733,40 +733,10 @@
         <div class="container">
             <div class="questions-wrapper">
                 <div class="questions-form">
-                    <div class="questions-title h1"><?= $data['questions_zagolovok']; ?></div>
-                    <div class="questions-subtitle h3"><?= $data['questions_pdzagolovok']; ?></div>
-
-                    <form class="form">
-                        <input type="hidden" name="action" value="ed_callback">
-                        <input type="hidden" name="url" value="<?php echo admin_url('admin-ajax.php'); ?>">
-                        <?php wp_nonce_field('ed_callback'); ?>
-                        <input type="hidden" name="title" value="Залишилися питання">
-
-                        <div class="form-row">
-                            <input class="form-row__input required" type="text" name="name"
-                                   placeholder="<?php the_field('common_form_data_plejsholder_v_pol_mya', 'options'); ?>">
-                        </div>
-
-                        <div class="form-row">
-                            <input class="form-row__input required-phone" type="text" name="phone"
-                                   placeholder="Введіть номер телефону">
-                        </div>
-
-                        <div class="form-row">
-                            <?php 
-                                $agreement_txt = get_field('common_form_data_tekst_poltiki', 'options');
-                                $agreement_link = get_field('common_form_data_tekst_poltiki_link', 'options');
-                                $agreement_link_txt = get_field('common_form_data_tekst_poltiki_2', 'options');
-                            ?>
-
-                            <div class="form-row__agreement"><?= $agreement_txt; ?> <a href="<?= $agreement_link; ?>" target="_blank"><?= $agreement_link_txt; ?></a></div>
-                        </div>
-
-                        <div class="form-row form-row--button">
-                            <button class="button"
-                                    type="submit"><?php the_field('common_form_data_tekst_knopki_vdpravki_formi', 'options'); ?></button>
-                        </div>
-                    </form>
+                    <?php get_template_part('parts/content', 'questions-form', ['settings' => [
+                        'heading' => $data['questions_zagolovok'],
+                        'subtitle' => $data['questions_pdzagolovok'],
+                    ]]); ?>
                 </div>
 
                 <div class="questions-trial">

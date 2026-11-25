@@ -28,4 +28,5 @@ require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/wp-func.php';
 require_once get_template_directory() . '/inc/language-seo.php';
 require_once get_template_directory() . '/inc/language-pricing.php';
+require_once get_template_directory() . '/inc/market.php';
 

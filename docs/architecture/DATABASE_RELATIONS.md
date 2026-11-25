@@ -24,3 +24,13 @@ Pricing adds course_enabled/duration_enabled/level_enabled/format_enabled, a for
 
 
 Production rollout (2026-11-20): native ACF writes scoped to Chinese page 504, appending its group format and creating pricing_group. The full pricing_v2 group and other page groups were not written. Existing Chinese pricing fingerprint matches the pre-feature baseline after excluding additions. Pages 499/492/495 contain production data newer/different from the early local baseline and were retained as-is. Production and local group format IDs are environment-specific; use each page's saved reference.
+
+
+Store (2026-11-20, local only): `perelk_propozicj[] -> propozic_po_rvnyam[] -> perelk_samih_propozicj[]` retains its native ACF schema: image, topic, duration, lessons, old/new price and external course destination. The image field references an attachment (local reference ID 1748). Additive `market_faq[]` stores question/answer pairs; `market_form` stores independent form copy and lead title. Legal policy URL stays in shared site options. Home copy still comes from page 5's questions fields. User expressly approved replacing both LOCAL store catalogs with ten reference entries; original snapshot is outside Git and production was not mutated. Missing Business B1 amounts remain empty.
+
+The header banner uses existing ACF postmeta on page 5. The two date pickers store `Ymd` values. The image field stores a WordPress attachment ID, which the header resolves to an attachment URL. A local draft round trip through `wp-admin/post.php` preserved all three values after reopening the editor.
+
+The additional ACF group stores `educado_banner_layout`, `educado_banner_text`, `educado_banner_button`, `educado_banner_background` and `educado_banner_width` in the same page's postmeta. The background is a media attachment ID. An empty layout means classic and an empty width means full width. The existing schedule, color and popup theme fields also apply to the separate layout.
+
+
+Store release (2026-11-25): production pages 895/943 received only `perelk_propozicj`, `nav_label`, `details_label`, `faq_heading`, `market_faq`, `market_form` (six fields including the catalog). Reference image maps local attachment 1748 to production 1755. No full DB import; original production store data archived locally outside Git. Language pricing metadata hashes for thirteen pages and homepage ACF hash were unchanged. Original production page heading fields were retained.

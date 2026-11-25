@@ -39,3 +39,13 @@ Group pricing extension (2026-11-20, local only): `inc/language-group-pricing.ph
 
 
 Group pricing production status (2026-11-20): supersedes the local-only status above. Twelve theme source/runtime files deployed and verified by readback. ACF fields are registered for every language template page; only Chinese (504) received an explicitly approved example group offer. Existing production package data remain authoritative; no local DB import.
+
+
+Store redesign (2026-11-20, local only): `functions.php` loads `inc/market.php`, which registers template-scoped assets and additive native ACF FAQ/form fields. `template-market.php` renders existing nested course repeater data as compact cards and category anchors. The homepage and store now both call `parts/content-questions-form.php`, retaining the native callback handler and nonce. Isolated market SCSS/JS and reference media have source/runtime copies and a normal Gulp entry. See [store design and filling](../MARKET-DESIGN.md).
+
+The promotional header banner reads the ACF `Home` group from page 5. Across templates that load `header.php`, the banner renders when enabled and the current calendar day in the WordPress timezone is within the saved date range, including the final day. The shared `language-pricing-admin.js` checks for attached ACF field elements before initializing pricing controls or applying its input limit.
+
+`inc/setup.php` loads `inc/header-banner.php`, which registers the page-5 ACF group «Вигляд банера». The shared header supports the classic button and a separate message and button. In the separate mode, `assets/css/header-banner.css` covers the selected width with the background photo while the content stays centered. Both modes use the existing callback popup.
+
+
+Store production status (2026-11-25): supersedes the local-only status above. Fifteen store-related files deployed and verified. Both store records use the approved reference catalog and native ACF FAQ/form groups; media attachment IDs remapped on production. The shared homepage form contract remains unchanged. Market JS additionally measures the live header through ResizeObserver, distinguishing sticky and fixed positioning for content/anchor offsets; the active banner itself is unchanged.

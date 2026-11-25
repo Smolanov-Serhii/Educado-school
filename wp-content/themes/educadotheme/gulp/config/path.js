@@ -19,7 +19,7 @@ export const path = {
 	src:{
 		html: `${srcFolder}/*.html`,
 		htmlComponents: `${srcFolder}/**/*.html`,
-		scss: [`${srcFolder}/scss/style.scss`, `${srcFolder}/scss/pricing.scss`],
+		scss: [`${srcFolder}/scss/style.scss`, `${srcFolder}/scss/pricing.scss`, `${srcFolder}/scss/market.scss`],
 		js: `${srcFolder}/js/*.js`,
 		img: `${srcFolder}/img/**/*.*`,
 		fonts: `${srcFolder}/fonts/*.*`,
