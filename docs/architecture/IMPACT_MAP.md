@@ -52,3 +52,6 @@ The separate banner layout was deployed on 2026-11-24. SSH readback matched the 
 
 
 Store release verification (2026-11-25): baseline checks and readback for fifteen source/runtime files, native ACF transfer limited to two stores, production media import. Protected homepage/pricing hashes unchanged. Verified home/Chinese/both stores HTTP 200, store JSON-LD, ten cards/six FAQs per store, production form/media URLs. Live desktop/mobile checks include four/one columns, white header, keyboard accordion and required-field errors. Active split banner exposed an offset mismatch; source/generated store assets now use measured header height, with category top 228 px below a 208 px mobile header. Caches purged. Existing banner/editor changes were verified against the host and preserved. No lead/payment submitted.
+
+
+2026-11-25 original catalog correction: user requested actual previous offers instead of reference entries. Native ACF restore touched only the two course repeaters; exact production-array comparison passed, as did local comparison with domain mapping. All original image references resolved before mutation; existing FAQ/form and homepage hashes stayed unchanged. Added visible cover topic and presentation-only monthly abbreviation. PHP lint, source/generated CSS consistency and desktop/mobile checks passed; caches purged.

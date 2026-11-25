@@ -13,7 +13,7 @@ User correction: the market header is white from initial load; mobile cards use 
 
 ## Implementation and filling
 
-Local pages: Spanish 895 (`/mahazyn-kursiv-z-ispanskoyi/`) and English 943 (`/mahazyn-kursiv-z-anhliyskoyi/`). Both now have ten reference cards: four general, two business, four mini courses. Headings remain page-specific. The original catalog snapshot is `D:/educado-market-before-reference-20261120.jsonl` (outside Git). The repeaters, course field names and schema consumers remain native.
+Local pages: Spanish 895 (`/mahazyn-kursiv-z-ispanskoyi/`) and English 943 (`/mahazyn-kursiv-z-anhliyskoyi/`). Both now have ten reference cards: four general, two business, four mini courses. Headings remain page-specific. The original catalog snapshot is `D:/educado-market-prod-before-20261125.json` (outside Git). The repeaters, course field names and schema consumers remain native.
 
 Exact cover extracted from the rendered supplied artifact: `market-course-reference.jpg`, also imported into the local media library as attachment 1748. It includes the printed course title. The reference repeats that same cover across all cards. Duration and lesson count are separate ACF fields and render with the site's existing leaf SVG. Prices are displayed in one row, including on mobile. Business B1 has no amounts or real destination in the artifact; its amounts stay empty, the page says «Уточніть вартість» and its details link leads to the contact form. The other nine known external course destinations are retained from the matching English offers.
 
@@ -39,3 +39,12 @@ Database operations were limited to the two catalogs and their six approved ACF 
 Production currently has the Black Friday split banner and a sticky header. Store JS now measures header height via ResizeObserver, updates the initial content offset for fixed versus sticky headers and supplies category/FAQ/form scroll margins. Matching source JS/SCSS and generated assets were deployed. On mobile the live header was 208 px tall, category top 228 px, with no overlap or horizontal overflow.
 
 Production checks: PHP lint, HTTP 200 for home, Chinese and both stores; ten cards/six FAQs and valid JSON-LD on both stores; form endpoint uses production, media use production URLs. Desktop 1440 has four cards, mobile 390 one; header is white, keyboard FAQ opens one item, empty form produces two validation errors. Actual lead delivery/payment were not exercised. Autoptimize and LiteSpeed caches were cleared. All source/runtime copies are included in Git.
+
+
+## Original catalogs restored — 2026-11-25
+
+The user's later clarification supersedes the reference-data publication above: both stores must display their ORIGINAL course names, duration, lesson counts, regular/discount prices, covers and destinations. Restored only `perelk_propozicj` from the pre-release production export: Spanish 28 offers, English 9. Both production arrays exactly match the archived originals; local arrays match after domain mapping. Every media URL was resolved to its existing attachment ID before any write. FAQ, form and homepage values were unchanged. No demo Business B1 remains.
+
+Course topics now render visibly at the top of each cover; the existing level/category labels remain above the cards. Long monthly unit text is abbreviated to «грн/міс» only in the view, preserving the saved original prices. Empty duration/lesson fields on grammar trainers were already empty in the archive and were not invented. Source SCSS and compiled CSS were updated together; three runtime/source files deployed and read back, template PHP lint passed, caches cleared. Desktop 1440 and mobile 390 checked: unique actual media, course names, facts and both prices, one mobile column and no horizontal overflow.
+
+`restore-market-content.php` is the scoped restoration utility: input is the saved production catalog export outside Git; it resolves environment-specific media IDs and updates course repeaters only. Actual successful form delivery/payment remains outside this check.

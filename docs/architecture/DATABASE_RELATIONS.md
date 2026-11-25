@@ -34,3 +34,6 @@ The additional ACF group stores `educado_banner_layout`, `educado_banner_text`, 
 
 
 Store release (2026-11-25): production pages 895/943 received only `perelk_propozicj`, `nav_label`, `details_label`, `faq_heading`, `market_faq`, `market_form` (six fields including the catalog). Reference image maps local attachment 1748 to production 1755. No full DB import; original production store data archived locally outside Git. Language pricing metadata hashes for thirteen pages and homepage ACF hash were unchanged. Original production page heading fields were retained.
+
+
+2026-11-25 final store content: original native perelk_propozicj restored (895: 28 offers; 943: 9). Names, duration, lesson counts, both prices, covers and destinations exactly match pre-release production data; only local media URLs differ by environment domain. Reference fixture is historical/local-only, no longer the active catalog. FAQ/form groups and homepage data were guarded unchanged.

@@ -49,3 +49,6 @@ The promotional header banner reads the ACF `Home` group from page 5. Across tem
 
 
 Store production status (2026-11-25): supersedes the local-only status above. Fifteen store-related files deployed and verified. Both store records use the approved reference catalog and native ACF FAQ/form groups; media attachment IDs remapped on production. The shared homepage form contract remains unchanged. Market JS additionally measures the live header through ResizeObserver, distinguishing sticky and fixed positioning for content/anchor offsets; the active banner itself is unchanged.
+
+
+Final store catalog state (2026-11-25): original per-language content restored (Spanish 28, English 9); the reference catalog is no longer active. Cover topics are rendered from existing tematika fields, while original facts/prices/media/URLs feed the new layout. FAQ and shared contact form remain in place.
