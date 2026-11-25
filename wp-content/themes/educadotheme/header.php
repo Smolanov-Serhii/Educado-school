@@ -90,25 +90,58 @@
 //    var_dump($data);
     ?>
     <?php if (get_field('pokaz_aktivovano', 5 ) === true){
-        $start = DateTime::createFromFormat('d/m/Y', get_field('data_pochatku_pokazu', 5));
-        $end   = DateTime::createFromFormat('d/m/Y', get_field('data_zaknchennya_pokazu', 5));
-        $today = new DateTime();
-        if ($start && $end && $start <= $today && $end >= $today) {
+        $start = (string) get_field('data_pochatku_pokazu', 5, false);
+        $end = (string) get_field('data_zaknchennya_pokazu', 5, false);
+        $today = current_datetime()->format('Ymd');
+        if (preg_match('/^\d{8}$/D', $start) && preg_match('/^\d{8}$/D', $end) && $start <= $today && $today <= $end) {
+            $image_id = (int) get_field('kartinka_v_reklamnij_baner', 5, false);
+            $image_url = $image_id ? wp_get_attachment_url($image_id) : false;
+            $button_text = get_field('napis_na_knopc_baneru', 5);
+            $split_banner = get_field('educado_banner_layout', 5) === 'split';
+            $contained_banner = $split_banner && get_field('educado_banner_width', 5) === 'contained';
+            $banner_text = $split_banner ? trim((string) get_field('educado_banner_text', 5)) : '';
+            $banner_color = sanitize_hex_color(get_field('kolr_baneru_hedera', 5));
+            $banner_theme = get_field('tema_knopki', 5);
+            if ($split_banner) {
+                $button_text = trim((string) get_field('educado_banner_button', 5)) ?: 'Дізнатися більше';
+            }
+            $background_id = $split_banner ? (int) get_field('educado_banner_background', 5) : 0;
+            $background_url = $background_id ? wp_get_attachment_image_url($background_id, 'full') : false;
+            $banner_style = $banner_color ? 'background-color:' . $banner_color : '';
+            if ($background_url) {
+                $banner_style .= ';--educado-banner-image:url("' . esc_url_raw($background_url) . '")';
+            } elseif ($split_banner && $banner_color) {
+                $banner_style .= ';--educado-banner-ink:' . educado_banner_text_color($banner_color);
+            }
             ?>
-            <div class="ed-header__banner" style="background-color: <?php echo get_field('kolr_baneru_hedera', 5);?>">
-                <div class="ed-header__banner-container">
-                    <div class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= get_field('tema_knopki', 5); ?>">
-                        <?php if (get_field('kartinka_v_reklamnij_baner', 5)){
-                            ?>
-                            <div class="ed-header__banner-img">
-                                <img src="<?= get_field('kartinka_v_reklamnij_baner', 5); ?>" alt="<?= get_field('napis_na_knopc_baneru', 5); ?>">
-                            </div>
-                            <?php
-                        }?>
-                        <?= get_field('napis_na_knopc_baneru', 5); ?>
-                    </div>
+            <?php if ($contained_banner) : ?>
+                <div class="container ed-header__banner-frame">
+            <?php endif; ?>
+            <div class="ed-header__banner<?= $split_banner ? ' ed-header__banner--split' : ''; ?><?= $background_url ? ' ed-header__banner--photo' : ''; ?>" style="<?= esc_attr($banner_style); ?>">
+                <div class="ed-header__banner-container<?= $split_banner && !$contained_banner ? ' container' : ''; ?>">
+                    <?php if ($split_banner && ($banner_text !== '' || $image_url)) : ?>
+                        <div class="ed-header__banner-copy">
+                            <?php if ($image_url) : ?>
+                                <img src="<?= esc_url($image_url); ?>" alt="">
+                            <?php endif; ?>
+                            <?php if ($banner_text !== '') : ?>
+                                <p class="ed-header__banner-text"><?= esc_html($banner_text); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                    <button type="button" class="ed-header__banner-btn button callpopup utm-init" data-popup="callback" data-theme="<?= esc_attr($banner_theme); ?>">
+                        <?php if (!$split_banner && $image_url) : ?>
+                            <span class="ed-header__banner-img">
+                                <img src="<?= esc_url($image_url); ?>" alt="">
+                            </span>
+                        <?php endif; ?>
+                        <?= $split_banner ? esc_html($button_text) : $button_text; ?>
+                    </button>
                 </div>
             </div>
+            <?php if ($contained_banner) : ?>
+                </div>
+            <?php endif; ?>
             <?php
         }
     }?>

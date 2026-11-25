@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/header-banner.php';
+
 add_action('after_setup_theme', 'ed_theme_setup');
 function ed_theme_setup()
 {

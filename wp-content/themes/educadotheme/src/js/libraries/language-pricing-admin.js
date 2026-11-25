@@ -4,6 +4,11 @@
     var dimensions = window.educadoPricingAdmin.dimensions || ['course', 'duration', 'level'];
     var busy = false;
 
+    function findEditorField(key) {
+        var $field = acf.findField(key);
+        return $field.length ? acf.getField($field) : null;
+    }
+
     function fieldInput($row, name) {
         return $row.find('[data-key="field_edp_' + name + '"] :input').first();
     }
@@ -21,8 +26,8 @@
         dimensions.forEach(function (dimension) {
             lists[dimension] = [];
             var seen = new Set();
-            var field = acf.getField('field_edp_' + dimension + '_options');
-            var enabled = acf.getField('field_edp_' + dimension + '_enabled');
+            var field = findEditorField('field_edp_' + dimension + '_options');
+            var enabled = findEditorField('field_edp_' + dimension + '_enabled');
             if (!field || (enabled && !enabled.$el.find('input[type="checkbox"]').prop('checked'))) return;
             field.$rows().each(function () {
                 var $row = $(this);
@@ -38,11 +43,11 @@
 
     function refresh() {
         if (busy) return;
-        var table = acf.getField('field_edp_price_rows');
+        var table = findEditorField('field_edp_price_rows');
         if (!table) return;
         busy = true;
         var lists = options();
-        var groupSelect = acf.getField('field_edg_format_ref');
+        var groupSelect = findEditorField('field_edg_format_ref');
         if (groupSelect) {
             var $groupInput = groupSelect.$el.find('select');
             var groupCurrent = $groupInput.val();
@@ -87,8 +92,8 @@
     }
 
     function excludeGroupFormat(lists) {
-        var enabled = acf.getField('field_edg_enabled');
-        var select = acf.getField('field_edg_format_ref');
+        var enabled = findEditorField('field_edg_enabled');
+        var select = findEditorField('field_edg_format_ref');
         if (enabled && select && enabled.$el.find('input[type="checkbox"]').prop('checked')) {
             var groupId = select.$el.find('select').val();
             lists.format = (lists.format || []).filter(function (option) { return option.id !== groupId; });
@@ -100,7 +105,7 @@
         var lists = options();
         var hadFormats = lists.format.length > 0;
         excludeGroupFormat(lists);
-        var table = acf.getField('field_edp_price_rows');
+        var table = findEditorField('field_edp_price_rows');
         if (hadFormats && !lists.format.length) {
             table.$el.find('.edp-tools p').text('Для групового формату заповніть окремі умови та дві ціни нижче. Комбінації 8/24/48 не потрібні.');
             return;
@@ -156,7 +161,7 @@
     $(document).on('change', '[data-key="field_edg_format_ref"] select, [data-key="field_edg_enabled"] input', refresh);
     acf.addFilter('validation_complete', function (result, $form) {
         var limit = Number(window.educadoPricingAdmin && window.educadoPricingAdmin.inputLimit);
-        if (acf.getField('field_edp_price_rows') && limit > 0 && $form.serializeArray().length + 50 > limit) {
+        if (findEditorField('field_edp_price_rows') && limit > 0 && $form.serializeArray().length + 50 > limit) {
             result.valid = false;
             result.errors = Array.isArray(result.errors) ? result.errors : [];
             result.errors.push({ input: '', message: 'Не вдалося безпечно зберегти всі поля. Попросіть розробника збільшити max_input_vars на сервері.' });
