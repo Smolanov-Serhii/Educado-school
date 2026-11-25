@@ -48,3 +48,6 @@ The user's later clarification supersedes the reference-data publication above: 
 Course topics now render visibly at the top of each cover; the existing level/category labels remain above the cards. Long monthly unit text is abbreviated to «грн/міс» only in the view, preserving the saved original prices. Empty duration/lesson fields on grammar trainers were already empty in the archive and were not invented. Source SCSS and compiled CSS were updated together; three runtime/source files deployed and read back, template PHP lint passed, caches cleared. Desktop 1440 and mobile 390 checked: unique actual media, course names, facts and both prices, one mobile column and no horizontal overflow.
 
 `restore-market-content.php` is the scoped restoration utility: input is the saved production catalog export outside Git; it resolves environment-specific media IDs and updates course repeaters only. Actual successful form delivery/payment remains outside this check.
+
+
+2026-11-25: by user request, the market-card__topic overlay markup is commented out in the shared template. Original course data and the level labels remain unchanged.

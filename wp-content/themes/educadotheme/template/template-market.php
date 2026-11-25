@@ -48,7 +48,9 @@ $leaf = '<svg aria-hidden="true" viewBox="0 0 36 36"><path d="M10.914 25.085c-4.
                     <h3 class="market-card__title"><?php echo esc_html($title); ?></h3>
                     <?php $cover_tag = $url ? 'a' : 'div'; ?>
                     <<?php echo $cover_tag; ?> class="market-card__cover" <?php if ($url) : ?>href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr('Детальніше: ' . $title); ?>"<?php endif; ?>>
+                        <?php /* Cover title overlay disabled by request.
                         <span class="market-card__topic"><?php echo esc_html(wp_strip_all_tags(($item['tematika'] ?? '') ?: $title)); ?></span>
+                        */ ?>
                         <?php if ($image) : ?><img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr(($item['tematika'] ?? '') ?: $title); ?>" width="600" height="600" loading="lazy" decoding="async"><?php endif; ?>
                     </<?php echo $cover_tag; ?>>
                     <div class="market-card__facts">

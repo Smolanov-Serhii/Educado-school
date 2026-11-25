@@ -55,3 +55,6 @@ Store release verification (2026-11-25): baseline checks and readback for fiftee
 
 
 2026-11-25 original catalog correction: user requested actual previous offers instead of reference entries. Native ACF restore touched only the two course repeaters; exact production-array comparison passed, as did local comparison with domain mapping. All original image references resolved before mutation; existing FAQ/form and homepage hashes stayed unchanged. Added visible cover topic and presentation-only monthly abbreviation. PHP lint, source/generated CSS consistency and desktop/mobile checks passed; caches purged.
+
+
+2026-11-25 store overlay: market-card__topic markup commented out at the template source; no ACF/database writes or asset rebuild needed. Shared change affects both stores.
