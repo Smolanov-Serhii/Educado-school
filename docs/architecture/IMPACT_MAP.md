@@ -1,5 +1,11 @@
 # Impact map
 
+The editor tools MU plugin affects Classic Editor visual editing, Classic blocks and ACF WYSIWYG toolbars, including the beginner content and store FAQ fields. The controls become available through the existing rich-editor permissions. Table markup is subject to existing WordPress and template-level HTML filtering. Local browser checks inserted a two-cell table into a page body and an ACF Basic field, opened the ACF picker at 390 px, and exercised the dynamic initialization hook with a sample editor. The checks did not save the page.
+
+The single-post template serves all standard posts, preserves existing banners/videos and callback behavior, and styles tables in the native editor, legacy ACF text and the new `Таблиця` layout. Browser checks at 320, 390 and 1440 px covered native admin save/readback, eight FAQ disclosures with keyboard navigation, no FAQ on an empty post, a legacy comparison table, a WordPress table with a caption, and keyboard scrolling of a six-column table with merged cells. Production files and data were outside this local verification.
+
+2026-11-27 production blog release: seven theme files passed staged PHP lint and live byte comparison. The FAQ heading accent, card borders and plus/minus indicators follow the published reference. The native production editor uses the already active Advanced Editor Tools 5.10.1 for table insertion. Browser checks confirmed the table menu in an unsaved ACF row and the public article at 320, 390 and 1440 px. The database backup contains all 29 production tables and passed gzip validation. It stays on the host at `/home/educadoc/.educado-blog-release-20261127-yPXz33t6/educado-school-before-blog.sql.gz`; the same private directory holds the previous theme files and scoped article snapshot. The only content update moved eight existing FAQ entries for post 1648 into ACF, with 120 other existing metadata keys verified unchanged.
+
 Verified 2026-11-06, scope limited to six language landing pages:
 
 | Change | Consumers and boundaries | Verification |

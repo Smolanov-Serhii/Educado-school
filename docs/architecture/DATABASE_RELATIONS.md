@@ -1,5 +1,9 @@
 # Database and persistent data relations
 
+Editor table controls use existing HTML content storage. WordPress editors save post content through the existing post flow, and ACF WYSIWYG fields save through ACF's existing metadata flow. The editor extension introduces no new tables, fields or options.
+
+Blog table blocks and FAQ use native ACF post metadata. The optional `template4` row stores its title and HTML under `shablon_{index}_shablon_table_4_*`. The separate `educado_blog_faq` repeater stores question and answer rows. PHP registers both definitions without importing a field group or changing the database schema. On local and production, eight existing FAQ entries on post 1648 were moved from the final text block into the separate repeater. Readback preserved the closing text and 120 other existing metadata keys in each environment.
+
 Reviewed 2026-11-06: WordPress page content and ACF metadata on the exact production site. MariaDB 10.11.19; actual `ecd_postmeta` engine InnoDB, collation `utf8mb4_unicode_520_ci`. Hosting conventions and schema were preserved.
 
 Logical relationship: page ID -> `ecd_postmeta.post_id` -> ACF scalar/group/repeater fields. No foreign-key audit was performed. Target page IDs: 773, 536, 499, 487, 495, 492. Existing field keys and original text are recorded in `scripts/seo-content-20261106.json`; new definitions live in `inc/language-seo.php`.

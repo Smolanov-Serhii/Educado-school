@@ -98,16 +98,25 @@
 /wp-content/themes/*
 !/wp-content/themes/educadotheme/
 /wp-content/themes/educadotheme/*
+!/wp-content/themes/educadotheme/single-post.php
 !/wp-content/themes/educadotheme/inc/
 /wp-content/themes/educadotheme/inc/*
 !/wp-content/themes/educadotheme/inc/language-seo.php
+!/wp-content/themes/educadotheme/inc/blog-post.php
 !/wp-content/themes/educadotheme/parts/
 /wp-content/themes/educadotheme/parts/*
 !/wp-content/themes/educadotheme/parts/content-language-beginners.php
+!/wp-content/themes/educadotheme/parts/content-blog-callback.php
 !/wp-content/themes/educadotheme/assets/
 /wp-content/themes/educadotheme/assets/*
 !/wp-content/themes/educadotheme/assets/css/
 /wp-content/themes/educadotheme/assets/css/*
+!/wp-content/themes/educadotheme/assets/css/blog-post.css
+!/wp-content/themes/educadotheme/assets/js/
+/wp-content/themes/educadotheme/assets/js/*
+!/wp-content/themes/educadotheme/assets/js/libraries/
+/wp-content/themes/educadotheme/assets/js/libraries/*
+!/wp-content/themes/educadotheme/assets/js/libraries/blog-post.js
 
 # Local runtime files and the environment-gated local WordPress guard.
 /.serena/
@@ -115,6 +124,8 @@
 !/wp-content/mu-plugins/
 /wp-content/mu-plugins/*
 !/wp-content/mu-plugins/educado-local-environment.php
+!/wp-content/mu-plugins/educado-editor-tools.php
+!/wp-content/mu-plugins/educado-editor-tools/
 !/wp-content/mu-plugins/krasprod-market-images.php
 !/wp-content/mu-plugins/krasprod-search-filter-only-where-used.php
 !/wp-content/mu-plugins/krasprod-sf-chosen-defer.php

@@ -15,3 +15,4 @@ Initialized by the global project-architecture-audit skill. Codex reviews releva
 - [Language pricing v2 and filling guide](../LANGUAGE-PRICING-DESIGN.md)
 
 - [Course store design, ACF fields and local verification](../MARKET-DESIGN.md)
+- [Blog editor, ACF table and FAQ fields, production release](../BLOG-POSTS-2026-11-27.md)

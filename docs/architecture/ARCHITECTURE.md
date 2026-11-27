@@ -4,6 +4,10 @@ Scope reviewed 2026-11-06: six Ukrainian language landing pages and crawler text
 
 Production: WordPress 7.1.4, ACF Pro 6.0.2, PHP CLI 8.2.35, MariaDB 10.11.19. Theme: `wp-content/themes/educadotheme`. Hosting root: `/home/educadoc/educado.school`.
 
+The local `wp-content/mu-plugins/educado-editor-tools.php` extends WordPress TinyMCE settings, ACF WYSIWYG toolbars and admin editors initialized through `wp.editor.initialize()`. Production uses the existing Advanced Editor Tools plugin. Gutenberg's native Table block has its own editing path.
+
+Standard posts use `wp-content/themes/educadotheme/single-post.php`. It reads native post content and the existing ACF blog cover and `shablon` repeater, reuses the existing banner, video and callback views, and renders an optional ACF FAQ. `inc/blog-post.php` adds `template4` to the existing template selector and injects the table block fields at runtime. Styles and the responsive table wrapper load on standard posts only. [Editor guide and production release](../BLOG-POSTS-2026-11-27.md)
+
 Verified flow: page slug -> WordPress page template -> `get_fields()` -> native ACF content -> HTML. English/Spanish use `template/template-rozvod.php`; French/German/Polish/Italian use `template/template-language.php`. `functions.php` loads `inc/language-seo.php`, which registers a page-scoped ACF group. Scoped SEO styles live in `src/scss/_language-seo.scss`, imported by `src/scss/style.scss` and emitted inside the normal `assets/css/style.min.css`. Both templates call `parts/content-language-beginners.php`; it renders only with a nonempty title and body, and is currently hidden pending copywriter text.
 
 Root `robots.txt` and `llms.txt` are physical files served independently of WordPress templates. LiteSpeed page cache is purged with the site's WP-CLI after changes.

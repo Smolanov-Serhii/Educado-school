@@ -1,0 +1,156 @@
+.ed-article {
+    --article-ink: #141414;
+    --article-olive: #8f8f2d;
+    --article-olive-light: #f1f1cf;
+    --article-olive-line: #b9b97a;
+    --article-gutter: clamp(20px, 5vw, 32px);
+    padding-top: calc(var(--article-header-height, 128px) + clamp(28px, 5vw, 56px));
+}
+
+.ed-article__inner {
+    width: min(100%, 1013px);
+    margin-inline: auto;
+    padding-inline: var(--article-gutter);
+    padding-bottom: clamp(40px, 7vw, 82px);
+    color: var(--article-ink);
+    font-family: Roboto, system-ui, sans-serif;
+    line-height: 1.65;
+}
+
+.ed-article__header { margin-bottom: clamp(24px, 4vw, 36px); }
+.ed-article__byline { display: flex; flex-wrap: wrap; gap: 0 0.4em; color: #5c5c5c; font-size: 15px; }
+.ed-article__byline a:hover { text-decoration: underline; }
+.ed-article__title {
+    margin: 12px 0 28px;
+    font-family: inherit;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 500;
+    line-height: 1.16;
+    overflow-wrap: anywhere;
+}
+
+.ed-article__cover img { width: 100%; height: auto; }
+.ed-article__inner .ed-rekimg,
+.ed-article__inner .ed-home-video { margin: clamp(24px, 4vw, 40px) 0; }
+.ed-article__cover .ed-rekimg { margin: 0; }
+.ed-article__inner .ed-rekimg .container,
+.ed-article__inner .ed-home-video .container { width: 100%; max-width: none; padding-inline: 0; }
+.ed-article__cover .ed-rekimg picture img { border-radius: 0; }
+
+.ed-article__rich { font-size: clamp(16px, 1.8vw, 18px); }
+.ed-article__rich + .ed-article__rich { margin-top: clamp(26px, 4vw, 42px); }
+.ed-article__rich > * + * { margin-top: 1em; }
+.ed-article__rich :is(h1, h2, h3, h4, h5, h6) {
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+.ed-article__rich :is(h1, h2, h3, h4, h5, h6):not(:first-child) { margin-top: 1.6em; }
+.ed-article__rich :is(h1, h2) { font-size: clamp(25px, 3vw, 30px); }
+.ed-article__rich h3 { font-size: clamp(20px, 2.5vw, 24px); }
+.ed-article__rich h4 { font-size: 1.1em; }
+.ed-article__rich :is(ul, ol) { padding-inline-start: 1.5em; }
+.ed-article__rich ul { list-style: disc; }
+.ed-article__rich ol { list-style: decimal; }
+.ed-article__rich li + li { margin-top: 0.3em; }
+.ed-article__rich a { color: #65651d; text-decoration: underline; text-underline-offset: 0.15em; overflow-wrap: anywhere; }
+.ed-article__rich :is(img, iframe, video) { max-width: 100%; }
+.ed-article__rich img { height: auto; }
+.ed-article__rich pre { overflow-x: auto; }
+
+/* The wrapper scrolls while the original table, headers, spans and caption retain their semantics. */
+.ed-article__rich:has(table):not(:has(.ed-article__table-scroll)),
+.ed-article__table-scroll { max-width: 100%; overflow-x: auto; }
+.ed-article__table-scroll { scrollbar-color: #747426 #f4f4e7; }
+.ed-article__rich table {
+    width: 100% !important;
+    height: auto !important;
+    border-collapse: collapse;
+    border: 1px solid var(--article-olive-line);
+    font-size: 16px;
+    line-height: 1.5;
+}
+.ed-article__rich :is(th, td) {
+    min-width: 6.25rem;
+    padding: clamp(10px, 2vw, 16px) clamp(12px, 3vw, 24px);
+    border: 1px solid var(--article-olive-line);
+    background: var(--article-olive-light);
+    text-align: start;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+.ed-article__rich table:not(:has([rowspan], [colspan])) tbody > tr:not(.ed-article__table-head) > td:first-child,
+.ed-article__rich th[scope="row"] { background: #fff; font-weight: 600; }
+.ed-article__rich thead :is(th, td),
+.ed-article__rich .ed-article__table-head > :is(th, td),
+.ed-article__rich tbody > tr:first-child > th[scope="col"] {
+    background: var(--article-olive);
+    border-color: #6f6f22;
+    color: #141414;
+    font-weight: 600;
+}
+.ed-article__rich tfoot :is(th, td) { background: #e8e8bc; font-weight: 600; }
+.ed-article__rich :is(caption, figcaption) { padding: 8px 0; color: #5c5c5c; font-size: 0.875em; text-align: start; }
+
+.ed-article__faq { margin-top: clamp(40px, 6vw, 80px); }
+.ed-article__faq h2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: clamp(24px, 4vw, 36px);
+    font: 400 clamp(40px, 5vw, 56px)/1 "Poiret One", Roboto, sans-serif;
+}
+.ed-article__faq-accent { padding: 8px 18px 12px; border-radius: 18px; background: #d4d46f; }
+.ed-article__faq details { border: 1px solid #e4e4d6; border-radius: 28px; background: #fff; }
+.ed-article__faq details + details { margin-top: clamp(12px, 2vw, 18px); }
+.ed-article__faq details[open] { border-color: var(--article-olive); }
+.ed-article__faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(14px, 3vw, 24px);
+    padding: clamp(16px, 3vw, 26px) clamp(18px, 4vw, 32px);
+    border-radius: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: clamp(17px, 2.4vw, 20px);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+.ed-article__faq summary::-webkit-details-marker { display: none; }
+.ed-article__faq-icon {
+    --faq-icon-size: clamp(44px, 6vw, 60px);
+    position: relative;
+    flex: 0 0 var(--faq-icon-size);
+    height: var(--faq-icon-size);
+    border: 1px solid #d8d8c4;
+    border-radius: 50%;
+    background: #fff;
+}
+.ed-article__faq-icon::before,
+.ed-article__faq-icon::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 16px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+    background: #141414;
+}
+.ed-article__faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.ed-article__faq details[open] .ed-article__faq-icon { border-color: #d4d46f; background: #d4d46f; }
+.ed-article__faq details[open] .ed-article__faq-icon::after { display: none; }
+.ed-article__answer {
+    padding: 0 clamp(18px, 4vw, 32px) clamp(20px, 4vw, 30px);
+    color: #3a3a3a;
+    font-size: 17px;
+    line-height: 1.7;
+}
+@media (min-width: 768px) {
+    .ed-article__answer { padding-inline-end: 120px; }
+}
+.ed-article__inner :focus-visible { outline: 2px solid #68681e; outline-offset: 3px; }
+.ed-article__table-scroll:focus-visible { outline-offset: -2px; }
