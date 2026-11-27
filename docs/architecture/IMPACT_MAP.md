@@ -64,3 +64,5 @@ Store release verification (2026-11-25): baseline checks and readback for fiftee
 
 
 2026-11-25 store overlay: market-card__topic markup commented out at the template source; no ACF/database writes or asset rebuild needed. Shared change affects both stores.
+
+2026-11-27 group-level release: affects only ready separate group offers on shared language pages. Empty levels keep legacy rendering; adding complete named levels activates independent price/condition/note panels. Native radios reuse existing responsive/focus styling. Verified legacy/levels/invalid values, inherited texts and independent amounts, emitted PHP DOM, JS level/format transitions, native production ACF registration, PHP lint and public HTTP/asset checks. Five source/runtime files deployed after baseline checks and verified by readback; Autoptimize/LiteSpeed purged. All 13 language-page postmeta hashes unchanged. No real browser desktop/mobile or admin save check was available; local WordPress integration could not connect to its stopped database. See LANGUAGE-PRICING-DESIGN.md for filling instructions and limits.

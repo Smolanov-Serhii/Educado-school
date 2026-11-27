@@ -17,6 +17,49 @@ $snapshot = serialize($pricing);
 $offer = ['enabled' => 1, 'format_ref' => $group_id, 'module_price' => '5600', 'course_price' => '15120', 'previous_price' => '16800',
     'condition_lessons' => '16 lessons', 'condition_students' => '3–8 students', 'condition_schedule' => 'Twice a week', 'module_title' => 'Module', 'course_title' => 'Course'];
 group_check(educado_group_pricing_model($offer, $pricing)['ready'], 'Valid group offer not ready');
+group_check(count(educado_group_pricing_model($offer, $pricing)['offers']) === 1, 'Legacy offer missing');
+$level_offer = $offer;
+$level_offer['levels'] = [
+    ['label' => 'Початковий', 'module_price' => '5600', 'course_price' => '15120', 'previous_price' => '16800'],
+    ['label' => 'Просунутий', 'module_price' => '6400', 'course_price' => '18000', 'previous_price' => '', 'condition_schedule' => 'Three times a week', 'trial_note' => 'Level-specific trial'],
+];
+$level_snapshot = serialize($level_offer);
+$level_model = educado_group_pricing_model($level_offer, $pricing);
+group_check($level_model['ready'] && $level_model['has_levels'] && count($level_model['offers']) === 2, 'Level offers not ready');
+group_check($level_model['offers'][0]['course_price'] === '15120' && $level_model['offers'][1]['course_price'] === '18000', 'Level prices mixed');
+group_check($level_model['offers'][0]['condition_schedule'] === $offer['condition_schedule'], 'Shared conditions not inherited');
+group_check($level_model['offers'][1]['condition_schedule'] === 'Three times a week' && $level_model['offers'][1]['trial_note'] === 'Level-specific trial', 'Level conditions lost');
+group_check($level_model['offers'][1]['previous_price'] === '', 'Previous price inherited into level');
+function esc_html($value) { return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8'); }
+function esc_attr($value) { return esc_html($value); }
+function checked($value, $expected) { if ($value === $expected) echo 'checked="checked"'; }
+function number_format_i18n($value, $decimals = 0) { return number_format($value, $decimals, '.', ' '); }
+$html = (function ($group_model) {
+    $group_initial = true; $block_id = 'test-pricing';
+    ob_start();
+    include dirname(__DIR__) . '/wp-content/themes/educadotheme/parts/pricing-group.php';
+    return ob_get_clean();
+})($level_model);
+$doc = new DOMDocument(); @$doc->loadHTML('<?xml encoding="UTF-8">' . $html);
+$xpath = new DOMXPath($doc);
+group_check($xpath->query('//input[@data-group-level]')->length === 2, 'Level selectors not rendered');
+group_check($xpath->query('//*[@data-group-level-panel="0" and not(@hidden)]')->length === 1, 'Initial offer not visible');
+group_check($xpath->query('//*[@data-group-level-panel="1" and @hidden]')->length === 1, 'Second offer not initially hidden');
+group_check(strpos($html, '18 000') !== false && strpos($html, '15 120') !== false, 'Independent prices missing from rendered panels');
+group_check(serialize($level_offer) === $level_snapshot && serialize($pricing) === $snapshot, 'Existing data mutated');
+$level_offer['module_price'] = ''; $level_offer['course_price'] = '';
+group_check(educado_group_pricing_model($level_offer, $pricing)['ready'], 'Unused shared prices required for levels');
+$level_offer['levels'][0]['label'] = 'Перейменований';
+group_check(educado_group_pricing_model($level_offer, $pricing)['offers'][0]['module_price'] === '5600', 'Rename changed level prices');
+$invalid_level = $level_offer; unset($invalid_level['levels'][0]['module_price']);
+group_check(!educado_group_pricing_model($invalid_level, $pricing)['ready'], 'Missing level price inherited');
+$invalid_level = $level_offer; $invalid_level['levels'][1]['label'] = $invalid_level['levels'][0]['label'];
+group_check(!educado_group_pricing_model($invalid_level, $pricing)['ready'], 'Duplicate level accepted');
+$posted = ['field_edg_enabled' => 1, 'field_edg_levels' => ['row-0' => ['field_edg_level_label' => 'A1', 'field_edg_level_module_price' => '5600']]];
+$normalized = educado_group_normalize($posted);
+group_check($normalized['levels']['row-0']['label'] === 'A1' && $normalized['levels']['row-0']['module_price'] === '5600', 'Native ACF repeater submission not normalized');
+$no_levels = $offer; $no_levels['levels'] = false;
+group_check(educado_group_pricing_model($no_levels, $pricing)['ready'], 'Empty ACF repeater broke legacy offer');
 group_check(serialize($pricing) === $snapshot, 'Existing prices changed');
 $renamed = $pricing; $renamed['format_options'][1]['format_label'] = 'Renamed';
 group_check(educado_group_pricing_model($offer, $renamed)['ready'], 'Rename lost format binding');
@@ -36,4 +79,4 @@ $GLOBALS['group_test_data'] = ['pricing_visual' => 'v2', 'pricing_v2' => $group_
 group_check(educado_pricing_v2_visible(), 'Ready group-only page hidden');
 $GLOBALS['group_test_data']['pricing_group']['enabled'] = 0;
 group_check(!educado_pricing_v2_visible(), 'Empty disabled group published');
-echo "PASS: group readiness, stable format binding, optional previous price, invalid/draft protection and unchanged package prices.\n";
+echo "PASS: legacy and per-level group offers, ACF submission, independent prices/conditions, invalid input protection and unchanged package prices.\n";

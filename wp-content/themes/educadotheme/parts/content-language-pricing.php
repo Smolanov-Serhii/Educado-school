@@ -57,8 +57,12 @@ if (educado_has_language_headings()) {
         <?php include __DIR__ . '/pricing-installments.php'; ?>
         <?php if (!empty($settings['bonus'])) : ?><p class="ed-pricing__bonus" data-package-only <?php echo $group_initial ? 'hidden' : ''; ?>><?php echo esc_html($settings['bonus']); ?></p><?php endif; ?>
         <?php if ($group_model['ready']) : ?><div class="ed-pricing__group-notes" data-group-only <?php echo $group_initial ? '' : 'hidden'; ?>>
-            <p class="ed-pricing__bonus"><?php echo esc_html($group_settings['trial_note'] ?? ''); ?></p>
-            <p class="ed-pricing__footnote"><?php echo esc_html($group_settings['footnote'] ?? ''); ?></p>
+            <?php foreach ($group_model['offers'] as $index => $offer) : ?>
+            <div data-group-level-panel="<?php echo esc_attr($index); ?>" <?php echo $index === 0 ? '' : 'hidden'; ?>>
+                <p class="ed-pricing__bonus"><?php echo esc_html($offer['trial_note'] ?? ''); ?></p>
+                <p class="ed-pricing__footnote"><?php echo esc_html($offer['footnote'] ?? ''); ?></p>
+            </div>
+            <?php endforeach; ?>
         </div><?php endif; ?>
         <form class="form ed-pricing__form">
             <input type="hidden" name="action" value="ed_callback">

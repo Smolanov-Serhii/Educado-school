@@ -14,6 +14,10 @@
         var formatGroup = block.querySelector('[data-dimension="format"]');
         var formatIndex = dimensions.indexOf('format');
         function update() {
+            var selectedLevel = block.querySelector('[data-group-level]:checked');
+            block.querySelectorAll('[data-group-level-panel]').forEach(function (panel) {
+                panel.hidden = panel.dataset.groupLevelPanel !== (selectedLevel ? selectedLevel.value : '0');
+            });
             if (formatGroup && groupFormat) {
                 var formatInputs = Array.from(formatGroup.querySelectorAll('input[type="radio"]'));
                 formatInputs.forEach(function (input) {
